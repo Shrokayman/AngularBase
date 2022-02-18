@@ -1,14 +1,64 @@
+import { AppRoutingModule } from './app-routing.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { NavbarComponent } from './layout/navbar/navbar.component';
+import { FooterComponent } from './layout/footer/footer.component';
+import { AboutComponent } from './appInfo/about/about.component';
+import { ContactComponent } from './appInfo/contact/contact.component';
+import { ProductListingComponent } from './core/product-feature/product-listing/product-listing.component';
+import { HomeComponent } from './core/home/home.component';
+import { ProductDetailsComponent } from './core/product-feature/product-details/product-details.component';
+import { CartComponent } from './core/cart/cart.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SidenavComponent } from './admin/sidenav/sidenav.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
+import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
+import { LoginComponent } from './core/login/login.component';
+import { RegisterComponent } from './core/register/register.component';
+import { WishlistComponent } from './core/product-feature/wishlist/wishlist.component';
+
+
+
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent,
+    FooterComponent,
+    AboutComponent,
+    ContactComponent,
+    ProductListingComponent,
+    HomeComponent,
+    ProductDetailsComponent,
+    CartComponent,
+    SidenavComponent,
+    DashboardComponent,
+    AdminHomeComponent,
+    AdminHeaderComponent,
+    LoginComponent,
+    RegisterComponent,
+    WishlistComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatIconModule,
+    MatDividerModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
