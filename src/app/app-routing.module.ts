@@ -32,6 +32,7 @@ const routes: Routes = [
   {path:'admin/categories/add' , component:AddCategoryComponent},
   {path:'admin/orders' , component:ManageOrdersComponent},
   {path:'admin/products' , component:ManageProductsComponent},
+  {path:'admin/products/add' , component:ManageProductsComponent},
   {path:'admin/users' , component:ManageUsersComponent},
 ];
 
