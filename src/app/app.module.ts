@@ -31,6 +31,8 @@ import { ManageOrdersComponent } from './admin/manage-orders/manage-orders.compo
 import { ManageBrandsComponent } from './admin/manage-brands/manage-brands.component';
 import { AddBrandComponent } from './admin/manage-brands/add-brand/add-brand.component';
 import { AddCategoryComponent } from './admin/manage-categories/add-category/add-category.component';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
+import { SearchBoxComponent } from './shared/search-box/search-box.component';
 
 
 
@@ -60,6 +62,8 @@ import { AddCategoryComponent } from './admin/manage-categories/add-category/add
     ManageBrandsComponent,
     AddBrandComponent,
     AddCategoryComponent,
+    NotFoundComponent,
+    SearchBoxComponent,
   ],
   imports: [
     BrowserModule,

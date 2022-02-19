@@ -16,10 +16,12 @@ import { ProductListingComponent } from './core/product-feature/product-listing/
 import { CartComponent } from './core/cart/cart.component';
 import { ManageProductsComponent } from './admin/manage-products/manage-products.component';
 import { ManageUsersComponent } from './admin/manage-users/manage-users.component';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
 
 
 const routes: Routes = [
   {path:'' , component:HomeComponent},
+  {path:'home' , component:HomeComponent},
   {path:'about' , component:AboutComponent },
   {path:'contact' , component:ContactComponent},
   {path:'cart/list' , component:CartComponent},
@@ -34,6 +36,7 @@ const routes: Routes = [
   {path:'admin/products' , component:ManageProductsComponent},
   {path:'admin/products/add' , component:ManageProductsComponent},
   {path:'admin/users' , component:ManageUsersComponent},
+  {path:'**' , component:NotFoundComponent},
 ];
 
 
