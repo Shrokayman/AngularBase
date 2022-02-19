@@ -1,0 +1,43 @@
+<div class='dashboard'>
+
+  <app-sidenav></app-sidenav>
+
+  <div class='dashboard-app'>
+      <header class='dashboard-toolbar'><a href="" class="menu-toggle"><i class="fas fa-bars"></i></a></header>
+      <div class='dashboard-content'>
+          <div class='container'>
+              <div class='card'>
+                  <div class='card-header'>
+                      <h1>Welcome back Jim</h1>
+                  </div>
+                  <div class='card-body'>
+                      <p>Your account type is: Administrator</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<!-- <script>
+  const mobileScreen = window.matchMedia("(max-width: 990px )");
+$(document).ready(function () {
+    $(".dashboard-nav-dropdown-toggle").click(function () {
+        $(this).closest(".dashboard-nav-dropdown")
+            .toggleClass("show")
+            .find(".dashboard-nav-dropdown")
+            .removeClass("show");
+        $(this).parent()
+            .siblings()
+            .removeClass("show");
+    });
+    $(".menu-toggle").click(function () {
+        if (mobileScreen.matches) {
+            $(".dashboard-nav").toggleClass("mobile-show");
+        } else {
+            $(".dashboard").toggleClass("dashboard-compact");
+        }
+    });
+});
+</script> -->

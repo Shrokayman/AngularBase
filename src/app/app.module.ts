@@ -13,7 +13,6 @@ import { ProductDetailsComponent } from './core/product-feature/product-details/
 import { CartComponent } from './core/cart/cart.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavComponent } from './admin/sidenav/sidenav.component';
-import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -25,6 +24,12 @@ import {MatListModule} from '@angular/material/list';
 import { LoginComponent } from './core/login/login.component';
 import { RegisterComponent } from './core/register/register.component';
 import { WishlistComponent } from './core/product-feature/wishlist/wishlist.component';
+import { ManageUsersComponent } from './admin/manage-users/manage-users.component';
+import { ManageProductsComponent } from './admin/manage-products/manage-products.component';
+import { ManageCategoriesComponent } from './admin/manage-categories/manage-categories.component';
+import { ManageOrdersComponent } from './admin/manage-orders/manage-orders.component';
+import { ManageBrandsComponent } from './admin/manage-brands/manage-brands.component';
+import { AddBrandComponent } from './admin/manage-brands/add-brand/add-brand.component';
 
 
 
@@ -42,12 +47,17 @@ import { WishlistComponent } from './core/product-feature/wishlist/wishlist.comp
     ProductDetailsComponent,
     CartComponent,
     SidenavComponent,
-    DashboardComponent,
     AdminHomeComponent,
     AdminHeaderComponent,
     LoginComponent,
     RegisterComponent,
     WishlistComponent,
+    ManageUsersComponent,
+    ManageProductsComponent,
+    ManageCategoriesComponent,
+    ManageOrdersComponent,
+    ManageBrandsComponent,
+    AddBrandComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,7 @@
-import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { AddBrandComponent } from './admin/manage-brands/add-brand/add-brand.component';
+import { ManageOrdersComponent } from './admin/manage-orders/manage-orders.component';
+import { ManageCategoriesComponent } from './admin/manage-categories/manage-categories.component';
+import { ManageBrandsComponent } from './admin/manage-brands/manage-brands.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { ProductDetailsComponent } from './core/product-feature/product-details/product-details.component';
 import { HomeComponent } from './core/home/home.component';
@@ -10,6 +13,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './appInfo/about/about.component';
 import { ProductListingComponent } from './core/product-feature/product-listing/product-listing.component';
 import { CartComponent } from './core/cart/cart.component';
+import { ManageProductsComponent } from './admin/manage-products/manage-products.component';
+import { ManageUsersComponent } from './admin/manage-users/manage-users.component';
 
 
 const routes: Routes = [
@@ -20,7 +25,12 @@ const routes: Routes = [
   {path:'product/listing' , component:ProductListingComponent},
   {path:'product/details' , component:ProductDetailsComponent},
   {path:'admin/home' , component:AdminHomeComponent},
-  {path:'admin/dashboard' , component:DashboardComponent},
+  {path:'admin/brands' , component:ManageBrandsComponent},
+  {path:'admin/brands/add' , component:AddBrandComponent},
+  {path:'admin/categories' , component:ManageCategoriesComponent},
+  {path:'admin/orders' , component:ManageOrdersComponent},
+  {path:'admin/products' , component:ManageProductsComponent},
+  {path:'admin/users' , component:ManageUsersComponent},
 ];
 
 

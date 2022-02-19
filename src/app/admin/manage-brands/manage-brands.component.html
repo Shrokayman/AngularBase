@@ -1,0 +1,55 @@
+<div class='dashboard'>
+
+  <app-sidenav></app-sidenav>
+
+  <div class='dashboard-app'>
+      <header class='dashboard-toolbar'><a href="" class="menu-toggle"><i class="fas fa-bars"></i></a></header>
+      <div class='dashboard-content'>
+          <div class='container p-5'>
+            <figure class="text-center">
+              <blockquote class="blockquote">
+                <h2>Brands</h2>
+              </blockquote>
+            </figure>
+            <div class="text-right">
+              <button routerLink="/admin/brands/add"type="submit" class="btn btn-primary btn-sm float-end">Add new brand</button>
+            </div>
+
+            <table class="table table-striped mt-5">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Added at</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Adidas</td>
+                  <td>Oct</td>
+                  <td><button type="submit" class="btn btn-outline-danger">Delete</button></td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>H&M</td>
+                  <td>Dec</td>
+                  <td><button type="submit" class="btn btn-outline-danger">Delete</button></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Nike</td>
+                  <td>Jan</td>
+                  <td><button type="submit" class="btn btn-outline-danger">Delete</button></td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+      </div>
+  </div>
+</div>
+
+
