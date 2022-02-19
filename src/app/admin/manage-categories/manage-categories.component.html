@@ -5,16 +5,51 @@
   <div class='dashboard-app'>
       <header class='dashboard-toolbar'><a href="" class="menu-toggle"><i class="fas fa-bars"></i></a></header>
       <div class='dashboard-content'>
-          <div class='container'>
-              <div class='card'>
-                  <div class='card-header'>
-                      <h1>Welcome back Jim</h1>
-                  </div>
-                  <div class='card-body'>
-                      <p>Your account type is: Administrator</p>
-                  </div>
-              </div>
+          <div class='container p-5'>
+            <figure class="text-center">
+              <blockquote class="blockquote">
+                <h2>Categories</h2>
+              </blockquote>
+            </figure>
+            <div class="text-right">
+              <button routerLink="/admin/categories/add"type="submit" class="btn btn-primary btn-sm float-end">Add new category</button>
+            </div>
+
+            <table class="table table-striped mt-5">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Added at</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Tshirts</td>
+                  <td>Oct</td>
+                  <td><button type="submit" class="btn btn-danger btn-sm">Delete</button></td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Pants</td>
+                  <td>Dec</td>
+                  <td><button type="submit" class="btn btn-danger btn-sm">Delete</button></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Watches</td>
+                  <td>Jan</td>
+                  <td><button type="submit" class="btn btn-danger btn-sm">Delete</button></td>
+                </tr>
+              </tbody>
+            </table>
+
           </div>
       </div>
   </div>
 </div>
+
+

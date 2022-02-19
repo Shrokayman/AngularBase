@@ -30,6 +30,7 @@ import { ManageCategoriesComponent } from './admin/manage-categories/manage-cate
 import { ManageOrdersComponent } from './admin/manage-orders/manage-orders.component';
 import { ManageBrandsComponent } from './admin/manage-brands/manage-brands.component';
 import { AddBrandComponent } from './admin/manage-brands/add-brand/add-brand.component';
+import { AddCategoryComponent } from './admin/manage-categories/add-category/add-category.component';
 
 
 
@@ -58,6 +59,7 @@ import { AddBrandComponent } from './admin/manage-brands/add-brand/add-brand.com
     ManageOrdersComponent,
     ManageBrandsComponent,
     AddBrandComponent,
+    AddCategoryComponent,
   ],
   imports: [
     BrowserModule,

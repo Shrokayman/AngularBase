@@ -1,3 +1,4 @@
+import { AddCategoryComponent } from './admin/manage-categories/add-category/add-category.component';
 import { AddBrandComponent } from './admin/manage-brands/add-brand/add-brand.component';
 import { ManageOrdersComponent } from './admin/manage-orders/manage-orders.component';
 import { ManageCategoriesComponent } from './admin/manage-categories/manage-categories.component';
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path:'admin/brands' , component:ManageBrandsComponent},
   {path:'admin/brands/add' , component:AddBrandComponent},
   {path:'admin/categories' , component:ManageCategoriesComponent},
+  {path:'admin/categories/add' , component:AddCategoryComponent},
   {path:'admin/orders' , component:ManageOrdersComponent},
   {path:'admin/products' , component:ManageProductsComponent},
   {path:'admin/users' , component:ManageUsersComponent},
