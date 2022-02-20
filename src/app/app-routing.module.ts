@@ -17,6 +17,8 @@ import { CartComponent } from './core/cart/cart.component';
 import { ManageProductsComponent } from './admin/manage-products/manage-products.component';
 import { ManageUsersComponent } from './admin/manage-users/manage-users.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
+import { LoginComponent } from './core/login/login.component';
+import { RegisterComponent } from './core/register/register.component';
 
 
 const routes: Routes = [
@@ -36,6 +38,8 @@ const routes: Routes = [
   {path:'admin/products' , component:ManageProductsComponent},
   {path:'admin/products/add' , component:ManageProductsComponent},
   {path:'admin/users' , component:ManageUsersComponent},
+  {path:'login' , component:LoginComponent},
+  {path:'register' , component:RegisterComponent},
   {path:'**' , component:NotFoundComponent},
 ];
 
