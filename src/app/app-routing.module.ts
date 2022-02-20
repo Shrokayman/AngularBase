@@ -27,16 +27,20 @@ const routes: Routes = [
   {path:'cart/list' , component:CartComponent},
   {path:'product/listing' , component:ProductListingComponent},
   {path:'product/details' , component:ProductDetailsComponent},
-  {path:'admin' , component:AdminHomeComponent},
-  {path:'admin/home' , component:AdminHomeComponent},
-  {path:'admin/brands' , component:ManageBrandsComponent},
-  {path:'admin/brands/add' , component:AddBrandComponent},
-  {path:'admin/categories' , component:ManageCategoriesComponent},
-  {path:'admin/categories/add' , component:AddCategoryComponent},
-  {path:'admin/orders' , component:ManageOrdersComponent},
-  {path:'admin/products' , component:ManageProductsComponent},
-  {path:'admin/products/add' , component:ManageProductsComponent},
-  {path:'admin/users' , component:ManageUsersComponent},
+  {
+    path:'admin' , children: [
+      {path: '' , component:AdminHomeComponent},
+      {path: 'home' , redirectTo:'' , pathMatch: 'full'},
+      {path:'brands' , component:ManageBrandsComponent},
+      {path:'brands/add' , component:AddBrandComponent},
+      {path:'categories' , component:ManageCategoriesComponent},
+      {path:'categories/add' , component:AddCategoryComponent},
+      {path:'orders' , component:ManageOrdersComponent},
+      {path:'products' , component:ManageProductsComponent},
+      {path:'products/add' , component:ManageProductsComponent},
+      {path:'users' , component:ManageUsersComponent},
+    ]
+  },
   {path:'**' , component:NotFoundComponent},
 ];
 
