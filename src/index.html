@@ -33,6 +33,28 @@
 <body>
   <app-root></app-root>
   <!-- Start Script -->
+  <!-- <script>
+    const mobileScreen = window.matchMedia("(max-width: 990px )");
+      $(document).ready(function () {
+        $(".dashboard-nav-dropdown-toggle").click(function () {
+          $(this).closest(".dashboard-nav-dropdown")
+              .toggleClass("show")
+              .find(".dashboard-nav-dropdown")
+              .removeClass("show");
+          $(this).parent()
+              .siblings()
+              .removeClass("show");
+      });
+      // $(".menu-toggle").click(function () {
+      //     if (mobileScreen.matches) {
+      //         $(".dashboard-nav").toggleClass("mobile-show");
+      //     } else {
+      //         $(".dashboard").toggleClass("dashboard-compact");
+      //     }
+      // });
+  });
+  </script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="assets/js/jquery-1.11.0.min.js"></script>
   <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
   <script src="assets/js/bootstrap.bundle.min.js"></script>

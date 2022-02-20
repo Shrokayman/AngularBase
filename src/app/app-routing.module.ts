@@ -27,6 +27,7 @@ const routes: Routes = [
   {path:'cart/list' , component:CartComponent},
   {path:'product/listing' , component:ProductListingComponent},
   {path:'product/details' , component:ProductDetailsComponent},
+  {path:'admin' , component:AdminHomeComponent},
   {path:'admin/home' , component:AdminHomeComponent},
   {path:'admin/brands' , component:ManageBrandsComponent},
   {path:'admin/brands/add' , component:AddBrandComponent},
