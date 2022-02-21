@@ -33,6 +33,12 @@ import { AddBrandComponent } from './admin/manage-brands/add-brand/add-brand.com
 import { AddCategoryComponent } from './admin/manage-categories/add-category/add-category.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { SearchBoxComponent } from './shared/search-box/search-box.component';
+import { EditUserComponent } from './admin/manage-users/edit-user/edit-user.component';
+import { AddProductComponent } from './admin/manage-products/add-product/add-product.component';
+import { OrderDetailsComponent } from './admin/manage-orders/order-details/order-details.component';
+import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
+import { CheckoutComponent } from './core/cart/checkout/checkout.component';
+import { UserProfileComponent } from './core/user-profile/user-profile.component';
 
 
 
@@ -64,6 +70,12 @@ import { SearchBoxComponent } from './shared/search-box/search-box.component';
     AddCategoryComponent,
     NotFoundComponent,
     SearchBoxComponent,
+    EditUserComponent,
+    AddProductComponent,
+    OrderDetailsComponent,
+    AdminProfileComponent,
+    CheckoutComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,

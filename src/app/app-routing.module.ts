@@ -19,6 +19,12 @@ import { ManageUsersComponent } from './admin/manage-users/manage-users.componen
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { LoginComponent } from './core/login/login.component';
 import { RegisterComponent } from './core/register/register.component';
+import { EditUserComponent } from './admin/manage-users/edit-user/edit-user.component';
+import { OrderDetailsComponent } from './admin/manage-orders/order-details/order-details.component';
+import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
+import { CheckoutComponent } from './core/cart/checkout/checkout.component';
+import { AddProductComponent } from './admin/manage-products/add-product/add-product.component';
+import { UserProfileComponent } from './core/user-profile/user-profile.component';
 
 
 const routes: Routes = [
@@ -26,7 +32,9 @@ const routes: Routes = [
   {path:'home' , component:HomeComponent},
   {path:'about' , component:AboutComponent },
   {path:'contact' , component:ContactComponent},
+  {path:'profile' , component:UserProfileComponent},
   {path:'cart/list' , component:CartComponent},
+  {path:'cart/Checkout' , component:CheckoutComponent},
   {path:'product/listing' , component:ProductListingComponent},
   {path:'product/details' , component:ProductDetailsComponent},
 
@@ -39,9 +47,12 @@ const routes: Routes = [
       {path:'categories' , component:ManageCategoriesComponent},
       {path:'categories/add' , component:AddCategoryComponent},
       {path:'orders' , component:ManageOrdersComponent},
+      {path:'orders/details/:id' , component:OrderDetailsComponent},
       {path:'products' , component:ManageProductsComponent},
-      {path:'products/add' , component:ManageProductsComponent},
+      {path:'products/add' , component:AddProductComponent},
       {path:'users' , component:ManageUsersComponent},
+      {path:'users/edit/:id' , component:EditUserComponent},
+      {path:'profile' , component:AdminProfileComponent},
     ]
   },
   {path:'login' , component:LoginComponent},
