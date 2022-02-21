@@ -17,6 +17,8 @@ import { CartComponent } from './core/cart/cart.component';
 import { ManageProductsComponent } from './admin/manage-products/manage-products.component';
 import { ManageUsersComponent } from './admin/manage-users/manage-users.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
+import { LoginComponent } from './core/login/login.component';
+import { RegisterComponent } from './core/register/register.component';
 
 
 const routes: Routes = [
@@ -27,6 +29,7 @@ const routes: Routes = [
   {path:'cart/list' , component:CartComponent},
   {path:'product/listing' , component:ProductListingComponent},
   {path:'product/details' , component:ProductDetailsComponent},
+
   {
     path:'admin' , children: [
       {path: '' , component:AdminHomeComponent},
@@ -41,6 +44,8 @@ const routes: Routes = [
       {path:'users' , component:ManageUsersComponent},
     ]
   },
+  {path:'login' , component:LoginComponent},
+  {path:'register' , component:RegisterComponent},
   {path:'**' , component:NotFoundComponent},
 ];
 
