@@ -1,23 +1,23 @@
-<html>
-
-<body>
+<app-navbar></app-navbar>
+<div class="pb-4 pt-5" style="background-color: rgb(236, 236, 236);">
     <div class="container_fluid">
         <h1 style="margin:2rem; text-align: center;">Welcome To Our
             <span class=" link-success">Registration</span> Page</h1>
     </div>
-    <form class="container mt-5 ">
+
+    <form class="container mt-5 p-5">
         <!-- 2 column grid layout with text inputs for the first and last names -->
         <div class="row mb-4 ">
             <div class="col ">
                 <div class="form-outline ">
                     <label class="form-label " for="form3Example1 ">First name</label>
-                    <input type="text " id="form3Example1 " class="form-control " />
+                    <input type="text " id="form3Example1 " class="form-control" placeholder="Enter your first name" />
                 </div>
             </div>
             <div class="col ">
                 <div class="form-outline ">
                     <label class="form-label " for="form3Example2 ">Last name</label>
-                    <input type="text " id="form3Example2 " class="form-control " />
+                    <input type="text " id="form3Example2 " class="form-control " placeholder="Enter your last name"/>
                 </div>
             </div>
         </div>
@@ -25,12 +25,12 @@
         <!-- Email input -->
         <div class="form-outline mb-4 ">
             <label class="form-label " for="form3Example3 ">Email address</label>
-            <input type="email " id="form3Example3 " class="form-control " />
+            <input type="email " id="form3Example3 " class="form-control " placeholder="Enter a valid email" />
         </div>
         <!-- Password input -->
         <div class="form-outline mb-4 ">
             <label class="form-label " for="form3Example4 ">Password</label>
-            <input type="password " id="form3Example4 " class="form-control " />
+            <input type="password " id="form3Example4 " class="form-control" placeholder="Enter a valid password"/>
         </div>
         <div class="form-outline mb-4 ">
             <label class="form-label " for="form3Example4 ">Gender</label>
@@ -39,22 +39,19 @@
         <!-- Address input -->
         <div class="form-outline mb-4 ">
             <label class="form-label " for="form3Example4 ">City</label>
-            <input type="text " id="form3Example4 " class="form-control " />
+            <input type="text " id="form3Example4 " class="form-control " placeholder="Enter your city name"/>
         </div>
         <div class="form-outline mb-4 ">
             <label class="form-label " for="form3Example4 ">Street</label>
-            <input type="text " id="form3Example4 " class="form-control " />
+            <input type="text " id="form3Example4 " class="form-control " placeholder="Enter your street name"/>
         </div>
         <div class="form-outline mb-4 ">
             <label class="form-label " for="form3Example4 ">Phone Number</label>
-            <input type="number " id="form3Example4 " class="form-control " />
+            <input type="number " id="form3Example4 " class="form-control " placeholder="Enter your phone number" />
         </div>
 
         <!-- Submit button -->
         <button type="submit " class="btn btn-success btn-block mb-5 w-25 ">Sign up</button>
     </form>
-
-
-</body>
-
-</html>
+</div>
+<app-footer></app-footer>
