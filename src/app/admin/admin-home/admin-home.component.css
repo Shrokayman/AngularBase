@@ -436,3 +436,20 @@ h1, .h1 {
       left: 0;
   }
 }
+
+/*****************************/
+
+
+.john h3{
+  font-size: 3vw;
+  color: green;
+  font-weight: 600;
+
+}
+.john p{
+  font-size: 2vw !important;
+  color: #6C757D;
+}
+
+
+
