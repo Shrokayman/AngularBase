@@ -1,1 +1,58 @@
-<p>add-product works!</p>
+<div class='dashboard'>
+
+    <app-sidenav></app-sidenav>
+
+    <div class='dashboard-app'>
+        <app-admin-header></app-admin-header>
+        <div class='dashb1oard-content p-5'>
+            <div class='container w-100   mt-5 px-5'>
+                <form method="post" enctype="multipart/form-data" action="/product/listing">
+                    <br>
+                    <h2 class="d-flex justify-content-center align-items-center btn-success">Add New Product</h2>
+                    <br><br>
+                    <div class="input-group mb-3 ">
+                        <span class="input-group-text ">Product Image</span>
+                        <input type="file" name="productimage" class="form-control" id="inputGroupFile01">
+                    </div>
+                    <div class="mb-3 ">
+                        <span class="input-group-text ">Product Name</span>
+                        <input type="email " class="form-control " name="productname">
+                    </div>
+                    <div class="input-group ">
+                        <span class="input-group-text ">Product Description</span>
+                        <textarea class="form-control " name="productdescription " cols="20 " rows="12 " aria-label=" "></textarea>
+                    </div><br>
+                    <div class="input-group mb-3 ">
+                        <span class="input-group-text ">Product Price $</span>
+                        <input type="text " name="productprice " class="form-control ">
+                    </div>
+                    <div class="input-group mb-3 ">
+                        <span class="input-group-text ">Product Discount $</span>
+                        <input type="text " name="productdiscount " class="form-control ">
+                    </div>
+                    <div>
+                        <span class="input-group-text ">Category</span>
+                        <select class="form-select " name="productcategory " aria-label="Default select example ">
+                            <option selected>Select Category</option>
+                            <option value="1 ">Tshirts</option>
+                            <option value="2 ">Pants</option>
+                            <option value="3 ">Watches</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div>
+                        <span class="input-group-text ">Brand</span>
+                        <select class="form-select " name="productbrand " aria-label="Default select example ">
+                            <option selected>Select Brand</option>
+                            <option value="1 ">Adidas</option>
+                            <option value="2 ">H&M</option>
+                            <option value="3 ">Nike</option>
+                        </select>
+                    </div>
+                    <br>
+                    <button type="submit " class="btn btn-success ">Add Product</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
