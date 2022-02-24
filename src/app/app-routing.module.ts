@@ -25,6 +25,7 @@ import { AdminProfileComponent } from './admin/admin-profile/admin-profile.compo
 import { CheckoutComponent } from './core/cart/checkout/checkout.component';
 import { AddProductComponent } from './admin/manage-products/add-product/add-product.component';
 import { UserProfileComponent } from './core/user-profile/user-profile.component';
+import { WishlistComponent } from './core/product-feature/wishlist/wishlist.component';
 
 
 const routes: Routes = [
@@ -37,6 +38,7 @@ const routes: Routes = [
   {path:'cart/Checkout' , component:CheckoutComponent},
   {path:'product/listing' , component:ProductListingComponent},
   {path:'product/details' , component:ProductDetailsComponent},
+  {path:'product/wishlist' , component:WishlistComponent},
 
   {
     path:'admin' , children: [
