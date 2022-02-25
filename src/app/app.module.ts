@@ -1,7 +1,6 @@
 import { AppRoutingModule } from './app-routing.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { FooterComponent } from './layout/footer/footer.component';
@@ -39,10 +38,9 @@ import { OrderDetailsComponent } from './admin/manage-orders/order-details/order
 import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
 import { CheckoutComponent } from './core/cart/checkout/checkout.component';
 import { UserProfileComponent } from './core/user-profile/user-profile.component';
-
-
-
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -86,7 +84,11 @@ import { UserProfileComponent } from './core/user-profile/user-profile.component
     MatMenuModule,
     MatIconModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
