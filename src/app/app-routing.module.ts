@@ -27,7 +27,7 @@ import { CheckoutComponent } from './core/cart/checkout/checkout.component';
 import { AddProductComponent } from './admin/manage-products/add-product/add-product.component';
 import { UserProfileComponent } from './core/user-profile/user-profile.component';
 import { UserGuard } from './_guards/user.guard';
-import { ChildsGuard } from './_guards/admin/childs.guard';
+import { ChildrenGuard } from './_guards/admin/children.guard';
 
 const routes: Routes = [
   {path:'' , component:HomeComponent},
@@ -50,22 +50,23 @@ const routes: Routes = [
   {path:'product/details' , component:ProductDetailsComponent},
 
   {
-    path:'admin' , component:AdminHomeComponent,
+    path:'admin',
     canActivate:[AdminGuard],
-    canActivateChild:[ChildsGuard],
-     children: [
-      {path: 'home' , redirectTo:'admin' , pathMatch: 'full'},
-      {path:'brands' , component:ManageBrandsComponent},
-      {path:'brands/add' , component:AddBrandComponent},
-      {path:'categories' , component:ManageCategoriesComponent},
-      {path:'categories/add' , component:AddCategoryComponent},
-      {path:'orders' , component:ManageOrdersComponent},
-      {path:'orders/details/:id' , component:OrderDetailsComponent},
-      {path:'products' , component:ManageProductsComponent},
-      {path:'products/add' , component:AddProductComponent},
-      {path:'users' , component:ManageUsersComponent},
-      {path:'users/edit/:id' , component:EditUserComponent},
-      {path:'profile' , component:AdminProfileComponent},
+    canActivateChild:[ChildrenGuard],
+      children: [
+        {path: '' , component:AdminHomeComponent},
+        {path: 'home' , redirectTo:'' , pathMatch: 'full'},
+        {path:'brands' , component:ManageBrandsComponent},
+        {path:'brands/add' , component:AddBrandComponent},
+        {path:'categories' , component:ManageCategoriesComponent},
+        {path:'categories/add' , component:AddCategoryComponent},
+        {path:'orders' , component:ManageOrdersComponent},
+        {path:'orders/details/:id' , component:OrderDetailsComponent},
+        {path:'products' , component:ManageProductsComponent},
+        {path:'products/add' , component:AddProductComponent},
+        {path:'users' , component:ManageUsersComponent},
+        {path:'users/edit/:id' , component:EditUserComponent},
+        {path:'profile' , component:AdminProfileComponent},
     ]
   },
   {path:'login' , component:LoginComponent},

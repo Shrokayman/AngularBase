@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ChildsGuard } from './childs.guard';
+import { ChildrenGuard } from './children.guard';
 
-describe('ChildsGuard', () => {
-  let guard: ChildsGuard;
+describe('ChildrenGuard', () => {
+  let guard: ChildrenGuard;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    guard = TestBed.inject(ChildsGuard);
+    guard = TestBed.inject(ChildrenGuard);
   });
 
   it('should be created', () => {
