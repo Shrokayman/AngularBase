@@ -442,8 +442,8 @@ h1, .h1 {
 
 .john h3{
   font-size: 3vw;
-  color: green;
-  font-weight: 600;
+  color: #212529;
+  font-weight: 500;
 
 }
 .john p{
