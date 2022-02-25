@@ -51,8 +51,8 @@ const routes: Routes = [
 
   {
     path:'admin',
-    canActivate:[AdminGuard],
-    canActivateChild:[ChildrenGuard],
+    // canActivate:[AdminGuard],
+    // canActivateChild:[ChildrenGuard],
       children: [
         {path: '' , component:AdminHomeComponent},
         {path: 'home' , redirectTo:'' , pathMatch: 'full'},
