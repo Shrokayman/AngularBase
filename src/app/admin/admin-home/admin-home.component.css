@@ -451,6 +451,11 @@ h1, .h1 {
   color: #6C757D;
   font-size: 2rem !important;
 }
+.responsive {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+}
 
 
 
