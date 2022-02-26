@@ -79,9 +79,9 @@
                       My Account
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" routerLink="/profile/1">Profile</a></li>
+                      <li><a class="dropdown-item" [routerLink]="['/profile',userData.user_id]">Profile</a></li>
                       <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" (click)="logout()" routerLink="/">Logout</a></li>
+                      <li><a (click)="logout()" class="dropdown-item" >Logout</a></li>
                     </ul>
                   </li>
                 </span>

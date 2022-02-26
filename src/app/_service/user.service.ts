@@ -17,9 +17,11 @@ export class UserService {
     return this.http.post(environment.apiUrl+'/login/' , data)
   }
 
-  
+  getUserById(id : number){
+    return this.http.get(environment.apiUrl+'/users/'+id);
+  }
 
-  updateUser(data:any , id : number){
-    return this.http.put(environment.apiUrl+'/update/'+id ,data);
+  updateUser( id : number, data:any ){
+    return this.http.put(environment.apiUrl+'/users/'+id ,data);
   }
 }

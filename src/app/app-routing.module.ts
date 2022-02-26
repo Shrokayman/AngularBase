@@ -51,8 +51,8 @@ const routes: Routes = [
 
   {
     path:'admin',
-  // canActivate:[AdminGuard],
-  // canActivateChild:[ChildrenGuard],
+  canActivate:[AdminGuard],
+  canActivateChild:[ChildrenGuard],
       children: [
         {path: '' , component:AdminHomeComponent},
         {path: 'home' , redirectTo:'' , pathMatch: 'full'},
@@ -66,7 +66,7 @@ const routes: Routes = [
         {path:'products/add' , component:AddProductComponent},
         {path:'users' , component:ManageUsersComponent},
         {path:'users/edit/:id' , component:EditUserComponent},
-        {path:'profile' , component:AdminProfileComponent},
+        {path:'profile/:id' , component:AdminProfileComponent},
     ]
   },
   {path:'login' , component:LoginComponent},

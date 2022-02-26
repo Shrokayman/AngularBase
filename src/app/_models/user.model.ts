@@ -1,4 +1,4 @@
-export class Register {
+export class User {
   fname:any;
   lname:any;
   email:any;

@@ -1,1 +1,142 @@
-<p>user-profile works!</p>
+<app-navbar></app-navbar>
+<div class="dashboard-content mt-5 pb-5">
+  <div class="container p-2">
+          <div class="wrapper">
+              <div class="content">
+                  <div class="col-md-12">
+                      <div class="card">
+                          <div class="card-header">
+                              <h4 class="card-title">Profile</h4>
+                          </div>
+                          <div class="card-body">
+                              <form (ngSubmit)="updateUser()" [formGroup]="form">
+                                  <div class="row">
+                                      <div class="col-md-5 pr-1">
+                                          <div class="form-group">
+                                              <label>First Name</label>
+                                              <input type="text" class="form-control" name="fname" formControlName="fname" placeholder=""
+                                                  value=""  [ngClass]="{'is-invalid': submitted && f['fname'].errors}" [(ngModel)]="user.fname"/>
+                                                  <div *ngIf="submitted && f['fname'].errors" class="invalid-feedback">
+                                                    <div *ngIf="f['fname'].errors['required']">
+                                                      First name is required
+                                                    </div>
+                                                    <div *ngIf="f['fname'].errors['minlength']">
+                                                      Last name must be at least 3 characters
+                                                    </div>
+                                                  </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-md-3 px-1">
+                                          <div class="form-group">
+                                              <label>Last Name</label>
+                                              <input type="text" class="form-control" placeholder=""
+                                                  value="" formControlName="lname" name="lname" [ngClass]="{'is-invalid': submitted && f['lname'].errors}" [(ngModel)]="user.lname"/>
+                                                  <div *ngIf="submitted && f['lname'].errors" class="invalid-feedback">
+                                                    <div *ngIf="f['lname'].errors['required']">
+                                                      Last name is required
+                                                    </div>
+                                                    <div *ngIf="f['lname'].errors['minlength']">
+                                                      Last name must be at least 3 characters
+                                                    </div>
+                                                  </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-md-4 pl-1">
+                                          <div class="form-group">
+                                              <label for="exampleInputEmail1">Email address</label>
+                                              <input type="email" class="form-control" placeholder="" formControlName="email" name="email" [ngClass]="{'is-invalid': submitted && f['email'].errors}" [(ngModel)]="user.email"/>
+                                              <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                                                <div *ngIf="f['email'].errors['required']">
+                                                  Email is required
+                                                </div>
+                                                <div *ngIf="f['email'].errors['email']">
+                                                  Email must be a valid email address
+                                                </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col-md-6 pr-1">
+                                          <div class="form-group">
+                                              <label>Password</label>
+                                              <input type="password" class="form-control" placeholder=""
+                                                  value="" formControlName="password" name="password" [ngClass]="{'is-invalid': submitted && f['password'].errors}" [(ngModel)]="user.password"/>
+                                                  <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                                                    <div *ngIf="f['password'].errors['required']">
+                                                      Password is required
+                                                    </div>
+                                                    <div *ngIf="f['password'].errors['minlength']">
+                                                      Password must be at least 6 characters
+                                                    </div>
+                                                  </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-md-6 pl-1">
+                                          <div class="form-group">
+                                              <label>Phone</label>
+                                              <input type="text" class="form-control" placeholder=""
+                                                  value="" formControlName="phone" name="phone" [ngClass]="{'is-invalid': submitted && f['phone'].errors}" [(ngModel)]="user.phone" />
+                                                  <div *ngIf="submitted && f['phone'].errors" class="invalid-feedback">
+                                                    <div *ngIf="f['phone'].errors['required']">
+                                                      Phone is required
+                                                    </div>
+                                                    <div *ngIf="f['phone'].errors['minlength']">
+                                                      Phone must be 11 degit
+                                                    </div>
+                                                  </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col-md-12">
+                                          <div class="form-group">
+                                              <label>City</label>
+                                              <input type="text" class="form-control"
+                                                  placeholder=""
+                                                  value="" formControlName="city" name="city" [ngClass]="{'is-invalid': submitted && f['city'].errors}" [(ngModel)]="user.city"/>
+                                                  <div *ngIf="submitted && f['city'].errors" class="invalid-feedback">
+                                                    <div *ngIf="f['city'].errors['required']">
+                                                      City is required
+                                                    </div>
+                                                    <div *ngIf="f['city'].errors['minlength']">
+                                                     City must be at least 3 characters
+                                                    </div>
+                                                  </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col-md-4 pr-1">
+                                          <div class="form-group">
+                                              <label>Street</label>
+                                              <input type="text" class="form-control" placeholder=""
+                                                  value="" formControlName="street" name="street" [ngClass]="{'is-invalid': submitted && f['street'].errors}"  [(ngModel)]="user.street" />
+                                                  <div *ngIf="submitted && f['street'].errors" class="invalid-feedback">
+                                                    <div *ngIf="f['street'].errors['required']">
+                                                      Street is required
+                                                    </div>
+                                                    <div *ngIf="f['street'].errors['minlength']">
+                                                      street name must be at least 3 characters
+                                                    </div>
+                                                  </div>
+                                          </div>
+                                      </div>
+
+                                  </div>
+                                  <button type="submit" class="btn btn-success ms-2 btn-lm mt-3">
+                                      Update Profile
+                                  </button>
+                                  <div class="clearfix"></div>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+  </div>
+</div>
+
+
+<app-footer></app-footer>
+<!--  -->
