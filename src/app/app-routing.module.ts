@@ -67,6 +67,7 @@ const routes: Routes = [
         {path:'users' , component:ManageUsersComponent},
         {path:'users/edit/:id' , component:EditUserComponent},
         {path:'profile/:id' , component:AdminProfileComponent},
+
     ]
   },
   {path:'login' , component:LoginComponent},

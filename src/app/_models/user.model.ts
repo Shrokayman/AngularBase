@@ -6,4 +6,5 @@ export class User {
   city:any;
   street:any;
   phone:any;
+  role: any;
 }

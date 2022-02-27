@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/_service/user.service';
 
 @Component({
   selector: 'app-manage-users',
@@ -6,10 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./manage-users.component.css']
 })
 export class ManageUsersComponent implements OnInit {
-
-  constructor() { }
+  users:any;
+  constructor(private userservice:UserService) { }
 
   ngOnInit(): void {
+    this.getusers();
+    
   }
-
+  getusers(){
+    this.userservice.getAllUsers().subscribe(res=>{
+      this.users = res;
+    }) 
+  }
+  deleteusers(id: number){
+     this.userservice.deleteUser(id).subscribe(res=>{
+        this.getusers();
+     })
+  
+  }
 }

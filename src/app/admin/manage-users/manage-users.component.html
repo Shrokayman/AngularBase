@@ -1,83 +1,43 @@
 <div class='dashboard'>
 
-  <app-sidenav></app-sidenav>
+    <app-sidenav></app-sidenav>
 
-  <div class='dashboard-app'>
-    <app-admin-header></app-admin-header>
-      <div class='dashboard-content'>
-          <div class='container p-2'>
-            <figure class="text-center pb-2 mt-4">
-              <blockquote class="blockquote">
-                <h2>Users</h2>
-              </blockquote>
-            </figure>
+    <div class='dashboard-app'>
+        <app-admin-header></app-admin-header>
+        <div class='dashboard-content'>
+            <div class='container p-2'>
+                <figure class="text-center pb-2 mt-4">
+                    <blockquote class="blockquote">
+                        <h2>Users</h2>
+                    </blockquote>
+                </figure>
 
-            <table class="table table-striped mt-2">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">email</th>
-                  <th scope="col">phone</th>
-                  <th scope="col">Address</th>
-                  <th scope="col">Role</th>
-                  <th scope="col">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Ahmed</td>
-                  <td>ahmed@ahmed.com</td>
-                  <td>Oct</td>
-                  <td>Oct</td>
-                  <td>user</td>
-                  <td><button routerLink="/admin/users/edit/1" type="submit" class="btn btn-warning btn-sm">Edit</button><button type="submit" class="btn btn-danger btn-sm ms-2">Delete</button></td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Mohamed</td>
-                  <td>mohamed@mohamed.com</td>
-                  <td>Dec</td>
-                  <td>Dec</td>
-                  <td>user</td>
-                  <td><button type="submit" routerLink="/admin/users/edit/1" class="btn btn-warning btn-sm">Edit</button><button type="submit" class="btn btn-danger btn-sm ms-2">Delete</button></td>
-                </tr>
+                <table class="table table-striped mt-2">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col"> Full Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Role</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of users">
+                            <th scope="row">{{user.id}}</th>
+                            <td>{{user.fname + " " + user.lname}}</td>
+                            <td>{{user.email}}</td>
+                            <td>{{user.phone}}</td>
+                            <td>{{user.street +" "+ user.city}}</td>
+                            <td>{{user.role}}</td>
+                            <td><button routerLink="/admin/users/edit/{{user.id}}" Class="btn btn-warning btn-sm">Edit</button><button (click)="deleteusers(user.id)" class="btn btn-danger btn-sm ms-2">Delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
 
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Omar</td>
-                  <td>omar@omar.com</td>
-                  <td>Jan</td>
-                  <td>Jan</td>
-                  <td>user</td>
-                  <td><button type="submit" routerLink="/admin/users/edit/1" class="btn btn-warning btn-sm">Edit</button><button type="submit" class="btn btn-danger btn-sm ms-2">Delete</button></td>
-                </tr>
-
-                <tr>
-                  <th scope="row">4</th>
-                  <td>Yousef</td>
-                  <td>Yousef@Yousef.com</td>
-                  <td>Jan</td>
-                  <td>Jan</td>
-                  <td>user</td>
-                  <td><button type="submit" routerLink="/admin/users/edit/1" class="btn btn-warning btn-sm">Edit</button><button type="submit" class="btn btn-danger btn-sm ms-2">Delete</button></td>
-                </tr>
-                <tr>
-                  <th scope="row">5</th>
-                  <td>Ayman</td>
-                  <td>ayman@ayman.com</td>
-                  <td>Jan</td>
-                  <td>Jan</td>
-                  <td>user</td>
-                  <td><button type="submit" routerLink="/admin/users/edit/1" class="btn btn-warning btn-sm">Edit</button><button type="submit" class="btn btn-danger btn-sm ms-2">Delete</button></td>
-                </tr>
-              </tbody>
-            </table>
-
-          </div>
-      </div>
-  </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-
