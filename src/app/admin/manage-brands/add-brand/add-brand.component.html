@@ -7,22 +7,23 @@
                   <app-admin-header></app-admin-header>
                   <div class='dashboard-content'>
                       <div class='container m-5'>
-                        <figure class="text-center">
+                        <figure>
                           <blockquote class="blockquote mt-3">
-                            <h2>Add new Brand</h2>
+                            <h2 class="heading">Add new Brand</h2>
                           </blockquote>
                         </figure>
-                        <div class="container mt-5 col-lg-8">
-                          <form class="row g-3 needs-validation mt-2 p-3" novalidate>
+                        <div class="container mt-5 col-lg-12 col-md-12 col-sm-12">
+                          <form class="row g-3 needs-validation mt-2 p-3" novalidate (ngSubmit)="insertData()" [formGroup]="addform">
                             <div class="col-md-6 position-relative">
-                              <label for="validationTooltip03" class="form-label">Name</label>
-                              <input type="text" class="form-control" id="validationTooltip03" required>
-                              <div class="invalid-tooltip">
-                                Please provide a valid Name.
+                              <label for="" class="me-4 fs-4 fw-normal"> Name</label>
+                              <input formControlName="name" type="text"  id="validationTooltip03" required name="name"  [(ngModel)]="brand.name" style="width: 80%;">
+                              <div *ngIf="submmtied && f['name'].errors">
+                                <div *ngIf="f['name'].errors['required']" class="text-danger"> Brand name is required</div>
+                                <div *ngIf="f['name'].errors['pattern']" class="text-danger"> Brand name shouldn't start with number</div>
                               </div>
                             </div>
                             <div class="col-12">
-                              <button class="btn btn-primary" type="submit">Add</button>
+                              <button class="btn btn-primary btn-sm mt-4 p-2" type="submit">Add Brand</button>
                             </div>
                           </form>
                         </div>

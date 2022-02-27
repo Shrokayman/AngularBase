@@ -1,3 +1,4 @@
+import { AdminGuard } from './_guards/admin.guard';
 import { AddCategoryComponent } from './admin/manage-categories/add-category/add-category.component';
 import { AddBrandComponent } from './admin/manage-brands/add-brand/add-brand.component';
 import { ManageOrdersComponent } from './admin/manage-orders/manage-orders.component';
@@ -10,7 +11,7 @@ import { AppComponent } from './app.component';
 import { ContactComponent } from './appInfo/contact/contact.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { AboutComponent } from './appInfo/about/about.component';
 import { ProductListingComponent } from './core/product-feature/product-listing/product-listing.component';
 import { CartComponent } from './core/cart/cart.component';
@@ -25,34 +26,47 @@ import { AdminProfileComponent } from './admin/admin-profile/admin-profile.compo
 import { CheckoutComponent } from './core/cart/checkout/checkout.component';
 import { AddProductComponent } from './admin/manage-products/add-product/add-product.component';
 import { UserProfileComponent } from './core/user-profile/user-profile.component';
-
+import { UserGuard } from './_guards/user.guard';
+import { ChildrenGuard } from './_guards/admin/children.guard';
 
 const routes: Routes = [
   {path:'' , component:HomeComponent},
   {path:'home' , component:HomeComponent},
   {path:'about' , component:AboutComponent },
   {path:'contact' , component:ContactComponent},
-  {path:'profile' , component:UserProfileComponent},
-  {path:'cart/list' , component:CartComponent},
-  {path:'cart/Checkout' , component:CheckoutComponent},
+  {
+    path:'profile/:id' , component:UserProfileComponent,
+    canActivate: [UserGuard]
+  },
+  {
+    path:'cart/list' , component:CartComponent,
+    canActivate: [UserGuard]
+  },
+  {
+    path:'cart/Checkout' , component:CheckoutComponent,
+    canActivate:[UserGuard]
+  },
   {path:'product/listing' , component:ProductListingComponent},
   {path:'product/details' , component:ProductDetailsComponent},
 
   {
-    path:'admin' , children: [
-      {path: '' , component:AdminHomeComponent},
-      {path: 'home' , redirectTo:'' , pathMatch: 'full'},
-      {path:'brands' , component:ManageBrandsComponent},
-      {path:'brands/add' , component:AddBrandComponent},
-      {path:'categories' , component:ManageCategoriesComponent},
-      {path:'categories/add' , component:AddCategoryComponent},
-      {path:'orders' , component:ManageOrdersComponent},
-      {path:'orders/details/:id' , component:OrderDetailsComponent},
-      {path:'products' , component:ManageProductsComponent},
-      {path:'products/add' , component:AddProductComponent},
-      {path:'users' , component:ManageUsersComponent},
-      {path:'users/edit/:id' , component:EditUserComponent},
-      {path:'profile' , component:AdminProfileComponent},
+    path:'admin',
+    // canActivate:[AdminGuard],
+    // canActivateChild:[ChildrenGuard],
+      children: [
+        {path: '' , component:AdminHomeComponent},
+        {path: 'home' , redirectTo:'' , pathMatch: 'full'},
+        {path:'brands' , component:ManageBrandsComponent},
+        {path:'brands/add' , component:AddBrandComponent},
+        {path:'categories' , component:ManageCategoriesComponent},
+        {path:'categories/add' , component:AddCategoryComponent},
+        {path:'orders' , component:ManageOrdersComponent},
+        {path:'orders/details/:id' , component:OrderDetailsComponent},
+        {path:'products' , component:ManageProductsComponent},
+        {path:'products/add' , component:AddProductComponent},
+        {path:'users' , component:ManageUsersComponent},
+        {path:'users/edit/:id' , component:EditUserComponent},
+        {path:'profile' , component:AdminProfileComponent},
     ]
   },
   {path:'login' , component:LoginComponent},

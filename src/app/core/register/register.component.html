@@ -5,19 +5,35 @@
             <span class=" link-success">Registration</span> Page</h1>
     </div>
 
-    <form class="container mt-5 p-5">
+    <form class="container mt-5 p-5" (ngSubmit)="submit()" [formGroup]="form">
         <!-- 2 column grid layout with text inputs for the first and last names -->
         <div class="row mb-4 ">
-            <div class="col ">
+            <div class="col">
                 <div class="form-outline ">
                     <label class="form-label " for="form3Example1 ">First name</label>
-                    <input type="text " id="form3Example1 " class="form-control" placeholder="Enter your first name" />
+                    <input type="text " id="form3Example1" formControlName="fname" name="fname" class="form-control" placeholder="Enter your first name" [ngClass]="{'is-invalid': submitted && f['fname'].errors}" />
+                    <div *ngIf="submitted && f['fname'].errors" class="invalid-feedback">
+                      <div *ngIf="f['fname'].errors['required']">
+                        First name is required
+                      </div>
+                      <div *ngIf="f['fname'].errors['minlength']">
+                        Last name must be at least 3 characters
+                      </div>
+                    </div>
                 </div>
             </div>
             <div class="col ">
                 <div class="form-outline ">
                     <label class="form-label " for="form3Example2 ">Last name</label>
-                    <input type="text " id="form3Example2 " class="form-control " placeholder="Enter your last name"/>
+                    <input type="text" id="form3Example2" formControlName="lname" name="lname" class="form-control " placeholder="Enter your last name" [ngClass]="{'is-invalid': submitted && f['lname'].errors}"/>
+                    <div *ngIf="submitted && f['lname'].errors" class="invalid-feedback">
+                      <div *ngIf="f['lname'].errors['required']">
+                        Last name is required
+                      </div>
+                      <div *ngIf="f['lname'].errors['minlength']">
+                        Last name must be at least 3 characters
+                      </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -25,33 +41,78 @@
         <!-- Email input -->
         <div class="form-outline mb-4 ">
             <label class="form-label " for="form3Example3 ">Email address</label>
-            <input type="email " id="form3Example3 " class="form-control " placeholder="Enter a valid email" />
+            <input type="email" id="form3Example3" formControlName="email" name="email" class="form-control " placeholder="Enter a valid email" [ngClass]="{'is-invalid': submitted && f['email'].errors}" />
+            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+              <div *ngIf="f['email'].errors['required']">
+                Email is required
+              </div>
+              <div *ngIf="f['email'].errors['email']">
+                Email must be a valid email address
+              </div>
+            </div>
         </div>
         <!-- Password input -->
         <div class="form-outline mb-4 ">
-            <label class="form-label " for="form3Example4 ">Password</label>
-            <input type="password " id="form3Example4 " class="form-control" placeholder="Enter a valid password"/>
+          <label class="form-label " for="form3Example4 ">Password</label>
+          <input type="password" id="form3Example4" formControlName="password" name="password" class="form-control form-control-lg" placeholder="Enter a valid password" [ngClass]="{'is-invalid': submitted && f['password'].errors}"/>
+          <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+            <div *ngIf="f['password'].errors['required']">
+              Password is required
+            </div>
+            <div *ngIf="f['password'].errors['minlength']">
+              Password must be at least 6 characters
+            </div>
+          </div>
         </div>
         <div class="form-outline mb-4 ">
-            <label class="form-label " for="form3Example4 ">Gender</label>
-            <br><input type="radio" name="fav_language" value="Male"> Male  <input type="radio" name="fav_language" value="Female"> Female
+          <label class="form-label " for="confirm_password ">Confirm Password</label>
+          <input type="password" id="confirm_password" formControlName="confirmPassword" name="confirm_password" class="form-control" placeholder="Confirm your password" [ngClass]="{'is-invalid': submitted && f['confirmPassword'].errors}"/>
+          <div *ngIf="submitted && f['confirmPassword'].errors" class="invalid-feedback">
+            <div *ngIf="f['confirmPassword'].errors['required']">
+              Confirm password is required
+            </div>
+            <div *ngIf="f['confirmPassword'].errors['mustMatch']">
+              Password must match
+            </div>
+          </div>
         </div>
         <!-- Address input -->
         <div class="form-outline mb-4 ">
             <label class="form-label " for="form3Example4 ">City</label>
-            <input type="text " id="form3Example4 " class="form-control " placeholder="Enter your city name"/>
+            <input type="text" id="form3Example4" formControlName="city" name="city" class="form-control " placeholder="Enter your city name" [ngClass]="{'is-invalid': submitted && f['city'].errors}"/>
+            <div *ngIf="submitted && f['city'].errors" class="invalid-feedback">
+              <div *ngIf="f['city'].errors['required']">
+                City is required
+              </div>
+              <div *ngIf="f['city'].errors['minlength']">
+               City must be at least 3 characters
+              </div>
+            </div>
         </div>
         <div class="form-outline mb-4 ">
             <label class="form-label " for="form3Example4 ">Street</label>
-            <input type="text " id="form3Example4 " class="form-control " placeholder="Enter your street name"/>
+            <input type="text" id="form3Example4" formControlName="street" name="street" class="form-control " placeholder="Enter your street name" [ngClass]="{'is-invalid': submitted && f['street'].errors}"/>
+            <div *ngIf="submitted && f['street'].errors" class="invalid-feedback">
+              <div *ngIf="f['street'].errors['required']">
+                Street is required
+              </div>
+              <div *ngIf="f['street'].errors['minlength']">
+                street name must be at least 3 characters
+              </div>
+            </div>
         </div>
         <div class="form-outline mb-4 ">
             <label class="form-label " for="form3Example4 ">Phone Number</label>
-            <input type="number " id="form3Example4 " class="form-control " placeholder="Enter your phone number" />
+            <input type="number" id="form3Example4" formControlName="phone" name="phone" class="form-control " placeholder="Enter your phone number" [ngClass]="{'is-invalid': submitted && f['phone'].errors}" />
+            <div *ngIf="submitted && f['phone'].errors" class="invalid-feedback">
+              <div *ngIf="f['phone'].errors['required']">
+                Phone is required
+              </div>
+            </div>
         </div>
 
         <!-- Submit button -->
-        <button type="submit " class="btn btn-success btn-block mb-5 w-25 ">Sign up</button>
+        <button type="submit" class="btn btn-success btn-block mb-5 w-25 ">Sign up</button>
     </form>
 </div>
 <app-footer></app-footer>

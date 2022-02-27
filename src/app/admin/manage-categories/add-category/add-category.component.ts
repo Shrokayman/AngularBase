@@ -1,4 +1,7 @@
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { CategoryService } from './../../../_service/category.service';
 import { Component, OnInit } from '@angular/core';
+import { Category } from 'src/app/_models/category';
 
 @Component({
   selector: 'app-add-category',
@@ -6,10 +9,35 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-category.component.css']
 })
 export class AddCategoryComponent implements OnInit {
+  category=new Category;
+  addform:FormGroup;
+  submmtied:boolean = false;
 
-  constructor() { }
+
+  constructor(private categoryservice:CategoryService, private formBuilder:FormBuilder) { 
+    this.addform =this.formBuilder.group({
+      name: new FormControl(null,[Validators.required,Validators.pattern('^[a-zA-Z][A-Za-z0-9_]*$')])
+    })
+  }
+
+  get f(){return this.addform.controls}
 
   ngOnInit(): void {
+
   }
+  insertData(){
+    this.submmtied=true
+    if(this.addform.invalid){
+      return;
+    }
+    else{
+      this.categoryservice.addData(this.category).subscribe(res=>{
+        console.log(res)
+      })
+      alert('category have been saved')
+    }
+  }
+
+
 
 }

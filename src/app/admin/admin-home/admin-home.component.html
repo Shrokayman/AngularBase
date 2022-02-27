@@ -1,25 +1,114 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 <div class='dashboard'>
 
 
-    <app-sidenav></app-sidenav>
-  
-    <div class='dashboard-app'>
-      <app-admin-header></app-admin-header>
-        <div class='dashboard-content'>
-            <div class='container p-2'>
-                <div class="row">
-                    <div class="text-center john">
-                            <h3>Hello John </h3>
-                            <p class="fw-bold">Welcome back to your home</p>
-                            <img src="../../../assets/img/admin.jpg" alt="" class="responsive">
-                    </div>
+  <app-sidenav></app-sidenav>
 
+  <div class='dashboard-app'>
+    <app-admin-header></app-admin-header>
+    <div class='dashboard-content'>
+      <h3 class="text-center m-4 fs-1">Welcome back to your home</h3>
+      <div class='container p-2 m-auto'>
+        <div class="container d-flex align-items-center justify-content-center flex-wrap">
 
+          <div class="box">
+            <div class="body">
+              <div class="imgContainer"> <img
+                  src="../../../assets/img/nm.jpeg"
+                  alt=""> </div>
+              <div class="content d-flex flex-column align-items-center justify-content-center">
+                <div routerLink="/admin/products">
+                  <h3 class="text-white fs-5 text-center fw-bold">Products</h3>
+                  <p class="fs-6 text-white text-center">Click Here to View Your Products Page</p>
                 </div>
+              </div>
             </div>
+          </div>
+          <div class="box">
+            <div class="body">
+              <div class="imgContainer"> <img
+                src="../../../assets/img/orders2.jpg"
+                  alt=""> </div>
+              <div class="content d-flex flex-column align-items-center justify-content-center">
+                <div routerLink="/admin/orders">
+                  <h3 class="text-white fs-5 text-center fw-bold">Orders</h3>
+                  <p class="fs-6 text-white text-center">Click Here to View Your Products Page</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="box">
+            <div class="body">
+              <div class="imgContainer"> <img
+                src="../../../assets/img/category.jpg"
+                  alt=""> </div>
+              <div class="content d-flex flex-column align-items-center justify-content-center">
+                <div routerLink="/admin/categories">
+                  <h3 class="text-white fs-5 text-center fw-bold">Caregories</h3>
+                  <p class="fs-6 text-white text-center">Click Here to View Your Categories Page</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="card mangCrad m-4 text-center" style="background-color: #ddffdd;">
+        <div class="card-body fw-bold">
+          Start managing your Website using the Sidebar
+        </div>
+      </div>
     </div>
+
+
+    <!-- Start Footer bottom Area -->
+    <footer>
+      <div class="footer-area-bottom">
+        <div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="footer-icons">
+                <ul>
+                  <li>
+                    <a href="#">
+                      <i class="bi bi-facebook"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="bi bi-twitter"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="bi bi-linkedin"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="bi bi-youtube"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="credits">
+                <a href="#">Privacy Policy</a> | <a href="#">Terms & Condition</a>
+              </div>
+              <div class="copyright text-center">
+                <p>
+                  &copy; Copyright 2019. | <strong><a href="#">Zay Shop </a></strong> | All Rights
+                  Reserved.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
   </div>
-  
-  
-  
+
+</div>
