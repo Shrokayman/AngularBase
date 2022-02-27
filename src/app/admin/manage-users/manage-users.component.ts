@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/_service/user.service';
+import {NgxPaginationModule} from 'ngx-pagination';
+
+
 
 @Component({
   selector: 'app-manage-users',
@@ -7,13 +10,15 @@ import { UserService } from 'src/app/_service/user.service';
   styleUrls: ['./manage-users.component.css']
 })
 export class ManageUsersComponent implements OnInit {
-  users:any;
+
   constructor(private userservice:UserService) { }
 
   ngOnInit(): void {
     this.getusers();
     
   }
+  users:any=[];
+  p:any;
   getusers(){
     this.userservice.getAllUsers().subscribe(res=>{
       this.users = res;
