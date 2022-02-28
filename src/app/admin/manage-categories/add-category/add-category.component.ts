@@ -16,7 +16,7 @@ export class AddCategoryComponent implements OnInit {
 
   constructor(private categoryservice:CategoryService, private formBuilder:FormBuilder) { 
     this.addform =this.formBuilder.group({
-      name: new FormControl(null,[Validators.required,Validators.pattern('^[a-zA-Z][A-Za-z0-9_]*$')])
+      name: new FormControl(null,[Validators.required,Validators.pattern('^[a-zA-Z][A-Za-z0-9&_+]*$')])
     })
   }
 
