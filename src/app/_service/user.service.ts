@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -18,7 +18,10 @@ export class UserService {
   }
 
   getAllUsers(){
-    return this.http.get(environment.apiUrl+'/users/')
+    let header = new HttpHeaders({
+      Authorization: localStorage.getItem('token')!
+    })
+    return this.http.get(environment.apiUrl+'/users', {headers:header});
   }
 
   getUserById(id : number){
@@ -29,6 +32,10 @@ export class UserService {
     return this.http.put(environment.apiUrl+'/users/'+id ,data);
   }
   deleteUser( id : number){
-    return this.http.delete(environment.apiUrl+'/users/'+id);
+    // return this.http.delete(environment.apiUrl+'/users/'+id);
+    let header = new HttpHeaders({
+      Authorization: localStorage.getItem('token')!
+    })
+    return this.http.delete(environment.apiUrl+'/users/'+id, {headers:header});
   }
 }

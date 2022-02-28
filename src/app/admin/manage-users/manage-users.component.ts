@@ -21,6 +21,7 @@ export class ManageUsersComponent implements OnInit {
   users:any=[];
   p:any;
   getusers(){
+    
     this.userservice.getAllUsers().subscribe(res=>{
       this.users = res;
     }) 
