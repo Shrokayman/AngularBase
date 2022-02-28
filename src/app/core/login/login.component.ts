@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
         this.data = res;
         if(this.data['status'] === 1){
           this.token = this.data.data.token
-          localStorage.setItem('token' , this.token)
+          localStorage.setItem('token' ,`Bearer ${this.token}`)
           this.userData = jwt_decode(this.token)
           if(this.userData['user_role'] == "admin"){
             this.router.navigate(['/admin']);

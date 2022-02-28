@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -18,10 +18,16 @@ export class UserService {
   }
 
   getUserById(id : number){
-    return this.http.get(environment.apiUrl+'/users/'+id);
+    let header = new HttpHeaders({
+      Authorization: localStorage.getItem('token')!
+    })
+    return this.http.get(environment.apiUrl+'/users/'+id , {headers:header});
   }
 
   updateUser( id : number, data:any ){
-    return this.http.put(environment.apiUrl+'/users/'+id ,data);
+    let header = new HttpHeaders({
+      Authorization: localStorage.getItem('token')!
+    })
+    return this.http.put(environment.apiUrl+'/users/'+id ,data , {headers:header});
   }
 }
