@@ -27,9 +27,10 @@ export class ManageUsersComponent implements OnInit {
     }) 
   }
   deleteusers(id: number){
+    if(confirm("Are you sure to delete ")) {
      this.userservice.deleteUser(id).subscribe(res=>{
-      this.router.navigate(['/admin/users'])
-     })
-  
+      this.getusers();
+    })
+  }
   }
 }
