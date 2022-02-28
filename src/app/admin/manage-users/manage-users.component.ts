@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/_service/user.service';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { Router } from '@angular/router';
 
 
 
@@ -11,7 +12,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 })
 export class ManageUsersComponent implements OnInit {
 
-  constructor(private userservice:UserService) { }
+  constructor(private userservice:UserService ,private router : Router,private ngxpaginationModule: NgxPaginationModule) { }
 
   ngOnInit(): void {
     this.getusers();
@@ -26,7 +27,7 @@ export class ManageUsersComponent implements OnInit {
   }
   deleteusers(id: number){
      this.userservice.deleteUser(id).subscribe(res=>{
-        this.getusers();
+      this.router.navigate(['/admin/users'])
      })
   
   }

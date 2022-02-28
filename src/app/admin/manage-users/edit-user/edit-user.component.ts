@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder , FormGroup , Validators } from '@angular/forms';
 import { UserService } from 'src/app/_service/user.service';
 import { User } from 'src/app/_models/user.model';
-import jwt_decode from "jwt-decode";
 
 @Component({
   selector: 'app-edit-user',
@@ -48,11 +47,7 @@ export class EditUserComponent implements OnInit {
 
   ngOnInit(): void {
    this.id = this.route.snapshot.params['id'];
-   role: [null];
     this.createForm();
-    if(this.token){
-      this.userDataFromToken = jwt_decode(this.token);
-    }
     this.getData();
   }
 
@@ -63,6 +58,7 @@ export class EditUserComponent implements OnInit {
     }
     else{
       this.userService.updateUser(this.id , this.user).subscribe(res => {
+        this.router.navigate(['/admin/users'])
       });
     }
   }
@@ -85,9 +81,5 @@ export class EditUserComponent implements OnInit {
       this.user.phone = '0'+this.data.phone;
     });
   }
-  SuccessMessage(){
-    alert("User Updated Successfully")
-  }
-
 }
 
