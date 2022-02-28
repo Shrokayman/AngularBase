@@ -59,6 +59,7 @@ export class EditUserComponent implements OnInit {
     else{
       this.userService.updateUser(this.id , this.user).subscribe(res => {
         this.router.navigate(['/admin/users'])
+        return alert("User Updated Succesfully");
       });
     }
   }
