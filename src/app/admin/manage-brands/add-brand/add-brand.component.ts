@@ -2,6 +2,7 @@ import { BrandService } from './../../../_service/brand.service';
 import { Component, OnInit } from '@angular/core';
 import { Brand } from 'src/app/_models/brand';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-brand',
@@ -12,11 +13,13 @@ export class AddBrandComponent implements OnInit {
   brand=new Brand;
   addform:FormGroup;
   submmtied:boolean = false;
+  
 
-  constructor(private brandService:BrandService, private formBuilder:FormBuilder) { 
+  constructor(private brandService:BrandService, private formBuilder:FormBuilder, private router : Router) { 
     this.addform =this.formBuilder.group({
       name: new FormControl(null,[Validators.required, Validators.pattern('^[a-zA-Z][A-Za-z0-9&_+]*$')])
     })
+    
   }
   get f(){return this.addform.controls}
 
@@ -33,7 +36,8 @@ export class AddBrandComponent implements OnInit {
       this.brandService.addData(this.brand).subscribe(res=>{
         console.log(res)
       })
-      alert('brand have been saved')
+      alert("Brand saved")
+      this.router.navigate(['/admin/brands']);
     }
   }
 
