@@ -17,6 +17,13 @@ export class UserService {
     return this.http.post(environment.apiUrl+'/login/' , data)
   }
 
+  getAllUsers(){
+    let header = new HttpHeaders({
+      Authorization: localStorage.getItem('token')!
+    })
+    return this.http.get(environment.apiUrl+'/users', {headers:header});
+  }
+
   getUserById(id : number){
     let header = new HttpHeaders({
       Authorization: localStorage.getItem('token')!
@@ -29,5 +36,12 @@ export class UserService {
       Authorization: localStorage.getItem('token')!
     })
     return this.http.put(environment.apiUrl+'/users/'+id ,data , {headers:header});
+  }
+  deleteUser( id : number){
+    // return this.http.delete(environment.apiUrl+'/users/'+id);
+    let header = new HttpHeaders({
+      Authorization: localStorage.getItem('token')!
+    })
+    return this.http.delete(environment.apiUrl+'/users/'+id, {headers:header});
   }
 }

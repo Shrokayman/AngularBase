@@ -54,6 +54,7 @@ export class UserProfileComponent implements OnInit {
     }
     else{
       this.userService.updateUser(this.userDataFromToken.user_id , this.user).subscribe(res => {
+        this.getData();
       });
     }
   }

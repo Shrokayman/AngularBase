@@ -1,77 +1,129 @@
+<div class='dashboard'>
 
-            <div class='dashboard'>
+    <app-sidenav></app-sidenav>
 
-              <app-sidenav></app-sidenav>
-
-              <div class='dashboard-app' style="background-color: rgba(236, 236, 236, 0.562);">
-                 <app-admin-header></app-admin-header>
-                  <div class='dashboard-content'>
-                      <div class='container m-5'>
-                        <figure class="text-center">
-                          <blockquote class="blockquote mt-3">
-                            <h2>Edit user</h2>
-                          </blockquote>
-                        </figure>
-                        <div class="container mt-5 col-lg-8">
-                          <form class="container mt-5 p-5">
-                            <!-- 2 column grid layout with text inputs for the first and last names -->
-                            <div class="row mb-4 ">
-                                <div class="col ">
-                                    <div class="form-outline ">
-                                        <label class="form-label " for="form3Example1 ">First name</label>
-                                        <input type="text " id="form3Example1 " class="form-control" />
+    <div class='dashboard-app' style="background-color: rgba(236, 236, 236, 0.562);">
+        <app-admin-header></app-admin-header>
+        <div class='dashboard-content'>
+            <div class='container m-5'>
+                <figure class="text-center">
+                    <blockquote class="blockquote mt-3">
+                        <h2>Edit user</h2>
+                    </blockquote>
+                </figure>
+                <div class="container mt-5 col-lg-8">
+                    <form class="container mt-5 p-5" (ngSubmit)="updateUser()" [formGroup]="form">
+                        <!-- 2 column grid layout with text inputs for the first and last names -->
+                        <div class="row mb-4 ">
+                            <div class="form-group mt-3">
+                                <label>First Name</label>
+                                <input type="text" class="form-control" name="fname" formControlName="fname" placeholder="" value="" [ngClass]="{'is-invalid': submitted && f['fname'].errors}" [(ngModel)]="user.fname" />
+                                <div *ngIf="submitted && f['fname'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['fname'].errors['required']">
+                                        First name is required
+                                    </div>
+                                    <div *ngIf="f['fname'].errors['minlength']">
+                                        Last name must be at least 3 characters
                                     </div>
                                 </div>
-                                <div class="col ">
-                                    <div class="form-outline ">
-                                        <label class="form-label " for="form3Example2 ">Last name</label>
-                                        <input type="text " id="form3Example2 " class="form-control "/>
+                            </div>
+                            <div class="col ">
+                                <div class="form-group mt-3">
+                                    <label>Last Name</label>
+                                    <input type="text" class="form-control" placeholder="" value="" formControlName="lname" name="lname" [ngClass]="{'is-invalid': submitted && f['lname'].errors}" [(ngModel)]="user.lname" />
+                                    <div *ngIf="submitted && f['lname'].errors" class="invalid-feedback">
+                                        <div *ngIf="f['lname'].errors['required']">
+                                            Last name is required
+                                        </div>
+                                        <div *ngIf="f['lname'].errors['minlength']">
+                                            Last name must be at least 3 characters
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Email input -->
-                            <div class="form-outline mb-4 ">
-                                <label class="form-label " for="form3Example3 ">Email address</label>
-                                <input type="email " id="form3Example3 " class="form-control "/>
-                            </div>
-                            <!-- Password input -->
-                            <div class="form-outline mb-4 ">
-                                <label class="form-label " for="form3Example4 ">Password</label>
-                                <input type="password " id="form3Example4 " class="form-control"/>
-                            </div>
-                            <!-- Address input -->
-                            <div class="form-outline mb-4 ">
-                                <label class="form-label " for="form3Example4 ">City</label>
-                                <input type="text " id="form3Example4 " class="form-control "/>
-                            </div>
-                            <div class="form-outline mb-4 ">
-                                <label class="form-label " for="form3Example4 ">Street</label>
-                                <input type="text " id="form3Example4 " class="form-control "/>
-                            </div>
-                            <div class="form-outline mb-4 col-4">
-                              <select class="form-select" aria-label="Default select example">
-                                <option >Role</option>
-                                <option value="user">User</option>
-                                <option value="admin">Admin</option>
-                              </select>
-                            </div>
-                            <div class="form-outline mb-4 ">
-                                <label class="form-label " for="form3Example4 ">Phone Number</label>
-                                <input type="number " id="form3Example4 " class="form-control "/>
-                            </div>
-
-                            <!-- Submit button -->
-                            <button type="submit " class="btn btn-success btn-block mb-5 w-25 ">Update</button>
-                          </form>
                         </div>
 
-                      </div>
-                  </div>
-              </div>
+                        <!-- Email input -->
+                        <div class="form-group mt-3">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" placeholder="" formControlName="email" name="email" [ngClass]="{'is-invalid': submitted && f['email'].errors}" [(ngModel)]="user.email" />
+                            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                                <div *ngIf="f['email'].errors['required']">
+                                    Email is required
+                                </div>
+                                <div *ngIf="f['email'].errors['email']">
+                                    Email must be a valid email address
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Password input -->
+                        <div class="form-group mt-3">
+                            <label>Password</label>
+                            <input type="password" class="form-control" placeholder="" value="" formControlName="password" name="password" [ngClass]="{'is-invalid': submitted && f['password'].errors}" [(ngModel)]="user.password" />
+                            <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                                <div *ngIf="f['password'].errors['required']">
+                                    Password is required
+                                </div>
+                                <div *ngIf="f['password'].errors['minlength']">
+                                    Password must be at least 6 characters
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- City input-->
+                        <div class="form-group mt-3">
+                            <label>City</label>
+                            <input type="text" class="form-control" placeholder="" value="" formControlName="city" name="city" [ngClass]="{'is-invalid': submitted && f['city'].errors}" [(ngModel)]="user.city" />
+                            <div *ngIf="submitted && f['city'].errors" class="invalid-feedback">
+                                <div *ngIf="f['city'].errors['required']">
+                                    City is required
+                                </div>
+                                <div *ngIf="f['city'].errors['minlength']">
+                                    City must be at least 3 characters
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Street input-->
+                        <div class="form-group mt-3">
+                            <label>Street</label>
+                            <input type="text" class="form-control" placeholder="" value="" formControlName="street" name="street" [ngClass]="{'is-invalid': submitted && f['street'].errors}" [(ngModel)]="user.street" />
+                            <div *ngIf="submitted && f['street'].errors" class="invalid-feedback">
+                                <div *ngIf="f['street'].errors['required']">
+                                    Street is required
+                                </div>
+                                <div *ngIf="f['street'].errors['minlength']">
+                                    Street must be at least 3 characters
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Phone input -->
+                        <div class="form-group mt-3">
+                            <label>Phone</label>
+                            <input type="text" class="form-control" placeholder="" value="" formControlName="phone" name="phone" [ngClass]="{'is-invalid': submitted && f['phone'].errors}" [(ngModel)]="user.phone" />
+                            <div *ngIf="submitted && f['phone'].errors" class="invalid-feedback">
+                                <div *ngIf="f['phone'].errors['required']">
+                                    Phone is required
+                                </div>
+                                <div *ngIf="f['phone'].errors['minlength']">
+                                    Phone must be 11 degit
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-outline mt-4 mb-4 col-4">
+                            <label>Role</label><br>
+                            <select formControlName="role" [(ngModel)]="user.role">
+                                <option>Select Role</option>
+                                <option *ngFor="let role of roles" [ngValue]="role.name">{{role.name}}</option>
+                              </select>
+
+                        </div>
+
+                        <!-- Submit button -->
+                        <button type="submit " class="btn btn-success btn-block mb-5 w-25 mt-4">Update</button>
+                    </form>
+                </div>
+
             </div>
-
-
-
-
-
+        </div>
+    </div>
+</div>
