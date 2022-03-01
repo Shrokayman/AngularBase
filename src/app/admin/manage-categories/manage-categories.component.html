@@ -6,9 +6,9 @@
     <app-admin-header></app-admin-header>
       <div class='dashboard-content'>
           <div class='container p-2'>
-            <figure class="text-center mt-4">
+            <figure class=" mt-4">
               <blockquote class="blockquote">
-                <h2>Categories</h2>
+                <h2 class="text-right">Categories</h2>
               </blockquote>
             </figure>
             <div class="text-right pb-3">
@@ -18,34 +18,21 @@
             <table class="table table-striped mt-5">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
+                 
                   <th scope="col">Name</th>
-                  <th scope="col">Added at</th>
                   <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Tshirts</td>
-                  <td>Oct</td>
-                  <td><button type="submit" class="btn btn-danger btn-sm">Delete</button></td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Pants</td>
-                  <td>Dec</td>
-                  <td><button type="submit" class="btn btn-danger btn-sm">Delete</button></td>
-                </tr>
-
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Watches</td>
-                  <td>Jan</td>
-                  <td><button type="submit" class="btn btn-danger btn-sm">Delete</button></td>
+                <tr *ngFor="let category of categories | paginate: { itemsPerPage:5, currentPage: p }">
+                  <!-- <th scope="row">{{category.id}}</th> -->
+                  <td>{{category.name}}</td>
+                  <td><button type="submit" class="btn btn-danger btn-sm" (click)="deleteData(category.id)">Delete</button></td>
                 </tr>
               </tbody>
             </table>
+            <pagination-controls (pageChange)="p = $event" class="float-right"></pagination-controls>
+
 
           </div>
       </div>

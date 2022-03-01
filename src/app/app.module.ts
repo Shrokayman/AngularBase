@@ -76,7 +76,7 @@ import { ToastrModule } from 'ngx-toastr';
     AdminProfileComponent,
     CheckoutComponent,
     UserProfileComponent,
-   
+
   ],
   imports: [
     NgxPaginationModule,

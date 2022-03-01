@@ -385,6 +385,20 @@ h1, .h1 {
   background-color: rgba(236, 238, 239, 0.3);
 }
 
+
+
+figure h2 {
+  font-family: "Arial Black", sans-serif;
+  font-size: 2em;
+  letter-spacing: -1px;
+  background-color: #48AA79;
+  color: white;
+  width: fit-content;
+  padding: 20px;
+  border-radius: 10px;
+ }
+
+
 @media (min-width: 992px) {
   .dashboard-app {
       margin-left: 238px;
