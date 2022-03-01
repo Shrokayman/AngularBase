@@ -1,5 +1,6 @@
 import { CategoryService } from './../../_service/category.service';
 import { Component, OnInit } from '@angular/core';
+import { Category } from 'src/app/_models/category';
 
 @Component({
   selector: 'app-manage-categories',

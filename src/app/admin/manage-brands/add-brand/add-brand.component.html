@@ -6,12 +6,12 @@
               <div class='dashboard-app' style="background-color: rgb(236, 236, 236);" >
                   <app-admin-header></app-admin-header>
                   <div class='dashboard-content'>
-                      <div class='container m-5'>
-                        <figure>
+                      <div class='container m-5 card'>
+                        <div class="card-header" style="background-color: #48AA79;color: honeydew;">
                           <blockquote class="blockquote mt-3">
                             <h2 class="heading">Add new Brand</h2>
                           </blockquote>
-                        </figure>
+                        </div>
                         <div class="container mt-5 col-lg-12 col-md-12 col-sm-12">
                           <form class="row g-3 needs-validation mt-2 p-3" novalidate (ngSubmit)="insertData()" [formGroup]="addform">
                             <div class="col-md-6 position-relative">

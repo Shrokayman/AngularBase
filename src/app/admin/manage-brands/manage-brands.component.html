@@ -6,7 +6,7 @@
     <app-admin-header></app-admin-header>
       <div class='dashboard-content'>
           <div class='container p-2'>
-            <figure class="text-center mt-4">
+            <figure class="mt-4">
               <blockquote class="blockquote">
                 <h2>Brands</h2>
               </blockquote>
@@ -18,14 +18,14 @@
             <table class="table table-striped mt-5">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
+                
                   <th scope="col">Name</th>
                   <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let brand of brands | paginate: { itemsPerPage: 5, currentPage: p }">
-                  <th scope="row">{{brand.id}}</th>
+                  <!-- <th scope="row">{{brand.id}}</th> -->
                   <td>{{brand.name}}</td>
                   <td><button type="submit" class="btn btn-danger btn-sm" (click)="deleteData(brand.id)">Delete</button></td>
                 </tr>
