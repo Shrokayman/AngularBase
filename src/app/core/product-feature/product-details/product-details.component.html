@@ -4,26 +4,6 @@
   <!-- Close Top Nav -->
   <!-- Close Header -->
 
-
-    <!-- Modal -->
-    <!-- <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-          <div class="w-100 pt-1 mb-5 text-right">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <form action="" method="get" class="modal-content modal-body border-0 p-0">
-              <div class="input-group mb-2">
-                  <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
-                  <button type="submit" class="input-group-text bg-success text-light">
-                      <i class="fa fa-fw fa-search text-white"></i>
-                  </button>
-              </div>
-          </form>
-      </div>
-  </div> -->
-
-
-
   <!-- Open Content -->
   <section class="bg-light">
       <div class="container pb-5">
@@ -131,14 +111,16 @@
                       <div class="card-body">
                           <h1 class="h2">Active Wear</h1>
                           <p class="h3 py-2">$25.00</p>
-                          <p class="py-2">
-                              <i class="fa fa-star text-warning"></i>
-                              <i class="fa fa-star text-warning"></i>
-                              <i class="fa fa-star text-warning"></i>
-                              <i class="fa fa-star text-warning"></i>
-                              <i class="fa fa-star text-secondary"></i>
-                              <span class="list-inline-item text-dark">Rating 4.8 | 36 Comments</span>
-                          </p>
+                          
+                            <ul class="rate-area">
+                              <input type="radio" id="5-star" name="rating" value="5" /><label for="5-star" title="Amazing">5 stars</label>
+                              <input type="radio" id="4-star" name="rating" value="4" /><label for="4-star" title="Good">4 stars</label>
+                              <input type="radio" id="3-star" name="rating" value="3" /><label for="3-star" title="Average">3 stars</label>
+                              <input type="radio" id="2-star" name="rating" value="2" /><label for="2-star" title="Not Good">2 stars</label>
+                              <input type="radio" id="1-star" name="rating" value="1" /><label for="1-star" title="Bad">1 star</label>
+                            </ul>
+                              <span class="list-inline-item text-dark ms-4">Rating 4.8 | 36 Comments</span>
+
                           <ul class="list-inline">
                               <li class="list-inline-item">
                                   <h6>Brand:</h6>

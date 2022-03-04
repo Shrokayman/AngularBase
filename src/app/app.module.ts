@@ -44,6 +44,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { EditProductComponent } from './admin/manage-products/edit-product/edit-product.component';
+import { ProductItemComponent } from './core/product-feature/product-item/product-item.component';
+import { FilterPipe } from './search-handling/filter.pipe';
+import { LowToHighComponent } from './core/product-feature/low-to-high/low-to-high.component';
+import { HighToLowComponent } from './core/product-feature/high-to-low/high-to-low.component';
 
 
 
@@ -81,6 +85,10 @@ import { EditProductComponent } from './admin/manage-products/edit-product/edit-
     CheckoutComponent,
     UserProfileComponent,
     EditProductComponent,
+    ProductItemComponent,
+    FilterPipe,
+    LowToHighComponent,
+    HighToLowComponent,
 
   ],
   imports: [

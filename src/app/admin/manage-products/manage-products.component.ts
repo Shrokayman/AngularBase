@@ -15,12 +15,17 @@ export class ManageProductsComponent implements OnInit {
   product= new Product;
   id: any;
   p:any;
-  imageDirectoryPath : any ='http://127.0.0.1:8000/public/products/';
+  imageDirectoryPath : any ='http://127.0.0.1:8000/storage/products/';
+  searchKey: string = ''
 
   constructor(private productservice:ProductService,private ngxpaginationModule: NgxPaginationModule ) { }
 
   ngOnInit(): void {
     this.getAllProducts();
+        // Get the response from the search
+        this.productservice.search.subscribe((val: any) => {
+          this.searchKey = val;
+        })
   }
 
   getAllProducts(){
@@ -40,7 +45,6 @@ export class ManageProductsComponent implements OnInit {
 getProduct(){
   this.productservice.getProductById(this.id).subscribe(res => {
    this.getProduct();
-
   })
   }
 

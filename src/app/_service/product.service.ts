@@ -2,12 +2,17 @@ import { Product } from 'src/app/_models/product.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
+
+  // Observable subtype for searching from the search box
+  public search = new BehaviorSubject<string>("");
+
 
   constructor(private http: HttpClient) {
   }
