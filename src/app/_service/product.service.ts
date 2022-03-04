@@ -11,32 +11,32 @@ export class ProductService {
 
   constructor(private http: HttpClient) {
   }
-  
+
   getProducts(){
     let header = new HttpHeaders({
       Authorization: localStorage.getItem('token')!
     })
-    return this.http.get(environment.apiUrl+'/products', {headers:header}); 
+    return this.http.get(environment.apiUrl+'/products', {headers:header});
    }
-  
+
   deleteProduct(id:number){
     let header = new HttpHeaders({
       Authorization: localStorage.getItem('token')!
     })
     return this.http.delete(environment.apiUrl+'/products/'+id, {headers:header});
   }
-  
-  
-  insertProduct(product:Product) {
-    return this.http.post(environment.apiUrl+'/products', product);     
+
+
+  insertProduct(data :any) {
+    return this.http.post(environment.apiUrl+'/products', data);
   }
-  
+
   getProductById(id:number) {
     let header = new HttpHeaders({
       Authorization: localStorage.getItem('token')!
     })
     return this.http.get(environment.apiUrl+'/products/'+id, { headers: header });
-    
+
   }
   updateProduct( id : number, data:Product ){
     let header = new HttpHeaders({

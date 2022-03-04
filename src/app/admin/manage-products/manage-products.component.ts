@@ -15,7 +15,8 @@ export class ManageProductsComponent implements OnInit {
   product= new Product;
   id: any;
   p:any;
-  
+  imageDirectoryPath : any ='http://127.0.0.1:8000/public/products/';
+
   constructor(private productservice:ProductService,private ngxpaginationModule: NgxPaginationModule ) { }
 
   ngOnInit(): void {
@@ -34,12 +35,12 @@ export class ManageProductsComponent implements OnInit {
     this.getAllProducts();
   })
 }
-  
+
 }
 getProduct(){
   this.productservice.getProductById(this.id).subscribe(res => {
    this.getProduct();
-  
+
   })
   }
 

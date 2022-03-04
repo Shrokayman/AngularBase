@@ -19,11 +19,11 @@ export class AddProductComponent implements OnInit {
   products:any;
   categories: any;
   brands:any;
-  files:any;
+  file:any;
   image:any;
   required:any;
   product = new Product();
-  constructor(private productservice:ProductService, private categoryService:CategoryService, private brandService:BrandService, 
+  constructor(private productservice:ProductService, private categoryService:CategoryService, private brandService:BrandService,
     private formBuilder: FormBuilder, private toster:ToastrService, private router:Router,private route:ActivatedRoute ) { }
 
       createForm(){
@@ -34,61 +34,65 @@ export class AddProductComponent implements OnInit {
           discount:['' , [Validators.required , Validators.minLength(3)]],
           category_id:['' , [Validators.required ]],
           brand_id:['' , [Validators.required ]],
-          image:['' , [Validators.required ]],
+          image:[null, [Validators.required ]],
         });
       }
-    
-      
+
+
   ngOnInit(): void {
-    this.form = new FormGroup({
-      name:new FormControl(),
-      description:new FormControl(),
-      price:new FormControl(),
-      discount:new FormControl(),
-      category_id:new FormControl(),
-      brand_id:new FormControl(), 
-      image: new FormControl(),
-    }
-    );
-    
     this.createForm();
     this.getBrands();
     this.getCategories();
   }
-    
-insertProduct() {
-  this.submitted = true;
-  if(this.form.invalid){
-    return;
-  }
-  else{
-      this.productservice.insertProduct(this.product).subscribe(res=>{
-        this.data = res
-        alert ("Product Added Succesfully");
-        this.router.navigate(['/admin/products'])
-      })
-    }
-}
 
 getBrands () {
   this.brandService.getBrandData().subscribe( res=> {
 
     this.brands= res;
-  
+
   })
 }
 getCategories () {
   this.categoryService.getData().subscribe(res=> {
 
     this.categories= res;
-  
+
   })
 }
 
-uploadImage(event:any) { 
-  this.files = event.target.files[0];
-  console.log(this.files)
+uploadImage(event:any) {
+  if(event.target.files.length > 0){
+    this.file = event.target.files[0];
+    this.form.get('image')?.setValue(this.file);
+  }
 }
+
+
+insertProduct() {
+  this.submitted = true;
+  if(this.form.invalid){
+    return;
+  }
+  else{
+    const formData = new FormData();
+    formData.append('name' , this.form.get("name")?.value);
+    formData.append('description' , this.form.get("description")?.value);
+    formData.append('price' , this.form.get("price")?.value);
+    formData.append('discount' , this.form.get("discount")?.value);
+    formData.append('category_id' , this.form.get("category_id")?.value);
+    formData.append('brand_id' , this.form.get("brand_id")?.value);
+    formData.append('image' , this.form.get("image")?.value);
+
+      this.productservice.insertProduct(formData).subscribe(res=>{
+        this.data = res
+        console.log(res);
+
+        alert ("Product Added Succesfully");
+        this.router.navigate(['/admin/products'])
+      })
+    }
+}
+
 
 get f() {
   return this.form.controls;
