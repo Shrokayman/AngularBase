@@ -65,7 +65,7 @@ export class RegisterComponent implements OnInit {
         this.form.get('email')?.reset();
         this.form.get('password')?.reset();
         this.form.get('confirmPassword')?.reset();
-        this.form.get('ciry')?.reset();
+        this.form.get('city')?.reset();
         this.form.get('street')?.reset();
         this.form.get('phone')?.reset();
       })

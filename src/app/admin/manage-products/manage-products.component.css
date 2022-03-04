@@ -452,3 +452,7 @@ h4 {
 td, th {
   vertical-align: middle !important;
 }
+
+img{
+  width:100px;
+}

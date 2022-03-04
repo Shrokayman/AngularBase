@@ -7,7 +7,7 @@
             <div class="container p-2">
                 <figure class="mt-4 pb-2">
                     <blockquote class="blockquote">
-                        <h2 class="fs-1">Add</h2>
+                        <h2 class="fs-1">Edit</h2>
                     </blockquote>
                 </figure>
                     <div class="wrapper">
@@ -15,11 +15,11 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="card-title fw-bolder d-flex justify-content-start">
-                                        Add Product Form
+                                        Edit Product Form
                                     </h3>
                                 </div>
                                 <div class="card-body">
-                                    <form (ngSubmit)="insertProduct()" method="post" [formGroup]="form">
+                                    <form (ngSubmit)="updateProduct()" method="put" [formGroup]="form">
                                         <div class="row">
                                             <div class="col-md-5 pr-1">
                                                 <div class="form-group">
@@ -77,7 +77,7 @@
                                             </div>
                                             
                                         </div>
-                                         <div class="row">
+                                        <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <div><label for="category">Category</label></div>
@@ -127,7 +127,7 @@
      
                                         </div> 
                                         <button style="width:100%" class="btn btn-success btn-lg mt-4" type="submit">
-                                            Add
+                                            Edit
                                         </button>
                                         <div class="clearfix"></div>
                                     </form>

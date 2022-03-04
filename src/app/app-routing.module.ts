@@ -5,6 +5,7 @@ import { ManageOrdersComponent } from './admin/manage-orders/manage-orders.compo
 import { ManageCategoriesComponent } from './admin/manage-categories/manage-categories.component';
 import { ManageBrandsComponent } from './admin/manage-brands/manage-brands.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
+import { EditProductComponent } from './admin/manage-products/edit-product/edit-product.component';
 import { ProductDetailsComponent } from './core/product-feature/product-details/product-details.component';
 import { HomeComponent } from './core/home/home.component';
 import { AppComponent } from './app.component';
@@ -48,7 +49,6 @@ const routes: Routes = [
   },
   {path:'product/listing' , component:ProductListingComponent},
   {path:'product/details' , component:ProductDetailsComponent},
-
   {
     path:'admin',
   canActivate:[AdminGuard],
@@ -67,6 +67,7 @@ const routes: Routes = [
         {path:'users' , component:ManageUsersComponent},
         {path:'users/edit/:id' , component:EditUserComponent},
         {path:'profile/:id' , component:AdminProfileComponent},
+        {path:'products/edit/:id' , component:EditProductComponent},
 
     ]
   },

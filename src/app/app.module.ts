@@ -1,3 +1,4 @@
+
 import {NgxPaginationModule} from 'ngx-pagination';
 import { AppRoutingModule } from './app-routing.module';
 import { NgModule } from '@angular/core';
@@ -42,6 +43,9 @@ import { UserProfileComponent } from './core/user-profile/user-profile.component
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { EditProductComponent } from './admin/manage-products/edit-product/edit-product.component';
+
+
 
 
 @NgModule({
@@ -76,6 +80,7 @@ import { ToastrModule } from 'ngx-toastr';
     AdminProfileComponent,
     CheckoutComponent,
     UserProfileComponent,
+    EditProductComponent,
 
   ],
   imports: [
