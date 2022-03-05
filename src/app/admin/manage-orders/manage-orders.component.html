@@ -8,55 +8,43 @@
           <div class='container p-2'>
             <figure class="text-center mt-4">
               <blockquote class="blockquote">
-                <h2>Orders</h2>
+                <h2 class="float-start">Orders</h2>
               </blockquote>
             </figure>
 
-            <table class="table table-striped mt-5">
+            <table class="table p-lg-5 table-striped mt-5">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
+                  <th>Order ID</th>
                   <th scope="col">Name</th>
                   <th scope="col">Phone</th>
                   <th scope="col">Adderss</th>
                   <th scope="col">Date of purchase</th>
-                  <th scope="col">Amount</th>
+                  <th scope="col">Total Price</th>
                   <th scope="col">Status</th>
                   <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Ahmed</td>
-                  <td>Oct</td>
-                  <td>Oct</td>
-                  <td>Oct</td>
-                  <td>Oct</td>
-                  <td>pending</td>
-                  <td><button type="submit" class="btn btn-primary btn-sm">Order details</button> <button type="submit" class="btn btn-success ms-2 btn-sm">Ship order</button><button type="submit" class="btn btn-danger btn-sm ms-2">Cancel</button></td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Mohamed</td>
-                  <td>Dec</td>
-                  <td>Dec</td>
-                  <td>Dec</td>
-                  <td>Dec</td>
-                  <td>pending</td>
-                  <td><button type="submit" class="btn btn-primary btn-sm">Order details</button> <button type="submit" class="btn btn-success ms-2 btn-sm">Ship order</button><button type="submit" class="btn btn-danger btn-sm ms-2">Cancel</button></td>
-                </tr>
+                <tr class="" *ngFor="let order of orders| paginate:{ itemsPerPage:5,currentPage :p}">
+                  <td>{{order.id}}</td>
+                  <td>{{order['user'].fname}} {{order['user'].lname}}</td>
+                  <td>{{order['user'].phone}}</td>
 
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Omar</td>
-                  <td>Jan</td>
-                  <td>Jan</td>
-                  <td>Jan</td>
-                  <td>Jan</td>
-                  <td>pending</td>
-                  <td><button type="submit" class="btn btn-primary btn-sm">Order details</button> <button type="submit" class="btn btn-success ms-2 btn-sm">Ship order</button><button type="submit" class="btn btn-danger btn-sm ms-2">Cancel</button></td>
+                  <td> {{ order.created_at | date }}</td>
+                  <td>{{order.total_cost+'$'}}</td>
+                  <td>{{order.status}}</td>
+
+                    <td>
+                      <button type="submit" class="btn btn-primary btn-sm ms-2" routerLink="details/{{order.id}}">Order details</button>
+                      <button type="submit" class="btn btn-success ms-2 btn-sm" *ngIf=" order.status == status.pending " name="shipped" (click)="updateOrder(order.id, {'status': status.shipped})">Ship order</button>
+                      <button type="submit" class="btn btn-danger btn-sm ms-2"
+                       (click)="deleteOrder(order.id); getAllOrders()">Cancel</button>
+                    </td>
+
                 </tr>
+                <pagination-controls (pageChange)="p = $event" class="float-left">
+                </pagination-controls>
               </tbody>
             </table>
 

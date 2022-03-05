@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { Order } from 'src/app/_models/order';
+import { OrderService } from 'src/app/_service/order.service';
+
+import { NgxPaginationModule } from 'ngx-pagination';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-order-details',
@@ -6,10 +14,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./order-details.component.css']
 })
 export class OrderDetailsComponent implements OnInit {
-
-  constructor() { }
+  id: any;
+  orders = new Order;
+  order :any;
+  constructor(private orderservice: OrderService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.params['id'];
+
+    this.getOrder();
+  }
+
+  getOrder() {
+    this.orderservice.getOrder(this.id).subscribe(res => {
+      this.order =res;
+      this.orders = this.order;
+      console.log(res);
+
+    });
   }
 
 }
