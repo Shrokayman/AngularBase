@@ -50,7 +50,7 @@
           </div>
           <div class="row">
             <!-- Product Items -->
-            <app-product-item class="col-md-4" *ngFor="let item of allProducts | filter: searchKey: 'name' | paginate: { itemsPerPage: 9,currentPage: page}" [productItem]="item"></app-product-item>
+            <app-product-item class="col-md-4" *ngFor="let item of categoryProducts | filter: searchKey: 'name' | paginate: { itemsPerPage: 9,currentPage: page}" [productItem]="item"></app-product-item>
           </div>
 
               <div class="paging ">
