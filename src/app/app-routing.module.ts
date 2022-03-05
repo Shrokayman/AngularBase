@@ -1,3 +1,4 @@
+import { WishlistComponent } from './core/product-feature/wishlist/wishlist.component';
 import { AdminGuard } from './_guards/admin.guard';
 import { AddCategoryComponent } from './admin/manage-categories/add-category/add-category.component';
 import { AddBrandComponent } from './admin/manage-brands/add-brand/add-brand.component';
@@ -53,6 +54,7 @@ const routes: Routes = [
   },
   {path:'product/listing' , component:ProductListingComponent},
   {path:'product/details' , component:ProductDetailsComponent},
+  {path:'product/wishlist' , component:WishlistComponent},
   {
     path:'admin',
   canActivate:[AdminGuard],

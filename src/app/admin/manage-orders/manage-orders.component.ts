@@ -43,8 +43,11 @@ export class ManageOrdersComponent implements OnInit {
     });
   }
   deleteOrder(id: number) {
-    this.orderservice.deleteOrder(id).subscribe(res => {
-    });
+    if (confirm("Are you sure you want to delete ")) {
+      this.orderservice.deleteOrder(id).subscribe(res => {
+      });
+    }
+    return;
   }
 
   createOrder() {
