@@ -49,6 +49,12 @@ export class ProductService {
     })
     return this.http.put(environment.apiUrl+'/products/'+id ,data , {headers:header});
   }
+  showRelated(id:number){
+    let header = new HttpHeaders({
+      Authorization: localStorage.getItem('token')!
+    })
+    return this.http.get(environment.apiUrl+'/products/show/'+id  , {headers:header});
+  }
 
   topProducts(){
     return this.http.get('http://127.0.0.1:8000/api/topproducts');

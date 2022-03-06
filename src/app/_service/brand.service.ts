@@ -17,4 +17,7 @@ export class BrandService {
   deleteData(id:any){
     return this.http.delete('http://127.0.0.1:8000/api/brands/'+id);
   }
+  getBrandById(id:any){
+    return this.http.get('http://127.0.0.1:8000/api/brands/'+id);
+  }
 }

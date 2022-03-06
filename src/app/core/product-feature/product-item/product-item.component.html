@@ -1,50 +1,49 @@
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-  <div class="card mb-4 product-wap rounded-0">
-      <div class="card rounded-0">
-          <img class="card-img rounded-0 img-fluid" src="{{imageDirectoryPath}}{{productItem.image}}">
-          <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-              <ul class="list-unstyled">
-                  <!-- <li ><a class="btn btn-success text-white">
-                      <i *ngIf="!addedToWishlist" class="bi bi-heart" (click)="addtoWishlist(productItem.id)"></i>
-                    <i *ngIf="addedToWishlist" class="bi bi-heart-fill" (click)="removeFromWishlist(productItem.id)"></i>
-                </a></li> -->
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+<div class="card mb-4 product-wap rounded-0">
+    <div class="card rounded-0">
+        <img class="card-img img" src="{{imageDirectoryPath}}{{productItem.image}}" style="height:15rem;">
+        <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+            <ul class="list-unstyled">
                 <li *ngIf="!addedToWishlist" (click)="addtoWishlist(productItem.id)"><a class="btn btn-success text-white">
                     <i class="bi bi-heart" ></i></a></li>
+                    <li *ngIf="addedToWishlist" (click)="removeFromWishlist(productItem.id)"><a class="btn btn-success text-white">
+                        <i class="bi bi-heart-fill" ></i></a></li>
+                <li><a class="btn btn-success text-white mt-2" routerLink="/product/details/{{productItem.id}}"><i class="far fa-eye"></i></a></li>
+                <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="fas fa-cart-plus"></i></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="card-body">
+        <!-- <a routerLink="/product/details" class="h3 text-decoration-none text-center">{{productItem.name}}</a> -->
+        <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
+            <li class="pt-2">
+                <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
+                <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
+                <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
+                <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
+                <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
+            </li>
+        </ul>
+        <ul class="list-unstyled d-flex justify-content-center mb-1">
+            <li>
+                <i class="text-warning fa fa-star"></i>
+                <i class="text-warning fa fa-star"></i>
+                <i class="text-warning fa fa-star"></i>
+                <i class="text-muted fa fa-star"></i>
+                <i class="text-muted fa fa-star"></i>
+            </li>
+        </ul>
 
 
-              <li *ngIf="addedToWishlist" (click)="removeFromWishlist(productItem.id)"><a class="btn btn-success text-white">
-              <i class="bi bi-heart-fill" ></i></a></li>
+        <h1 class="h2">{{productItem.name}}</h1><br>
+    </div>
+    <div class="mb-3 mx-3" *ngIf="productItem.discount; else elseBlock">
+        <h5 class=" mb-1 text mt-3 w-50"><del>${{productItem.price}}</del></h5>
+        <h5 class="mb-0 text-success ">${{productItem.price - productItem.discount}}</h5>
+    </div>
+    <ng-template #elseBlock>
+        <h5 class=" mb-1 mx-3 text mt-3 w-50 text-success">
+            ${{productItem.price}}</h5>
+        .</ng-template>
+</div>
 
-
-                  <li><a class="btn btn-success text-white mt-2" routerLink="/product/details"><i class="far fa-eye"></i></a></li>
-                  <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="fas fa-cart-plus"></i></a></li>
-              </ul>
-          </div>
-      </div>
-      <div class="card-body">
-          <a routerLink="/product/details" class="h3 text-decoration-none">{{productItem.name}}</a>
-          <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-              <li class="pt-2">
-                  <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                  <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                  <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                  <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                  <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-              </li>
-          </ul>
-          <ul class="list-unstyled d-flex justify-content-center mb-1">
-              <li>
-                  <i class="text-warning fa fa-star"></i>
-                  <i class="text-warning fa fa-star"></i>
-                  <i class="text-warning fa fa-star"></i>
-                  <i class="text-muted fa fa-star"></i>
-                  <i class="text-muted fa fa-star"></i>
-              </li>
-          </ul>
-          
-          <p class="text-center mb-0"><del>${{productItem.price}}</del></p>
-          <p class="text-center mb-0">${{productItem.price - productItem.discount}}</p>
-      </div>
-  </div>

@@ -25,6 +25,7 @@ export class EditProductComponent implements OnInit {
   id: any;
   files:any;
   required:any;
+  file: any;
 
 
   constructor(private formBuilder: FormBuilder,
@@ -44,7 +45,6 @@ export class EditProductComponent implements OnInit {
     discount:['' , [Validators.required , Validators.minLength(3)]],
     category_id:['' , [Validators.required ]],
     brand_id:['' , [Validators.required ]],
-    image:['' , [Validators.required ]],
     });
   }
 
@@ -85,10 +85,12 @@ export class EditProductComponent implements OnInit {
   get f(){
     return this.form.controls
   }
-  uploadImage(event:any) { 
-    this.files = event.target.files[0];
-    console.log(this.files)
-  }
+  // uploadImage(event:any) {
+  //   if(event.target.files.length > 0){
+  //     this.file = event.target.files[0];
+  //     this.form.get('image')?.setValue(this.file);
+  //   }
+  // }
   GetData(){
     this.productService.getProductById(this.id).subscribe(res => {
       console.log(res);
