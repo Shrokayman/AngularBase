@@ -16,6 +16,7 @@ export class ProductListingComponent implements OnInit {
   allBrands:any=[];
   searchKey: string = ''
   page : number = 1;
+  
 
 
 

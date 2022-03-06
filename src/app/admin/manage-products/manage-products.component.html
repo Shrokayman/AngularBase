@@ -1,64 +1,60 @@
 <div class="dashboard">
-  <app-sidenav></app-sidenav>
+    <app-sidenav></app-sidenav>
 
-  <div class="dashboard-app">
-    <app-admin-header></app-admin-header>
-    <div class="dashboard-content">
-      <div class="container">
-        <figure class="text-center">
-          <blockquote class="blockquote">
-            <h2>Products</h2>
-          </blockquote>
-        </figure>
-        <div class="text-right pb-5">
-          <button
-            routerLink="/admin/products/add"
-            type="submit"
-            class="btn btn-primary btn-sm float-end"
-          >
+    <div class="dashboard-app">
+        <app-admin-header></app-admin-header>
+        <div class="dashboard-content">
+            <div class="container">
+                <figure class="text-center">
+                    <blockquote class="blockquote">
+                        <h2>Products</h2>
+                    </blockquote>
+                </figure>
+                <div class="text-right pb-5">
+                    <button routerLink="/admin/products/add" type="submit" class="btn btn-primary btn-sm float-end">
             Add new product
           </button>
-        </div>
-        <app-search-box></app-search-box>
-        <div class="container mt-3">
-          <div class="row">
-            <div class="col-12">
-              <table class="table table-image">
-                <thead>
-                  <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Image</th>
-                    <th scope="col">description</th>
-                    <th scope="col">price</th>
-                    <th scope="col">discount</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">Brand</th>
-                    <th scope="col">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let product of products "></tr>
-                  <tr *ngFor="let prod of products | filter: searchKey: 'name' | paginate:{ itemsPerPage:4,currentPage :p}">
-                    <td class="w-5">{{prod.name}}</td>
-                    <td><img src="{{imageDirectoryPath}}{{prod.image}}" alt="product img"></td>
-                    <td>{{prod.description}}</td>
-                    <td>{{prod.price}}</td>
-                    <td>{{prod.discount}}</td>
-                    <td>{{prod.category_id}}</td>
-                    <td>{{prod.brand_id}}</td>
-                    <td>
-                      <button type="submit" class="btn btn-warning btn-sm" (click)="getProduct()"  routerLink="edit/{{ prod.id }}">Edit</button>
-                      <button class="btn btn-danger btn-sm ms-3" (click)="deleteProduct(prod.id)">Delete</button>
-                    </td>
-                  </tr>
-                  <pagination-controls class="text-center" (pageChange)="p = $event" class="float-left">
-                  </pagination-controls>
-                </tbody>
-              </table>
+                </div>
+                <app-search-box></app-search-box>
+                <div class="container mt-3">
+                    <div class="row">
+                        <div class="col-12">
+                            <table class="table table-image">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Image</th>
+                                        <th scope="col">description</th>
+                                        <th scope="col">price</th>
+                                        <th scope="col">discount</th>
+                                        <th scope="col">Category</th>
+                                        <th scope="col">Brand</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let product of products "></tr>
+                                    <tr *ngFor="let prod of products | filter: searchKey: 'name' | paginate:{ itemsPerPage:4,currentPage :p}">
+                                        <td class="w-5">{{prod.name}}</td>
+                                        <td><img src="{{imageDirectoryPath}}{{prod.image}}" alt="product img"></td>
+                                        <td>{{prod.description}}</td>
+                                        <td>{{prod.price}}</td>
+                                        <td>{{prod.discount}}</td>
+                                        <td>{{prod.category_id}}</td>
+                                        <td>{{prod.brand_id}}</td>
+                                        <td>
+                                            <button type="submit" class="btn btn-warning btn-sm" (click)="getProduct()" routerLink="/admin/products/edit/{{ prod.id }}">Edit</button>
+                                            <button class="btn btn-danger btn-sm ms-3" (click)="deleteProduct(prod.id)">Delete</button>
+                                        </td>
+                                    </tr>
+                                    <pagination-controls class="text-center" (pageChange)="p = $event" class="float-left">
+                                    </pagination-controls>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>

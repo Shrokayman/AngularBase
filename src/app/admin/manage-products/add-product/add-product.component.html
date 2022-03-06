@@ -10,131 +10,130 @@
                         <h2 class="fs-1">Add</h2>
                     </blockquote>
                 </figure>
-                    <div class="wrapper">
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h3 class="card-title fw-bolder d-flex justify-content-start">
-                                        Add Product Form
-                                    </h3>
-                                </div>
-                                <div class="card-body">
-                                    <form (ngSubmit)="insertProduct()" method="post" [formGroup]="form">
-                                        <div class="row">
-                                            <div class="col-md-5 pr-1">
-                                                <div class="form-group">
-                                                    <label>Name</label>
-                                                    <input type="text" class="form-control" name="name" formControlName="name" placeholder="" value="" [ngClass]="{'is-invalid': submitted && f['name'].errors}" [(ngModel)]="product.name" />
-                                                    <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
-                                                        <div *ngIf="f['name'].errors['required']">
-                                                            Product name is required
-                                                        </div>
-                                                        <div *ngIf="f['name'].errors['minlength']">
-                                                            Product name must be at least 3 characters
-                                                        </div>
+                <div class="wrapper">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title fw-bolder d-flex justify-content-start">
+                                    Add Product Form
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <form (ngSubmit)="insertProduct()" method="post" [formGroup]="form">
+                                    <div class="row">
+                                        <div class="col-md-5 pr-1">
+                                            <div class="form-group">
+                                                <label>Name</label>
+                                                <input type="text" class="form-control" name="name" formControlName="name" placeholder="" value="" [ngClass]="{'is-invalid': submitted && f['name'].errors}" [(ngModel)]="product.name" />
+                                                <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                                                    <div *ngIf="f['name'].errors['required']">
+                                                        Product name is required
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <!-- Hello -->
-                                            <div class="col-md-3 px-1">
-                                                <div class="form-group">
-                                                    <label>Description</label>
-                                                    <input type="text" class="form-control" name="description" formControlName="description" placeholder="" value="" [ngClass]="{'is-invalid': submitted && f['description'].errors}" [(ngModel)]="product.description" />
-
-
-                                                    <div *ngIf="submitted && f['description'].errors" class="invalid-feedback">
-                                                        <div *ngIf="f['description'].errors['required']">
-                                                            Description  is required
-                                                        </div>
-                                                        <div *ngIf="f['description'].errors['minlength']">
-                                                            Product Description must be at least 15 characters
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Hello -->
-                                            <div class="col-md-4 pl-1">
-                                                <div class="form-group">
-                                                    <label>Price</label>
-                                                    <input type="number" class="form-control" name="price" formControlName="price" placeholder="" value="" [ngClass]="{'is-invalid': submitted && f['price'].errors}" [(ngModel)]="product.price" />
-
-
-                                                    <div *ngIf="submitted && f['price'].errors" class="invalid-feedback">
-                                                        <div *ngIf="f['price'].errors['required']">
-                                                            Price  is required
-                                                        </div>
+                                                    <div *ngIf="f['name'].errors['minlength']">
+                                                        Product name must be at least 3 characters
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- Hello -->
-                                        <div class="row">
-                                            <div class="col-md-6 pr-1">
-                                                <div class="form-group">
-                                                    <label>Discount</label>
-                                                    <input type="number" class="form-control" name="discount" formControlName="discount" placeholder="" value="0" [(ngModel)]="product.discount" />
+                                        <div class="col-md-3 px-1">
+                                            <div class="form-group">
+                                                <label>Description</label>
+                                                <input type="text" class="form-control" name="description" formControlName="description" placeholder="" value="" [ngClass]="{'is-invalid': submitted && f['description'].errors}" [(ngModel)]="product.description" />
+
+
+                                                <div *ngIf="submitted && f['description'].errors" class="invalid-feedback">
+                                                    <div *ngIf="f['description'].errors['required']">
+                                                        Description is required
+                                                    </div>
+                                                    <div *ngIf="f['description'].errors['minlength']">
+                                                        Product Description must be at least 15 characters
+                                                    </div>
                                                 </div>
                                             </div>
-
                                         </div>
-                                         <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <div><label for="category">Category</label></div>
-                                                    <select   name="category_id" formControlName="category_id" [(ngModel)]="product.category_id" [ngClass]="{'is-invalid': submitted && f['category_id'].errors}">
+                                        <!-- Hello -->
+                                        <div class="col-md-4 pl-1">
+                                            <div class="form-group">
+                                                <label>Price</label>
+                                                <input type="number" class="form-control" name="price" formControlName="price" placeholder="" value="" [ngClass]="{'is-invalid': submitted && f['price'].errors}" [(ngModel)]="product.price" />
+
+
+                                                <div *ngIf="submitted && f['price'].errors" class="invalid-feedback">
+                                                    <div *ngIf="f['price'].errors['required']">
+                                                        Price is required
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Hello -->
+                                    <div class="row">
+                                        <div class="col-md-6 pr-1">
+                                            <div class="form-group">
+                                                <label>Discount</label>
+                                                <input type="number" class="form-control" name="discount" formControlName="discount" placeholder="" value="0" [(ngModel)]="product.discount" />
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <div><label for="category">Category</label></div>
+                                                <select name="category_id" formControlName="category_id" [(ngModel)]="product.category_id" [ngClass]="{'is-invalid': submitted && f['category_id'].errors}">
                                                         <option>Select Category</option>
                                                         <option *ngFor="let category of categories" [ngValue]="category.id">{{category.name}} </option>
                                                         </select>
-                                                        <div *ngIf="submitted && f['category_id'].errors" class="invalid-feedback">
-                                                            <div *ngIf="f['category_id'].errors['required']">
-                                                                Category  is required
-                                                            </div>
-                                                            </div>
+                                                <div *ngIf="submitted && f['category_id'].errors" class="invalid-feedback">
+                                                    <div *ngIf="f['category_id'].errors['required']">
+                                                        Category is required
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <div><label for="brand">Brand</label></div>
-                                                    <select name="brand_id"  formControlName="brand_id" [(ngModel)]="product.brand_id" [ngClass]="{'is-invalid': submitted && f['brand_id'].errors}">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <div><label for="brand">Brand</label></div>
+                                                <select name="brand_id" formControlName="brand_id" [(ngModel)]="product.brand_id" [ngClass]="{'is-invalid': submitted && f['brand_id'].errors}">
                                                         <option>Select Brand</option>
                                                         <option *ngFor="let brand of brands" [ngValue]="brand.id">{{brand.name}}</option>
                                                         </select>
-                                                        <div *ngIf="submitted && f['brand_id'].errors" class="invalid-feedback">
-                                                            <div *ngIf="f['brand_id'].errors['required']">
-                                                                Brand  is required
-                                                            </div>
-                                                            </div>
+                                                <div *ngIf="submitted && f['brand_id'].errors" class="invalid-feedback">
+                                                    <div *ngIf="f['brand_id'].errors['required']">
+                                                        Brand is required
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div>
-                                            <div class="row">
-                                                <div class="col-md-6 pr-1">
-                                                    <div class="form-group">
-                                                        <label>image</label>
-                                                        <input type="file" class="form-control" (change)="uploadImage($event)"
-                                                            name="image" formControlName="image" [ngClass]="{'is-invalid': submitted && f['image'].errors}"/>
-                                                            <div *ngIf="submitted && f['image'].errors" class="invalid-feedback">
-                                                                <div *ngIf="f['image'].errors['required']">
-                                                                    Image  is required
-                                                                </div>
-                                                                </div>
+                                    </div>
+                                    <div>
+                                        <div class="row">
+                                            <div class="col-md-6 pr-1">
+                                                <div class="form-group">
+                                                    <label>image</label>
+                                                    <input type="file" class="form-control" (change)="uploadImage($event)" name="image" formControlName="image" [ngClass]="{'is-invalid': submitted && f['image'].errors}" />
+                                                    <div *ngIf="submitted && f['image'].errors" class="invalid-feedback">
+                                                        <div *ngIf="f['image'].errors['required']">
+                                                            Image is required
                                                         </div>
+                                                    </div>
                                                 </div>
-
                                             </div>
-<!--  -->
 
                                         </div>
-                                        <button style="width:100%" class="btn btn-success btn-lg mt-4" type="submit">
+                                        <!--  -->
+
+                                    </div>
+                                    <button style="width:100%" class="btn btn-success btn-lg mt-4" type="submit">
                                             Add
                                         </button>
-                                        <div class="clearfix"></div>
-                                    </form>
-                                </div>
+                                    <div class="clearfix"></div>
+                                </form>
                             </div>
                         </div>
                     </div>
+                </div>
             </div>
         </div>
     </div>

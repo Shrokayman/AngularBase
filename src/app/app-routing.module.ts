@@ -52,7 +52,7 @@ const routes: Routes = [
     canActivate:[UserGuard]
   },
   {path:'product/listing' , component:ProductListingComponent},
-  {path:'product/details' , component:ProductDetailsComponent},
+  {path: 'product/details/:id', component: ProductDetailsComponent},
   {
     path:'admin',
   canActivate:[AdminGuard],
