@@ -1,3 +1,4 @@
+import { ProductService } from './../../_service/product.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  products:any;
+  imageDirectoryPath : any ='http://127.0.0.1:8000/storage/products/';
 
-  constructor() { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
+    this.getTopProducts()
   }
 
+
+
+  // getCategoryData(){
+  //   this.categoryService.getData().subscribe(res=>{
+  //     this.categories=res;
+  //   })
+  // }
+
+  getTopProducts(){
+    this.productService.topProducts().subscribe(res=>{
+      this.products=res;
+    })
+  }
 }

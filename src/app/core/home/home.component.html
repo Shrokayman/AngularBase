@@ -146,38 +146,14 @@
               </p>
           </div>
       </div>
-      <div class="row">
-          <div class="col-12 col-md-4 mb-4">
-              <div class="card h-100">
-                  <a href="shop-single.html">
-                      <img src="./assets/img/feature_prod_01.jpg" class="card-img-top" alt="...">
-                  </a>
-                  <div class="card-body">
-                      <ul class="list-unstyled d-flex justify-content-between">
-                          <li>
-                              <i class="text-warning fa fa-star"></i>
-                              <i class="text-warning fa fa-star"></i>
-                              <i class="text-warning fa fa-star"></i>
-                              <i class="text-muted fa fa-star"></i>
-                              <i class="text-muted fa fa-star"></i>
-                          </li>
-                          <li class="text-muted text-right">$240.00</li>
-                      </ul>
-                      <a href="shop-single.html" class="h2 text-decoration-none text-dark">Gym Weight</a>
-                      <p class="card-text">
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt in culpa qui officia deserunt.
-                      </p>
-                      <p class="text-muted">Reviews (24)</p>
+      <div class="row gx-5">
+          <div class="col-lg-4  mb-4" *ngFor="let product of products" >
+              <div  class="card" style="width: 23rem;">
+                  <div style="height: 20rem;">
+                      <img src="{{imageDirectoryPath}}{{product.image}}" class="card-img-top" alt="..." >
                   </div>
-              </div>
-          </div>
-          <div class="col-12 col-md-4 mb-4">
-              <div class="card h-100">
-                  <a href="shop-single.html">
-                      <img src="./assets/img/feature_prod_02.jpg" class="card-img-top" alt="...">
-                  </a>
                   <div class="card-body">
-                      <ul class="list-unstyled d-flex justify-content-between">
+                      <ul class="list-unstyled d-flex justify-content-between" *ngIf="product.average_rate==3">
                           <li>
                               <i class="text-warning fa fa-star"></i>
                               <i class="text-warning fa fa-star"></i>
@@ -185,37 +161,32 @@
                               <i class="text-muted fa fa-star"></i>
                               <i class="text-muted fa fa-star"></i>
                           </li>
-                          <li class="text-muted text-right">$480.00</li>
+                          <li class=" text-right">{{product.price}}</li>
                       </ul>
-                      <a href="shop-single.html" class="h2 text-decoration-none text-dark">Cloud Nike Shoes</a>
+                      <ul class="list-unstyled d-flex justify-content-between" *ngIf="product.average_rate==4">
+                        <li>
+                            <i class="text-warning fa fa-star"></i>
+                            <i class="text-warning fa fa-star"></i>
+                            <i class="text-warning fa fa-star"></i>
+                            <i class="text-warning fa fa-star"></i>
+                            <i class="text-muted fa fa-star"></i>
+                        </li>
+                        <li class=" text-right">{{product.price}}</li>
+                    </ul>
+                    <ul class="list-unstyled d-flex justify-content-between" *ngIf="product.average_rate==5">
+                        <li>
+                            <i class="text-warning fa fa-star"></i>
+                            <i class="text-warning fa fa-star"></i>
+                            <i class="text-warning fa fa-star"></i>
+                            <i class="text-warning fa fa-star"></i>
+                            <i class="text-warning fa fa-star"></i>
+                        </li>
+                        <li class=" text-right">{{product.price}}</li>
+                    </ul>
+                      <div class="h2 text-decoration-none text-dark">{{product.name}}</div>
                       <p class="card-text">
-                          Aenean gravida dignissim finibus. Nullam ipsum diam, posuere vitae pharetra sed, commodo ullamcorper.
+                         {{product.description}}
                       </p>
-                      <p class="text-muted">Reviews (48)</p>
-                  </div>
-              </div>
-          </div>
-          <div class="col-12 col-md-4 mb-4">
-              <div class="card h-100">
-                  <a href="shop-single.html">
-                      <img src="./assets/img/feature_prod_03.jpg" class="card-img-top" alt="...">
-                  </a>
-                  <div class="card-body">
-                      <ul class="list-unstyled d-flex justify-content-between">
-                          <li>
-                              <i class="text-warning fa fa-star"></i>
-                              <i class="text-warning fa fa-star"></i>
-                              <i class="text-warning fa fa-star"></i>
-                              <i class="text-warning fa fa-star"></i>
-                              <i class="text-warning fa fa-star"></i>
-                          </li>
-                          <li class="text-muted text-right">$360.00</li>
-                      </ul>
-                      <a href="shop-single.html" class="h2 text-decoration-none text-dark">Summer Addides Shoes</a>
-                      <p class="card-text">
-                          Curabitur ac mi sit amet diam luctus porta. Phasellus pulvinar sagittis diam, et scelerisque ipsum lobortis nec.
-                      </p>
-                      <p class="text-muted">Reviews (74)</p>
                   </div>
               </div>
           </div>
