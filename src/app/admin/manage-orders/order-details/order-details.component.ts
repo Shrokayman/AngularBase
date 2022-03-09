@@ -16,7 +16,7 @@ import { ActivatedRoute } from '@angular/router';
 export class OrderDetailsComponent implements OnInit {
   imageDirectoryPath : any ='http://127.0.0.1:8000/storage/products/';
   id: any;
-  orders = new Order;
+  // orders = new Order;
   order :any;
   constructor(private orderservice: OrderService, private route: ActivatedRoute) { }
 
@@ -29,8 +29,8 @@ export class OrderDetailsComponent implements OnInit {
   getOrder() {
     this.orderservice.getOrder(this.id).subscribe(res => {
       this.order =res;
-      this.orders = this.order;
-      console.log(res);
+      this.orderservice = this.order;
+      console.log(this.orderservice);
 
     });
   }

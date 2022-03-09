@@ -1,3 +1,4 @@
+import { OrderService } from 'src/app/_service/order.service';
 
 import {NgxPaginationModule} from 'ngx-pagination';
 import { AppRoutingModule } from './app-routing.module';
@@ -107,7 +108,9 @@ import { HighToLowComponent } from './core/product-feature/high-to-low/high-to-l
     HttpClientModule,
     ToastrModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    OrderService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
