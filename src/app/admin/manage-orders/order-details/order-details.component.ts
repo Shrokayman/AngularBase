@@ -14,6 +14,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./order-details.component.css']
 })
 export class OrderDetailsComponent implements OnInit {
+  imageDirectoryPath : any ='http://127.0.0.1:8000/storage/products/';
   id: any;
   orders = new Order;
   order :any;

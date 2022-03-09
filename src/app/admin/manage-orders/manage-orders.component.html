@@ -8,14 +8,13 @@
           <div class='container p-2'>
             <figure class="text-center mt-4">
               <blockquote class="blockquote">
-                <h2 class="float-start">Orders</h2>
+                <h2 class="float-start mb-5">Orders</h2>
               </blockquote>
             </figure>
 
             <table class="table p-lg-5 table-striped mt-5">
               <thead>
                 <tr>
-                  <th>Order ID</th>
                   <th scope="col">Name</th>
                   <th scope="col">Phone</th>
                   <th scope="col">Adderss</th>
@@ -27,10 +26,9 @@
               </thead>
               <tbody>
                 <tr class="" *ngFor="let order of orders| paginate:{ itemsPerPage:5,currentPage :p}">
-                  <td>{{order.id}}</td>
                   <td>{{order['user'].fname}} {{order['user'].lname}}</td>
                   <td>{{order['user'].phone}}</td>
-
+                  <td>{{order['user'].city}}</td>
                   <td> {{ order.created_at | date }}</td>
                   <td>{{order.total_cost+'$'}}</td>
                   <td>{{order.status}}</td>

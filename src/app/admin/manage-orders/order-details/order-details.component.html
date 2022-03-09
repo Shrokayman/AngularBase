@@ -34,7 +34,7 @@
             <tr class="" *ngFor="let order of order">
               <td>
                 <img
-                  src="http://127.0.0.1:8000/{{ order['product'][0].image }}"
+                  src="{{imageDirectoryPath}}{{ order['product'][0].image }}"
                   class="rounded float-start"
                 />
               </td>
