@@ -1,52 +1,39 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 <app-navbar></app-navbar>
 
 <!-- Shopping Cart Section Begin -->
-<div class="container d-flex flex-column">
-  <div class="d-flex">
+<div class="container d-flex flex-column" *ngIf="allProducts.products.length>0">
+  <div class="d-flex" *ngFor="let product of allProducts.products | paginate: { itemsPerPage:5, currentPage: p }" >
     <div  class="card m-5" style="width: 18rem">
       <img
-      src="../../../../assets/img/feature_prod_02.jpg"
+      src="{{imageDirectoryPath}}{{product.image}}"
       class="card-img-top"
       alt="..."
     />
     </div>
     <div class="card-body p-5 m-5 text-center">
-      <h5 class="card-title">Pure Pineapple</h5>
-      <p class="card-text">$60.00</p>
-      <p class="card-text">Description</p>
+      <h5 class="card-title">{{product.name}}</h5>
+      <p class="card-text">{{product.price}}</p>
+      <p class="card-text">{{product.description}}</p>
+    </div>
+    <div class="p-5 m-5">
+      <i class="bi bi-trash3 fs-1 text-danger" (click)="removeFromWishlist(product.id)"></i>
+
     </div>
   </div>
-  <div class="d-flex">
-    <div  class="card m-5" style="width: 18rem">
-      <img
-      src="../../../../assets/img/feature_prod_02.jpg"
-      class="card-img-top"
-      alt="..."
-    />
-    </div>
-    <div class="card-body p-5 m-5 text-center">
-      <h5 class="card-title">Pure Pineapple</h5>
-      <p class="card-text">$60.00</p>
-      <p class="card-text">Description</p>
-    </div>
-  </div>
-  <div class="d-flex">
-    <div  class="card m-5" style="width: 18rem">
-      <img
-      src="../../../../assets/img/feature_prod_02.jpg"
-      class="card-img-top"
-      alt="..."
-    />
-    </div>
-    <div class="card-body p-5 m-5 text-center">
-      <h5 class="card-title">Pure Pineapple</h5>
-      <p class="card-text">$60.00</p>
-      <p class="card-text">Description</p>
-    </div>
-  </div>
+  <pagination-controls (pageChange)="p = $event" class="float-right"></pagination-controls>
 </div>
 
-<!-- Shopping Cart Section End -->
+<!-- Empty WishList -->
 
+<div class="container text-center mt-5" *ngIf="allProducts.products.length==0">
+  <img src="../../../../assets/img/download (1).png" alt="" class="emptyWishImg">
+  <p class="fs-1 textWish fw-normal">NO ITEMS IN YOUR WISHLIST</p>
+  <p class="fs-3 wishParag">Save Your Favourite Items Here</p>
+
+</div>
+
+
+<!-- Shopping Cart Section End -->
 <app-footer></app-footer>
 
