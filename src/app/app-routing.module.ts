@@ -29,10 +29,18 @@ import { AddProductComponent } from './admin/manage-products/add-product/add-pro
 import { UserProfileComponent } from './core/user-profile/user-profile.component';
 import { UserGuard } from './_guards/user.guard';
 import { ChildrenGuard } from './_guards/admin/children.guard';
+import { HighToLowComponent } from './core/product-feature/high-to-low/high-to-low.component';
+import { LowToHighComponent } from './core/product-feature/low-to-high/low-to-high.component';
+import { CategoryComponent } from './core/product-feature/category/category.component';
+import { BrandComponent } from './core/product-feature/brand/brand.component';
 
 const routes: Routes = [
   {path:'' , component:HomeComponent},
   {path:'home' , component:HomeComponent},
+  {path:'hightolow' , component:HighToLowComponent},
+  {path:'lowtohigh' , component:LowToHighComponent},
+  {path:'category/:id' , component:CategoryComponent},
+  {path:'brand/:id' , component:BrandComponent},
   {path:'about' , component:AboutComponent },
   {path:'contact' , component:ContactComponent},
   {

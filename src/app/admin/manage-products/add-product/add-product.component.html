@@ -75,7 +75,7 @@
                                                     <input type="number" class="form-control" name="discount" formControlName="discount" placeholder="" value="0" [(ngModel)]="product.discount" />
                                                 </div>
                                             </div>
-                                            
+
                                         </div>
                                          <div class="row">
                                             <div class="col-md-6">
@@ -112,20 +112,20 @@
                                                 <div class="col-md-6 pr-1">
                                                     <div class="form-group">
                                                         <label>image</label>
-                                                        <input type="text" class="form-control" placeholder="" value=""
-                                                            name="image" formControlName="image" [(ngModel)]="product.image" [ngClass]="{'is-invalid': submitted && f['image'].errors}"/>
-                                                            <div *ngIf="submitted && f['brand_id'].errors" class="invalid-feedback">
-                                                                <div *ngIf="f['brand_id'].errors['required']">
+                                                        <input type="file" class="form-control" (change)="uploadImage($event)"
+                                                            name="image" formControlName="image" [ngClass]="{'is-invalid': submitted && f['image'].errors}"/>
+                                                            <div *ngIf="submitted && f['image'].errors" class="invalid-feedback">
+                                                                <div *ngIf="f['image'].errors['required']">
                                                                     Image  is required
                                                                 </div>
                                                                 </div>
                                                         </div>
                                                 </div>
-                                                
-                                            </div>
 
-     
-                                        </div> 
+                                            </div>
+<!--  -->
+
+                                        </div>
                                         <button style="width:100%" class="btn btn-success btn-lg mt-4" type="submit">
                                             Add
                                         </button>

@@ -26,7 +26,6 @@
               <table class="table table-image">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
                     <th scope="col">Name</th>
                     <th scope="col">Image</th>
                     <th scope="col">description</th>
@@ -38,14 +37,10 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let product of products | paginate:{ itemsPerPage:4,currentPage :p}"></tr>
-                  <tr *ngFor="let prod of products">
-                    <th scope="row">{{prod.id}}</th>
-                    <td class="w-5">
-                      {{prod.name}}
-                      
-                    </td>
-                    <td><img  src="http://127.0.0.1:8000/{{prod.image}}" alt=""></td>
+                  <tr *ngFor="let product of products "></tr>
+                  <tr *ngFor="let prod of products | filter: searchKey: 'name' | paginate:{ itemsPerPage:4,currentPage :p}">
+                    <td class="w-5">{{prod.name}}</td>
+                    <td><img src="{{imageDirectoryPath}}{{prod.image}}" alt="product img"></td>
                     <td>{{prod.description}}</td>
                     <td>{{prod.price}}</td>
                     <td>{{prod.discount}}</td>
@@ -56,7 +51,7 @@
                       <button class="btn btn-danger btn-sm ms-3" (click)="deleteProduct(prod.id)">Delete</button>
                     </td>
                   </tr>
-                  <pagination-controls (pageChange)="p = $event" class="float-left">
+                  <pagination-controls class="text-center" (pageChange)="p = $event" class="float-left">
                   </pagination-controls>
                 </tbody>
               </table>

@@ -8,3 +8,7 @@ export class Product {
     category_id:any;
     brand_id: any;
 }
+
+export interface ProductWithCounter  extends Product {
+  cartCounter:number;
+}
