@@ -3,11 +3,19 @@
     <div class="card rounded-0">
         <img class="card-img img" src="{{imageDirectoryPath}}{{productItem.image}}" style="height:15rem;">
         <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+            <!-- {{addedToWishlist}} -->
             <ul class="list-unstyled">
-                <li *ngIf="!addedToWishlist" (click)="addtoWishlist(productItem.id)"><a class="btn btn-success text-white">
-                    <i class="bi bi-heart" ></i></a></li>
-                    <li *ngIf="addedToWishlist" (click)="removeFromWishlist(productItem.id)"><a class="btn btn-success text-white">
-                        <i class="bi bi-heart-fill" ></i></a></li>
+                <!-- like -->
+
+                <li *ngIf="!addedToWishlist" (click)="addtoWishlist(productItem.id)">
+                    <a class="btn btn-success text-white">
+                        <i class="bi bi-heart-fill"></i></a>
+                </li>
+                <!-- unlike -->
+                <li *ngIf="addedToWishlist" (click)="removeFromWishlist(productItem.id)">
+                    <a class="btn btn-danger text-white">
+                        <i class="bi bi-heart"></i></a>
+                </li>
                 <li><a class="btn btn-success text-white mt-2" routerLink="/product/details/{{productItem.id}}"><i class="far fa-eye"></i></a></li>
                 <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="fas fa-cart-plus"></i></a></li>
             </ul>
@@ -46,4 +54,3 @@
             ${{productItem.price}}</h5>
         .</ng-template>
 </div>
-

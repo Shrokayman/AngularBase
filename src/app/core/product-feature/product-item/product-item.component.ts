@@ -21,7 +21,6 @@ export class ProductItemComponent implements OnInit {
   constructor(private productService : ProductService, private wishlistService:WishlistService) { }
 
   ngOnInit(): void {
-
     
   }
 
@@ -34,9 +33,9 @@ export class ProductItemComponent implements OnInit {
 
   removeFromWishlist(productid:any){
     this.userDataFromToken = jwt_decode(this.token);
+    this.addedToWishlist=!this.addedToWishlist;
     this.wishlistService.removeData(productid,this.userDataFromToken.user_id).subscribe(()=>{
-      this.addedToWishlist=!this.addedToWishlist;
     })
   }
-
+  
 }

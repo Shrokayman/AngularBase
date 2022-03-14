@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/_models/product.model';
 import jwt_decode from "jwt-decode";
 import { WishlistService } from './../../../_service/wishlist.service';
+import { ReviewService } from 'src/app/_service/review.service';
 
 @Component({
   selector: 'app-product-details',
@@ -13,7 +14,10 @@ import { WishlistService } from './../../../_service/wishlist.service';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
-  constructor(private categoryService:CategoryService,private brandService:BrandService,private activatedRoute:ActivatedRoute,private productService:ProductService,private wishlistService:WishlistService) { }
+  // productid: any;
+  constructor(private categoryService:CategoryService,private brandService:BrandService,private activatedRoute:ActivatedRoute,private productService:ProductService,private wishlistService:WishlistService,private reviewService:ReviewService) { }
+  productavgRate: any;
+  productiswished:any;
   imageDirectoryPath : any ='http://127.0.0.1:8000/storage/products/';
   productItem: any;
   id: any;
@@ -21,6 +25,7 @@ export class ProductDetailsComponent implements OnInit {
   token :any = localStorage.getItem('token');
   userDataFromToken:any;
   addedToWishlist:boolean=false;
+  
 
 
   ngOnInit(): void {
@@ -28,12 +33,17 @@ export class ProductDetailsComponent implements OnInit {
       this.id =params.get('id');
     });
     this.getProductById(this.id);
+    // console.log(this.productItem)
     this.getRelatedProducts()
-  }
+    this.getAvgRate(this.id)
+    this.checkproductwishlist(this.id)
+    }
   getProductById(id:number){
   
     this.productService.getProductById(id).subscribe(res=> {
     this.productItem = res;
+    console.log(this.productItem)
+
   })
 }
   getRelatedProducts() {
@@ -41,19 +51,37 @@ this.productService.showRelated(this.id).subscribe(res=> {
   this.relatedProducts = res;
 });  }
 
-addtoWishlist(productid:any){
+addtoWishlist(id:any){
   this.userDataFromToken = jwt_decode(this.token);
   this.addedToWishlist=!this.addedToWishlist;
-  this.wishlistService.addData(productid,this.userDataFromToken.user_id).subscribe(()=>{
+  this.wishlistService.addData(id,this.userDataFromToken.user_id).subscribe(()=>{
   });
 }
 
-removeFromWishlist(productid:any){
+removeFromWishlist(id:any){
   this.userDataFromToken = jwt_decode(this.token);
-  this.wishlistService.removeData(productid,this.userDataFromToken.user_id).subscribe(()=>{
+  this.wishlistService.removeData(id,this.userDataFromToken.user_id).subscribe(()=>{
     this.addedToWishlist=!this.addedToWishlist;
   })
 }
+getAvgRate(id:number) {
+  this.productService.getAvgRateProductById(id).subscribe((res: any)=> {
+    this.productavgRate = Math.floor(res);
+    if(this.productavgRate > 5){
+      this.productavgRate = Math.floor(res/2);
+    }
+    console.log(this.productavgRate);
+  });  }
+  checkproductwishlist(id:number){
+    this.productService.checkproductbyId(id).subscribe(res=>{
+      if(res == true){
+        this.productiswished=res;
+
+      }else{
+        this.productItem=res;
+      }
+    })
+  }
 }
 
 

@@ -59,5 +59,16 @@ export class ProductService {
   topProducts(){
     return this.http.get('http://127.0.0.1:8000/api/topproducts');
   }
-
+  getAvgRateProductById(id:number) {
+    let header = new HttpHeaders({
+      Authorization: localStorage.getItem('token')!
+    })
+    return this.http.get(environment.apiUrl+'/products/rate/'+id,{headers:header});
+  }
+  checkproductbyId(id:number) {
+    let header = new HttpHeaders({
+      Authorization: localStorage.getItem('token')!
+    })
+    return this.http.get(environment.apiUrl+'/products/wishlist/'+id,{headers:header});
+  }
 }
