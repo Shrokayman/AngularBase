@@ -22,11 +22,11 @@
                 <div class="card ">
                     <div class="card-body ">
                         <div class="d-flex flex-row justify-content-between">
-
                             <h1 style="font-weight:bold" class="h2">{{productItem.name}}</h1><br>
                             <!-- unlike -->
-                            <a *ngIf="!productiswished" (click)="addtoWishlist(productItem.id)" class="btn btn-success text-white"><i class="bi bi-heart" ></i></a>
-                            <a *ngIf="productiswished" (click)="removeFromWishlist(productItem.id)" class="btn btn-danger text-white"><i class="bi bi-heart" ></i></a>
+
+                            <a *ngIf="!productItem.isWished" (click)="addtoWishlist(productItem.id)" class="btn btn-success text-white"><i class="bi bi-heart" ></i></a>
+                            <a *ngIf="productItem.isWished" class="btn btn-success text-white"><i class="bi bi-heart-fill" ></i></a>
 
                             <!-- <a *ngIf="!addedToWishlist" (click)="addtoWishlist(productItem.id)" class="btn btn-success text-white"><i class="bi bi-heart" ></i></a> -->
                             <!-- like -->

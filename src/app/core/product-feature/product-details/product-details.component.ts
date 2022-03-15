@@ -33,10 +33,8 @@ export class ProductDetailsComponent implements OnInit {
       this.id =params.get('id');
     });
     this.getProductById(this.id);
-    // console.log(this.productItem)
     this.getRelatedProducts()
     this.getAvgRate(this.id)
-    this.checkproductwishlist(this.id)
     }
   getProductById(id:number){
   
@@ -50,20 +48,26 @@ export class ProductDetailsComponent implements OnInit {
 this.productService.showRelated(this.id).subscribe(res=> {
   this.relatedProducts = res;
 });  }
-
-addtoWishlist(id:any){
+addtoWishlist(id:number){
   this.userDataFromToken = jwt_decode(this.token);
-  this.addedToWishlist=!this.addedToWishlist;
+  this.productItem.isWished=!this.productItem.isWished;
   this.wishlistService.addData(id,this.userDataFromToken.user_id).subscribe(()=>{
+
   });
 }
+// addtoWishlist(id:any){
+//   this.userDataFromToken = jwt_decode(this.token);
+//   this.addedToWishlist=!this.addedToWishlist;
+//   this.wishlistService.addData(id,this.userDataFromToken.user_id).subscribe(()=>{
+//   });
+// }
 
-removeFromWishlist(id:any){
-  this.userDataFromToken = jwt_decode(this.token);
-  this.wishlistService.removeData(id,this.userDataFromToken.user_id).subscribe(()=>{
-    this.addedToWishlist=!this.addedToWishlist;
-  })
-}
+// removeFromWishlist(id:any){
+//   this.userDataFromToken = jwt_decode(this.token);
+//   this.addedToWishlist=!this.addedToWishlist;
+//   this.wishlistService.removeData(id,this.userDataFromToken.user_id).subscribe(()=>{
+//   })
+// }
 getAvgRate(id:number) {
   this.productService.getAvgRateProductById(id).subscribe((res: any)=> {
     this.productavgRate = Math.floor(res);
@@ -72,16 +76,15 @@ getAvgRate(id:number) {
     }
     console.log(this.productavgRate);
   });  }
-  checkproductwishlist(id:number){
-    this.productService.checkproductbyId(id).subscribe(res=>{
-      if(res == true){
-        this.productiswished=res;
-
-      }else{
-        this.productItem=res;
-      }
-    })
-  }
+  // checkproductwishlist(id:number){
+  //   this.productService.checkproductbyId(id).subscribe(res=>{
+  //     if(res == true){
+  //       this.productiswished=res;
+  //     }else{
+  //       this.productItem=res;
+  //     }
+  //   })
+  // }
 }
 
 
