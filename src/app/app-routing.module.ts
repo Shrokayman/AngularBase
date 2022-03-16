@@ -45,7 +45,7 @@ const routes: Routes = [
     canActivate: [UserGuard]
   },
   {
-    path:'cart/list' , component:CartComponent,
+    path:'cart/list/:id' , component:CartComponent,
     canActivate: [UserGuard]
   },
   {

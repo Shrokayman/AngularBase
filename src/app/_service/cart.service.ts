@@ -1,47 +1,72 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Injectable, EventEmitter } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Product } from '../_models/product.model';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  public cartItemList : any =[]
-  public productList = new BehaviorSubject<any>([]);
-  public search = new BehaviorSubject<string>("");
+  private productList: Product[] = [];
+  cartHasBeenChanged: EventEmitter<Product[]> = new EventEmitter<Product[]>();
 
-  constructor() { }
-  getProducts(){
-    return this.productList.asObservable();
+
+
+  constructor(private httpClient: HttpClient) { }
+
+  getCarts() {
+
+    let header = new HttpHeaders({
+      Authorization: localStorage.getItem('token')!
+    })
+
+    return this.httpClient.get('http://127.0.0.1:8000/api/carts', { headers: header })
   }
 
-  setProduct(product : any){
-    this.cartItemList.push(...product);
-    this.productList.next(product);
-  }
-  addtoCart(product : any){
-    this.cartItemList.push(product);
-    this.productList.next(this.cartItemList);
-    this.getTotalPrice();
-    console.log(this.cartItemList)
-  }
-  getTotalPrice() : number{
-    let grandTotal = 0;
-    this.cartItemList.map((a:any)=>{
-      grandTotal += a.total;
+  getCart(id: number) {
+
+    let header = new HttpHeaders({
+      Authorization: localStorage.getItem('token')!
     })
-    return grandTotal;
+
+    return this.httpClient.get('http://127.0.0.1:8000/api/carts/' + id, { headers: header })
   }
-  removeCartItem(product: any){
-    this.cartItemList.map((a:any, index:any)=>{
-      if(product.id=== a.id){
-        this.cartItemList.splice(index,1);
-      }
+
+  createCarts(data: Product) {
+
+    let header = new HttpHeaders({
+      Authorization: localStorage.getItem('token')!
     })
-    this.productList.next(this.cartItemList);
+
+    return this.httpClient.post('http://127.0.0.1:8000/api/carts', data, { headers: header })
   }
-  removeAllCart(){
-    this.cartItemList = []
-    this.productList.next(this.cartItemList);
+
+  updateCart (id: number, data: Product) {
+
+    let header = new HttpHeaders({
+      Authorization: localStorage.getItem('token')!
+    })
+
+    return this.httpClient.put('http://127.0.0.1:8000/api/carts/' + id, data, { headers: header })
+  }
+
+  deleteCart (id: number) {
+
+      let header = new HttpHeaders({
+        Authorization: localStorage.getItem('token')!
+      })
+
+      return this.httpClient.delete('http://127.0.0.1:8000/api/carts/'+ id, { headers: header })
+  }
+
+  addToCart(product: Product) {
+    product.count = 0
+    if (this.productList.includes(product)){
+      product.count!++
+    }else {
+      this.productList.push(product);
+      this.cartHasBeenChanged.emit(this.productList);
+    }
   }
 }

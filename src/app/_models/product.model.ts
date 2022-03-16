@@ -7,4 +7,5 @@ export class Product {
     average_rate:any;
     category_id:any;
     brand_id: any;
+    count: any;
 }

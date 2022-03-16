@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from 'src/app/_service/cart.service';
-import { KartService } from 'src/app/_service/kart.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import { Kart } from 'src/app/_models/kart';
+import { Cart } from 'src/app/_models/cart';
 import jwt_decode from "jwt-decode";
+import { CartService } from 'src/app/_service/cart.service';
 
 
 
@@ -22,10 +21,10 @@ export class CartComponent implements OnInit {
   userData: any;
   id: any;
   carts: any;
-  cart = new Kart();
+  cart = new Cart();
   // public products : any = [];
   // public grandTotal !: number;
-  constructor(private cartService: CartService, private kartservice: KartService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private cartService: CartService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
 
@@ -45,13 +44,13 @@ export class CartComponent implements OnInit {
   }
 
   getCarts() {
-    this.kartservice.getCarts().subscribe(res => {
+    this.cartService.getCarts().subscribe(res => {
       this.carts = res;
       // console.log(res);
     });
   }
   getCart() {
-    this.kartservice.getCart(this.id).subscribe(res => {
+    this.cartService.getCart(this.id).subscribe(res => {
       this.carts = res;
       this.cart = this.carts;
       // console.log(res);
@@ -59,10 +58,10 @@ export class CartComponent implements OnInit {
     });
   }
 
-  removeItem(item: any) {
-    this.cartService.removeCartItem(item);
-  }
+  // removeItem(item: any) {
+  //   this.cartService.removeCartItem(item);
+  // }
   emptycart() {
-    this.cartService.removeAllCart();
+    this.cartService.deleteCart(this.id);
   }
 }
