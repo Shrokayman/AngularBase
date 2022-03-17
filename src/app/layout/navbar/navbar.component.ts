@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CartService } from 'src/app/_service/cart.service';
 
 
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -18,7 +19,8 @@ export class NavbarComponent implements OnInit {
   public searchTerm !: string;
   id: any;
   productList: Product[] = [];
-
+  product!: Product;
+  productCount!: number;
 
 
 
@@ -41,8 +43,8 @@ export class NavbarComponent implements OnInit {
       },
       (err) => { },
       () => { }
-    );
-
+      );
+      // console.log(this.productCount);
   }
 
 
@@ -66,6 +68,7 @@ export class NavbarComponent implements OnInit {
 
   //   });
   // }
+
 
 }
 function products(products: any) {

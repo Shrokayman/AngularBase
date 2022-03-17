@@ -1,4 +1,4 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable, EventEmitter, Input } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Product } from '../_models/product.model';
 
@@ -7,9 +7,11 @@ import { Product } from '../_models/product.model';
   providedIn: 'root'
 })
 export class CartService {
-
+  @Input()
   private productList: Product[] = [];
   cartHasBeenChanged: EventEmitter<Product[]> = new EventEmitter<Product[]>();
+  public product!: Product;
+
 
 
 
@@ -42,7 +44,7 @@ export class CartService {
     return this.httpClient.post('http://127.0.0.1:8000/api/carts', data, { headers: header })
   }
 
-  updateCart (id: number, data: Product) {
+  updateCart(id: number, data: Product) {
 
     let header = new HttpHeaders({
       Authorization: localStorage.getItem('token')!
@@ -51,22 +53,28 @@ export class CartService {
     return this.httpClient.put('http://127.0.0.1:8000/api/carts/' + id, data, { headers: header })
   }
 
-  deleteCart (id: number) {
+  deleteCart(id: number) {
 
-      let header = new HttpHeaders({
-        Authorization: localStorage.getItem('token')!
-      })
+    let header = new HttpHeaders({
+      Authorization: localStorage.getItem('token')!
+    })
 
-      return this.httpClient.delete('http://127.0.0.1:8000/api/carts/'+ id, { headers: header })
+    return this.httpClient.delete('http://127.0.0.1:8000/api/carts/' + id, { headers: header })
   }
 
   addToCart(product: Product) {
-    product.count = 0
-    if (this.productList.includes(product)){
-      product.count!++
-    }else {
+    product.count = 1
+    if (this.productList.includes(product)) {
+      product.count += 1;
+      console.log(this.productList.includes(product));
+      console.log(product.count);
+    } else {
       this.productList.push(product);
       this.cartHasBeenChanged.emit(this.productList);
     }
+    // console.log(this.amount);
+    console.log(this.productList);
+
   }
+
 }

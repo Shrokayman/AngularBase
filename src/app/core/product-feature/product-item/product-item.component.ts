@@ -16,6 +16,8 @@ export class ProductItemComponent implements OnInit {
 
   productList: Product[] = [];
   product:any;
+  public productCount!: number ;
+
 
   @Input()
   productItem!: Product;
@@ -28,7 +30,8 @@ export class ProductItemComponent implements OnInit {
     this.cartService.cartHasBeenChanged.subscribe(
       (res) => {
         this.productList = res;
-        console.log(res);
+
+        console.log(this.productCount);
 
       },
       (err) => { },
@@ -39,6 +42,7 @@ export class ProductItemComponent implements OnInit {
 
   onItemAdded() {
     this.cartService.addToCart(this.productItem);
+    // this.product.count += 1;
   }
 
 
