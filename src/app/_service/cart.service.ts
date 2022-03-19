@@ -1,5 +1,5 @@
 import { Product } from 'src/app/_models/product.model';
-import { Injectable, EventEmitter, Input } from '@angular/core';
+import { Injectable, EventEmitter, Input, Output } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import jwt_decode from "jwt-decode";
 
@@ -17,6 +17,7 @@ export class CartService {
   token: any = localStorage.getItem('token');
   userData: any;
   id: any;
+  @Output() productItem: any;
 
 
 
@@ -50,7 +51,7 @@ export class CartService {
     })
     console.log(data);
 
-    return this.httpClient.post('http://127.0.0.1:8000/api/carts', data, { headers: header })
+    return this.httpClient.post('http://127.0.0.1:8000/api/carts', data, { headers: header });
   }
 
   updateCart(id: number, data: Product[]) {
@@ -72,7 +73,7 @@ export class CartService {
   }
 
 
-  async addToCart(product: Product) {
+  addToCart(product: Product) {
     // this.userData = jwt_decode(this.token);
     // this.id = this.userData.user_id;
 
@@ -115,21 +116,23 @@ export class CartService {
 
     // this.productList = this.updateCart(this.id);
 
-    if (!product.product_quantity){
-      product.product_quantity =1;
+    if (!product.product_quantity) {
+      product.product_quantity = 1;
     }
 
     if (this.productList.some(x => x.id == product.id)) {
-      product.product_quantity = product.product_quantity + 1;
-      console.log(product.product_quantity);
+      product.product_quantity += 1;
+      console.log(product);
 
-      this.productList = this.productList.map(product1=>{
+      this.productList = this.productList.map(product1 => {
         console.log(product1.id);
 
-        if (product1.id == product.id){
+        if (product1.id == product.id) {
           product1 = product;
-          console.log(product1.product_quantity);
+          console.log(product1);
           console.log(product.product_quantity);
+          this.createCart([product1]);
+
         }
         return product1;
       })
@@ -140,9 +143,9 @@ export class CartService {
       this.productList.push(product);
     }
     this.cartHasBeenChanged.emit(this.productList);
+    this.createCart(this.productList);
     // console.log(this.amount);
-
-
   }
+
 
 }

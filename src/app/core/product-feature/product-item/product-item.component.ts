@@ -11,19 +11,19 @@ import { CartService } from 'src/app/_service/cart.service';
 })
 export class ProductItemComponent implements OnInit {
   // public productList : any ;
-  public filterCategory : any
-  searchKey:string ="";
+  public filterCategory: any
+  searchKey: string = "";
 
   productList: Product[] = [];
-  product:any;
-  public productCount!: number ;
+  product: any;
+  public productCount!: number;
 
 
-  @Input()
-  productItem!: Product;
+  @Input() productItem!: Product;
+
   imageDirectoryPath: any = 'http://127.0.0.1:8000/storage/products/';
 
-  constructor(private productService: ProductService, private cartService:CartService) { }
+  constructor(private productService: ProductService, private cartService: CartService) { }
 
   ngOnInit(): void {
 
@@ -31,6 +31,7 @@ export class ProductItemComponent implements OnInit {
       (res) => {
         this.productList = res;
 
+        this.cartService.createCart(res);
 
 
       },
@@ -38,14 +39,28 @@ export class ProductItemComponent implements OnInit {
       () => { }
     );
 
+    this.insertCart();
+
+  }
+
+  insertCart() {
+    const cart = [];
+    cart.push(this.productItem);
+    this.cartService.createCart(cart).subscribe(()=>{});
+    console.log(cart);
+
   }
 
   onItemAdded() {
     this.cartService.addToCart(this.productItem);
+
+    // this.itemAddedToCart.emit(product);
+
     console.log(this.productItem);
 
     // this.product.count += 1;
   }
+
 
 
 
