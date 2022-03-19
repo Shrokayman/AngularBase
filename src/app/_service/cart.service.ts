@@ -1,6 +1,9 @@
+import { Product } from 'src/app/_models/product.model';
 import { Injectable, EventEmitter, Input } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Product } from '../_models/product.model';
+import jwt_decode from "jwt-decode";
+
+
 
 
 @Injectable({
@@ -11,6 +14,11 @@ export class CartService {
   private productList: Product[] = [];
   cartHasBeenChanged: EventEmitter<Product[]> = new EventEmitter<Product[]>();
   public product!: Product;
+  token: any = localStorage.getItem('token');
+  userData: any;
+  id: any;
+
+
 
 
 
@@ -35,16 +43,17 @@ export class CartService {
     return this.httpClient.get('http://127.0.0.1:8000/api/carts/' + id, { headers: header })
   }
 
-  createCarts(data: Product) {
+  createCart(data: Product[]) {
 
     let header = new HttpHeaders({
       Authorization: localStorage.getItem('token')!
     })
+    console.log(data);
 
     return this.httpClient.post('http://127.0.0.1:8000/api/carts', data, { headers: header })
   }
 
-  updateCart(id: number, data: Product) {
+  updateCart(id: number, data: Product[]) {
 
     let header = new HttpHeaders({
       Authorization: localStorage.getItem('token')!
@@ -62,18 +71,77 @@ export class CartService {
     return this.httpClient.delete('http://127.0.0.1:8000/api/carts/' + id, { headers: header })
   }
 
-  addToCart(product: Product) {
-    product.count = 1
-    if (this.productList.includes(product)) {
-      product.count += 1;
-      console.log(this.productList.includes(product));
-      console.log(product.count);
+
+  async addToCart(product: Product) {
+    // this.userData = jwt_decode(this.token);
+    // this.id = this.userData.user_id;
+
+    // const cart = await this.getCart(this.id);
+
+    // if (cart){
+    //   cart.forEach(item =>{
+    //     console.log(item);
+    //   })
+    // }
+
+
+    // this.getCart(this.id).subscribe(res => {
+    //   const cart: any = res;
+    //   console.log(cart);
+    //   if (cart.products) {
+    //     if (cart.products.some((item: any) => {
+    //       return item.id = product.id
+    //     })) {
+    //       cart.products.forEach((item: any) => {
+    //         if (item.id == product.id) {
+    //           item.pivot.product_quantity += 1;
+    //         }
+    //       })
+    //     } else {
+    //       cart.products.push(product);
+    //     }
+    //     this.updateCart(this.id, cart.products);
+    //   } else {
+
+    //     cart.push(product);
+    //     this.createCart(cart);
+    //     console.log(cart);
+
+    //   }
+    //   this.cartHasBeenChanged.emit(cart.products);
+
+    // });
+
+
+    // this.productList = this.updateCart(this.id);
+
+    if (!product.product_quantity){
+      product.product_quantity =1;
+    }
+
+    if (this.productList.some(x => x.id == product.id)) {
+      product.product_quantity = product.product_quantity + 1;
+      console.log(product.product_quantity);
+
+      this.productList = this.productList.map(product1=>{
+        console.log(product1.id);
+
+        if (product1.id == product.id){
+          product1 = product;
+          console.log(product1.product_quantity);
+          console.log(product.product_quantity);
+        }
+        return product1;
+      })
+
+      // console.log(this.productList.includes(product));
+      // console.log(product.product_quantity);
     } else {
       this.productList.push(product);
-      this.cartHasBeenChanged.emit(this.productList);
     }
+    this.cartHasBeenChanged.emit(this.productList);
     // console.log(this.amount);
-    console.log(this.productList);
+
 
   }
 

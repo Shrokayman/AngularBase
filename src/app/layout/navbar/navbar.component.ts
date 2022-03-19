@@ -19,8 +19,8 @@ export class NavbarComponent implements OnInit {
   public searchTerm !: string;
   id: any;
   productList: Product[] = [];
-  product!: Product;
-  productCount!: number;
+  product: any;
+  productCount: number = 0;
 
 
 
@@ -40,11 +40,15 @@ export class NavbarComponent implements OnInit {
     this.cartService.cartHasBeenChanged.subscribe(
       (res) => {
         this.productList = res;
+        this.productCount +=1;
       },
       (err) => { },
       () => { }
-      );
-      // console.log(this.productCount);
+    );
+    // console.log(this.productCount);
+    this.getCart();
+
+
   }
 
 
@@ -53,21 +57,45 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/login'])
   }
 
-  // getCarts() {
-  //   this.cartService.getCarts().subscribe(res => {
-  //     this.carts = res;
-  //     // console.log(res);
-  //   });
-  // }
-  // getCart() {
-  //   this.cartService.getCart(this.id).subscribe(res => {
-  //     this.carts = res;
-  //     // console.log(res);
-  //     this.totalItem = this.carts[0]['products'].length;
-  //     // console.log(this.totalItem + ' this is total item');
+  getCarts() {
+    this.cartService.getCarts().subscribe(res => {
+      this.product = res;
+      // console.log(res);
+    });
+  }
+  getCart() {
+    this.cartService.getCart(this.id).subscribe(res => {
+      this.product = res;
+      // this.product.forEach((element: any) => {
 
-  //   });
-  // }
+      //   // this.productCount = 0
+      //   console.log(element['products']);
+      //   element['products'].forEach((item: any) => {
+      //     console.log(item.pivot.product_quantity);
+      //     this.productCount += item.pivot.product_quantity;
+
+      //     this.productCount = this.productCount + this.productCount;
+      //   });
+      //   // this.productCount = this.productCount;
+
+      // });
+      for (const item of this.product[0].products) {
+        // for (let i = 0; i < item.length; i++)
+
+        // console.log(item.pivot);
+        this.productCount += item.pivot.product_quantity;
+        console.log(this.productCount);
+
+      }
+      // this.productCount = this.productCount + this.productCount;
+      // this.productCount += this.productCount;
+
+      // console.log(res);
+      // this.totalItem = this.productList[0]['products'].length;
+      // console.log(this.totalItem + ' this is total item');
+
+    });
+  }
 
 
 }

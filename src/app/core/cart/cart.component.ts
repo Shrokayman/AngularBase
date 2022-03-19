@@ -53,7 +53,7 @@ export class CartComponent implements OnInit {
     this.cartService.getCart(this.id).subscribe(res => {
       this.carts = res;
       this.cart = this.carts;
-      // console.log(res);
+      console.log(res);
 
     });
   }

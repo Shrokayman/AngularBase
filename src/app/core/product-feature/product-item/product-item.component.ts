@@ -31,7 +31,7 @@ export class ProductItemComponent implements OnInit {
       (res) => {
         this.productList = res;
 
-        console.log(this.productCount);
+
 
       },
       (err) => { },
@@ -42,6 +42,8 @@ export class ProductItemComponent implements OnInit {
 
   onItemAdded() {
     this.cartService.addToCart(this.productItem);
+    console.log(this.productItem);
+
     // this.product.count += 1;
   }
 
