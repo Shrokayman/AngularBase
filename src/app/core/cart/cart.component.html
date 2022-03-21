@@ -1,71 +1,118 @@
-  <!-- Start Top Nav -->
-  <!-- Header -->
-  <app-navbar></app-navbar>
-  <!-- Close Top Nav -->
-  <!-- Close Header -->
+<!-- Start Top Nav -->
+<!-- Header -->
+<app-navbar></app-navbar>
+<!-- Close Top Nav -->
+<!-- Close Header -->
 
+<ng-container *ngIf="carts != 0">
+  <div class="container">
+    <div class="card-table">
+      <div class="cart-product">
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th>Sr.No</th>
+              <th>Product Name</th>
+              <th>Product Image</th>
+              <th>Description</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of carts?.products; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ item.name }}</td>
+              <td>
+                <img
+                  style="width: 120px"
+                  src="{{ imageDirectoryPath }}{{ item.image }}"
+                  alt=""
+                />
+              </td>
+              <td style="width: 25%">{{ item.description }}</td>
+              <th style="width: 12%">
+                {{ item.price | currency: "USD" }}
+              </th>
+              <td style="width: 20%" class="col-lg-3 row-sm-3">
+                <div class="col">
+                  <button
+                    (click)="removeFromCart(item)"
+                    class="btn btn-secondary btn-block"
+                  >
+                    -
+                  </button>
 
-  <ng-container *ngIf="carts !=0">
-    <div class="container">
-        <div class="card-table">
-            <div class="cart-product">
-                <table class="table table-responsive">
-                    <thead>
-                        <tr>
-                            <th>Sr.No</th>
-                            <th>Product Name</th>
-                            <th>Product Image</th>
-                            <th>Description</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Total</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let item of carts[0]['products']; let i = index">
-                            <td>{{i+1}}</td>
-                            <td>{{item.name}}</td>
-                            <td><img style="width: 120px;" src="{{imageDirectoryPath}}{{item.image}}" alt=""></td>
-                            <td style="width: 25%;">{{item.description}}</td>
-                            <th style="width: 12%;">{{item.price}}</th>
-                            <td style="width: 12%;">{{item['pivot'].product_quantity	}}</td>
-                            <td style="width: 12%;">{{item.name}}</td>
-                            <td>
-                                <button  class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="4"></td>
-                            <td><button (click)="emptycart()" class="btn btn-danger">Empty Cart</button></td>
-                            <td><button routerLink="/product/listing" class="btn btn-primary">Shop More</button></td>
-                            <td><button class="btn btn-success" routerLink="/cart/Checkout">Checkout</button></td>
-                            <!-- <td><strong>Grand Total : ${{grandTotal}}</strong></td> -->
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+                  {{ item["pivot"].product_quantity }}
+
+                  <button
+                    (click)="addItemToCart(item)"
+                    class="btn btn-secondary btn-block"
+                  >
+                    +
+                  </button>
+                </div>
+              </td>
+
+              <td style="width: 12%">
+                {{
+                  item.price * item["pivot"].product_quantity
+                    | currency: "USD":true
+                }}
+              </td>
+              <td>
+                <button class="btn btn-danger" (click)="deleteItem(item)">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2"></td>
+              <td>
+                <button (click)="emptycart()" class="btn btn-danger">
+                  Empty Cart
+                </button>
+              </td>
+              <td>
+                <button routerLink="/product/listing" class="btn btn-primary">
+                  Shop More
+                </button>
+              </td>
+              <td>
+                <button class="btn btn-success" routerLink="/cart/Checkout">
+                  Checkout
+                </button>
+              </td>
+              <td><strong>Grand Total :{{grandTotal}} </strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
+  </div>
 </ng-container>
 
-
-<ng-container *ngIf="carts ==0">
-    <div class="container">
-        <div class="card">
-            <h5 class="card-title">My Cart</h5>
-        </div>
-        <div class="center">
-            <img src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90" alt="">
-            <h4>Your cart is empty!</h4>
-            <h6>Add item to it now</h6>
-            <button routerLink="/product/listing" class="btn btn-primary">Shop Now</button>
-        </div>
+<ng-container *ngIf="carts == 0">
+  <div class="container">
+    <div class="card">
+      <h5 class="card-title">My Cart</h5>
     </div>
+    <div class="center">
+      <img
+        src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"
+        alt=""
+      />
+      <h4>Your cart is empty!</h4>
+      <h6>Add item to it now</h6>
+      <button routerLink="/product/listing" class="btn btn-primary">
+        Shop Now
+      </button>
+    </div>
+  </div>
 </ng-container>
 
-
-
-  <!-- Start Footer -->
-  <app-footer></app-footer>
-  <!-- End Footer -->
+<!-- Start Footer -->
+<app-footer></app-footer>
+<!-- End Footer -->

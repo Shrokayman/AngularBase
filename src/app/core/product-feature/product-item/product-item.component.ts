@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/_models/product.model';
 import { ProductService } from 'src/app/_service/product.service';
 import { CartService } from 'src/app/_service/cart.service';
+import jwt_decode from "jwt-decode";
+
 
 
 @Component({
@@ -17,7 +19,9 @@ export class ProductItemComponent implements OnInit {
   productList: Product[] = [];
   product: any;
   public productCount!: number;
-
+  token: any = localStorage.getItem('token')
+  userData: any;
+  id: any;
 
   @Input() productItem!: Product;
 
@@ -30,24 +34,20 @@ export class ProductItemComponent implements OnInit {
     this.cartService.cartHasBeenChanged.subscribe(
       (res) => {
         this.productList = res;
-
-        this.cartService.createCart(res);
-
-
       },
       (err) => { },
       () => { }
     );
 
-    this.insertCart();
-
   }
 
   insertCart() {
-    const cart = [];
-    cart.push(this.productItem);
-    this.cartService.createCart(cart).subscribe(()=>{});
-    console.log(cart);
+    this.userData = jwt_decode(this.token);
+    this.id = this.userData.user_id;
+    const products = [];
+    products.push(this.productItem);
+    this.cartService.createCart(products).subscribe(() => { });
+    console.log(products);
 
   }
 

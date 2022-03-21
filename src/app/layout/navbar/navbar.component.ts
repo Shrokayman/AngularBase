@@ -38,16 +38,19 @@ export class NavbarComponent implements OnInit {
 
     }
     this.cartService.cartHasBeenChanged.subscribe(
-      (res) => {
+      (res: any) => {
         this.productList = res;
-        this.productCount +=1;
+        this.productCount = 0;
+        this.productList.forEach((item: any) => {
+          this.productCount += item.pivot.product_quantity;
+        });
       },
       (err) => { },
       () => { }
     );
     // console.log(this.productCount);
     this.getCart();
-
+    this.getCarts();
 
   }
 
@@ -64,7 +67,7 @@ export class NavbarComponent implements OnInit {
     });
   }
   getCart() {
-    this.cartService.getCart(this.id).subscribe(res => {
+    this.cartService.getCart(this.id).subscribe((res: any) => {
       this.product = res;
       // this.product.forEach((element: any) => {
 
@@ -79,14 +82,17 @@ export class NavbarComponent implements OnInit {
       //   // this.productCount = this.productCount;
 
       // });
-      for (const item of this.product[0].products) {
-        // for (let i = 0; i < item.length; i++)
+      if (this.product.products) {
+        for (const item of this.product.products) {
+          // for (let i = 0; i < item.length; i++)
 
-        // console.log(item.pivot);
-        this.productCount += item.pivot.product_quantity;
-        console.log(this.productCount);
+          // console.log(item.pivot);
+          this.productCount += item.pivot.product_quantity;
+          console.log(this.productCount);
+        }
 
       }
+
       // this.productCount = this.productCount + this.productCount;
       // this.productCount += this.productCount;
 
