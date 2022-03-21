@@ -14,7 +14,7 @@ export class CartService {
   token: any = localStorage.getItem('token');
   userData: any;
   id: any;
-  totalPrice: number = 0 ;
+
 
   constructor(private httpClient: HttpClient) { }
 
@@ -39,8 +39,6 @@ export class CartService {
     let header = new HttpHeaders({
       Authorization: localStorage.getItem('token')!
     })
-    console.log(cartItem);
-
     return this.httpClient.post('http://127.0.0.1:8000/api/carts', { cartItem }, { headers: header });
   }
 
@@ -49,7 +47,6 @@ export class CartService {
     let header = new HttpHeaders({
       Authorization: localStorage.getItem('token')!
     })
-
     return this.httpClient.put('http://127.0.0.1:8000/api/carts/' + id, { id, cartItem }, { headers: header })
   }
 
@@ -58,7 +55,6 @@ export class CartService {
     let header = new HttpHeaders({
       Authorization: localStorage.getItem('token')!
     })
-
     return this.httpClient.delete('http://127.0.0.1:8000/api/carts/' + id, { headers: header })
   }
 
@@ -67,14 +63,13 @@ export class CartService {
     this.userData = jwt_decode(this.token);
     this.id = this.userData.user_id;
     this.getCart(this.id).subscribe((res: any) => {
-      console.log(res);
 
       let cartItems: { products: Product[] } = { products: [] }
 
       if (res.products) {
         cartItems = res;
         if (cartItems.products.some((item: any) => {
-          return item.id == product.id
+          return item.id == product.id;
         })) {
           cartItems.products.forEach((item: any) => {
             if (item.id == product.id) {
@@ -103,16 +98,5 @@ export class CartService {
       }
     });
   }
-
-  removeFromCart() {
-    console.log('remove from cart');
-
-  }
-
-  addItemToCart() {
-    console.log('add to cart');
-
-  }
-
 
 }

@@ -17,8 +17,6 @@ export class ProductItemComponent implements OnInit {
   searchKey: string = "";
 
   productList: Product[] = [];
-  product: any;
-  public productCount!: number;
   token: any = localStorage.getItem('token')
   userData: any;
   id: any;
@@ -41,28 +39,9 @@ export class ProductItemComponent implements OnInit {
 
   }
 
-  insertCart() {
-    this.userData = jwt_decode(this.token);
-    this.id = this.userData.user_id;
-    const products = [];
-    products.push(this.productItem);
-    this.cartService.createCart(products).subscribe(() => { });
-    console.log(products);
-
-  }
-
-  onItemAdded() {
+  addToCart() {
     this.cartService.addToCart(this.productItem);
-
-    // this.itemAddedToCart.emit(product);
-
-    console.log(this.productItem);
-
-    // this.product.count += 1;
   }
-
-
-
 
 }
 

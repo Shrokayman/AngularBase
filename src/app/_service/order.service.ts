@@ -25,7 +25,7 @@ export class OrderService {
       Authorization: localStorage.getItem('token')!
     })
 
-    return this.httpClient.post('http://127.0.0.1:8000/api/order/', data);
+    return this.httpClient.post('http://127.0.0.1:8000/api/orders', data, { headers: header });
 
   }
 

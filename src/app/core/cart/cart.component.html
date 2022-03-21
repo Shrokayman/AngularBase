@@ -4,7 +4,7 @@
 <!-- Close Top Nav -->
 <!-- Close Header -->
 
-<ng-container *ngIf="carts != 0">
+<ng-container *ngIf="cart?.products?.length">
   <div class="container">
     <div class="card-table">
       <div class="cart-product">
@@ -22,7 +22,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of carts?.products; let i = index">
+            <tr *ngFor="let item of cart?.products; let i = index">
               <td>{{ i + 1 }}</td>
               <td>{{ item.name }}</td>
               <td>
@@ -69,7 +69,7 @@
               </td>
             </tr>
             <tr>
-              <td colspan="2"></td>
+              <td colspan="3"></td>
               <td>
                 <button (click)="emptycart()" class="btn btn-danger">
                   Empty Cart
@@ -85,7 +85,7 @@
                   Checkout
                 </button>
               </td>
-              <td><strong>Grand Total :{{grandTotal}} </strong></td>
+              <td><strong>Total Price : {{totalPrice | currency }}</strong></td>
             </tr>
           </tbody>
         </table>
@@ -94,7 +94,7 @@
   </div>
 </ng-container>
 
-<ng-container *ngIf="carts == 0">
+<ng-container *ngIf="!cart?.products?.length">
   <div class="container">
     <div class="card">
       <h5 class="card-title">My Cart</h5>

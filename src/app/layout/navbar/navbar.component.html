@@ -72,7 +72,7 @@
         [matMenuTriggerFor]="menu"
         aria-label="Example icon-button with a menu"
       >
-        <mat-icon matBadge="{{ addedProducts.length }}" matBadgeColor="warn">
+        <mat-icon matBadge="{{ productCount }}" matBadgeColor="warn">
           add_shopping_cart
         </mat-icon>
       </button>
@@ -82,7 +82,7 @@
       >
         <div
           mat-menu-item
-          *ngFor="let item of addedProducts"
+          *ngFor="let item of productList"
           class="container-fluid p-0"
         >
           <div class="row mt-2 d-flex justify-content-between">
