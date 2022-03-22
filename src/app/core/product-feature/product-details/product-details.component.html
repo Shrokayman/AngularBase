@@ -22,10 +22,15 @@
                 <div class="card ">
                     <div class="card-body ">
                         <div class="d-flex flex-row justify-content-between">
-
                             <h1 style="font-weight:bold" class="h2">{{productItem.name}}</h1><br>
-                            <a *ngIf="!addedToWishlist" (click)="addtoWishlist(productItem.id)" class="btn btn-success text-white"  ><i class="bi bi-heart" ></i></a>
-                            <a *ngIf="addedToWishlist" (click)="removeFromWishlist(productItem.id)" class="btn btn-success text-white"  ><i class="bi bi-heart-fill" ></i></a>
+                            <!-- unlike -->
+
+                            <a *ngIf="!productItem.isWished" (click)="addtoWishlist(productItem.id)" class="btn btn-success text-white"><i class="bi bi-heart" ></i></a>
+                            <a *ngIf="productItem.isWished" class="btn btn-success text-white"><i class="bi bi-heart-fill" ></i></a>
+
+                            <!-- <a *ngIf="!addedToWishlist" (click)="addtoWishlist(productItem.id)" class="btn btn-success text-white"><i class="bi bi-heart" ></i></a> -->
+                            <!-- like -->
+                            <!-- <a *ngIf="addedToWishlist" (click)="removeFromWishlist(productItem.id)" class="btn btn-danger text-white"><i class="bi bi-heart-fill" ></i></a> -->
                         </div>
                         <div *ngIf="productItem.discount; else elseBlock">
 
@@ -38,14 +43,56 @@
                         </ng-template>
                         <br>
                         <u class="rate-area mx-0">
+                            <a *ngIf="productavgRate == 5"> <i class="text-warning fa fa-star"></i>
+                                <i class="text-warning fa fa-star"></i>
+                                <i class="text-warning fa fa-star"></i>
+                                <i class="text-warning fa fa-star"></i>
+                                <i class="text-warning fa fa-star"></i> </a>
+                                <a *ngIf="productavgRate == 4"> <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i> </a>
+                                    <a *ngIf="productavgRate == 3"> <i class="text-warning fa fa-star"></i>
+                                        <i class="text-warning fa fa-star"></i>
+                                        <i class="text-warning fa fa-star"></i>
+                                        <i class="text-muted fa fa-star"></i>
+                                        <i class="text-muted fa fa-star"></i> </a>
+                                        <a *ngIf="productavgRate == 2"> <i class="text-warning fa fa-star"></i>
+                                            <i class="text-warning fa fa-star"></i>
+                                            <i class="text-muted fa fa-star"></i>
+                                            <i class="text-muted fa fa-star"></i>
+                                            <i class="text-muted fa fa-star"></i> </a>
+                                            <a *ngIf="productavgRate == 1"> <i class="text-warning fa fa-star"></i>
+                                                <i class="text-muted fa fa-star"></i>
+                                                <i class="text-muted fa fa-star"></i>
+                                                <i class="text-muted fa fa-star"></i>
+                                                <i class="text-muted fa fa-star"></i> </a>
+                                                <a *ngIf="productavgRate == 0"> <i class="text-muted fa fa-star"></i>
+                                                    <i class="text-muted fa fa-star"></i>
+                                                    <i class="text-muted fa fa-star"></i>
+                                                    <i class="text-muted fa fa-star"></i>
+                                                    <i class="text-muted fa fa-star"></i> </a>
+                                                    <a *ngIf="!productavgRate"> <i class="text-muted fa fa-star"></i>
+                                                        <i class="text-muted fa fa-star"></i>
+                                                        <i class="text-muted fa fa-star"></i>
+                                                        <i class="text-muted fa fa-star"></i>
+                                                        <i class="text-muted fa fa-star"></i> </a>
+<!-- 
                             <input type="radio " id="5-star " name="rating " value="5 " /><label for="5-star " title="Amazing ">5 stars</label>
                             <input type="radio " id="4-star " name="rating " value="4 " /><label for="4-star " title="Good ">4 stars</label>
                             <input type="radio " id="3-star " name="rating " value="3 " /><label for="3-star " title="Average ">3 stars</label>
                             <input type="radio " id="2-star " name="rating " value="2 " /><label for="2-star " title="Not Good ">2 stars</label>
-                            <input type="radio " id="1-star " name="rating " value="1 " /><label for="1-star " title="Bad ">1 star</label>
+                            <input type="radio " id="1-star " name="rating " value="1 " /><label for="1-star " title="Bad ">1 star</label> -->
+                            <!-- <i class="text-warning fa fa-star"></i>
+                            <i class="text-warning fa fa-star"></i>
+                            <i class="text-warning fa fa-star"></i>
+                            <i class="text-muted fa fa-star"></i>
+                            <i class="text-muted fa fa-star"></i> -->
                         </u>
 
-                        <span class="list-inline-item text-dark ms-4 ">Rating : {{productItem.average_rate}} </span> <br> <br>
+                        <p *ngIf="productavgRate" class="list-inline-item text-dark ms-4 ">Rating : {{productavgRate}} </p>
+                        <p *ngIf="!productavgRate" class="list-inline-item text-dark ms-4 ">Rating : 0 </p> <br> <br>
 
                         <ul class="list-inline ">
                             <li class="list-inline-item ">
@@ -76,7 +123,6 @@
                             <li>Water-Resistance</li>
                             <li>Best Materials</li>
                         </ul>
-
                         <form action=" " method="GET ">
                             <!-- <div class="row ">
                                 <div class="col-auto ">

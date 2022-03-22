@@ -12,7 +12,6 @@ import jwt_decode from "jwt-decode";
 export class ProductItemComponent implements OnInit {
   token :any = localStorage.getItem('token');
   userDataFromToken:any;
-  addedToWishlist:boolean=false;
 
   @Input()
   productItem: any
@@ -21,22 +20,13 @@ export class ProductItemComponent implements OnInit {
   constructor(private productService : ProductService, private wishlistService:WishlistService) { }
 
   ngOnInit(): void {
-
-    
   }
 
   addtoWishlist(productid:any){
     this.userDataFromToken = jwt_decode(this.token);
-    this.addedToWishlist=!this.addedToWishlist;
+    this.productItem.isWished=!this.productItem.isWished;
     this.wishlistService.addData(productid,this.userDataFromToken.user_id).subscribe(()=>{
+
     });
   }
-
-  removeFromWishlist(productid:any){
-    this.userDataFromToken = jwt_decode(this.token);
-    this.wishlistService.removeData(productid,this.userDataFromToken.user_id).subscribe(()=>{
-      this.addedToWishlist=!this.addedToWishlist;
-    })
-  }
-
 }
