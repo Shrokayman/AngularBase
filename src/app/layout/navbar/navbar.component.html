@@ -61,12 +61,12 @@
                   <a class="nav-icon d-none d-lg-inline"  data-bs-toggle="modal" data-bs-target="#templatemo_search">
                       <i class="fa fa-fw fa-search text-dark mr-2"></i>
                   </a> -->
-                <span *ngIf="token">
-                  <a class="nav-icon position-relative text-decoration-none" routerLink="/cart/list">
-                      <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                      <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
-                </a>
-                </span>
+                  <span *ngIf="token">
+                    <a class="nav-icon position-relative text-decoration-none" routerLink="/product/wishlist">
+                        <i class="fa fa-heart text-danger mx-2"> Wishlist</i>
+                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
+                    </a>
+                  </span>
                 <span *ngIf="!token">
                   <a class="nav-icon position-relative px-2 text-decoration-none fw-bold" routerLink="/login">
                       Sign In

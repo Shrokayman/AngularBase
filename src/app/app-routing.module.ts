@@ -33,6 +33,7 @@ import { HighToLowComponent } from './core/product-feature/high-to-low/high-to-l
 import { LowToHighComponent } from './core/product-feature/low-to-high/low-to-high.component';
 import { CategoryComponent } from './core/product-feature/category/category.component';
 import { BrandComponent } from './core/product-feature/brand/brand.component';
+import { WishlistComponent } from './core/product-feature/wishlist/wishlist.component';
 
 const routes: Routes = [
   {path:'' , component:HomeComponent},
@@ -57,6 +58,7 @@ const routes: Routes = [
   },
   {path:'product/listing' , component:ProductListingComponent},
   {path: 'product/details/:id', component: ProductDetailsComponent},
+  {path:'product/wishlist' , component:WishlistComponent},
   {
     path:'admin',
   canActivate:[AdminGuard],
