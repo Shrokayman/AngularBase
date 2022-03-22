@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { ActivatedRoute } from '@angular/router';
 import jwt_decode from "jwt-decode";
 import { CartService } from 'src/app/_service/cart.service';
 
@@ -17,7 +15,7 @@ export class CartComponent implements OnInit {
   id: any;
   cart: any;
   public totalPrice: number = 0;
-  constructor(private cartService: CartService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
     this.userData = localStorage.getItem('token');
@@ -28,6 +26,7 @@ export class CartComponent implements OnInit {
       this.cart = res;
     })
   }
+
 
   getCart() {
     this.cartService.getCart(this.id).subscribe((res: any) => {

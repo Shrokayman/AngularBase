@@ -17,7 +17,7 @@ export class OrderDetailsComponent implements OnInit {
   imageDirectoryPath : any ='http://127.0.0.1:8000/storage/products/';
   id: any;
   // orders = new Order;
-  order :any;
+  orders:any =[];
   constructor(private orderservice: OrderService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -27,10 +27,10 @@ export class OrderDetailsComponent implements OnInit {
   }
 
   getOrder() {
-    this.orderservice.getOrder(this.id).subscribe(res => {
-      this.order =res;
-      this.orderservice = this.order;
-      console.log(this.orderservice);
+    this.orderservice.getOrder(this.id).subscribe((res) => {
+      this.orders = res;
+
+      console.log(this.orders);
 
     });
   }

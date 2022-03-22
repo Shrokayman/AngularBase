@@ -12,14 +12,13 @@ import jwt_decode from "jwt-decode";
   styleUrls: ['./product-item.component.css']
 })
 export class ProductItemComponent implements OnInit {
-  // public productList : any ;
+
   public filterCategory: any
   searchKey: string = "";
-
-  productList: Product[] = [];
   token: any = localStorage.getItem('token')
   userData: any;
   id: any;
+  productList: Product[] = [];
 
   @Input() productItem!: Product;
 
