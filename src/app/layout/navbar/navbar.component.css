@@ -23,4 +23,8 @@
 
 .dropdown:hover .dropdown-content {display: block !important;}
 
+#logout{
+  cursor: pointer;
+}
+
 /* .dropdown:hover .dropbtn {background-color: #3e8e41;} */
