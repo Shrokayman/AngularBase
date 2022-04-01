@@ -33,6 +33,7 @@
                 <span class="product-color-dot color-dot-green float-left rounded-circle ml-1 "></span>
             </li>
         </ul>
+
         <ul class="list-unstyled d-flex justify-content-center mb-1 ">
             
                 <a *ngIf="productItem.average_rate == 5"> <i class="text-warning fa fa-star"></i>
@@ -64,7 +65,13 @@
                                     <i class="text-muted fa fa-star"></i>
                                     <i class="text-muted fa fa-star"></i>
                                     <i class="text-muted fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i> </a>                     
+                                    <i class="text-muted fa fa-star"></i> </a>
+                                    <a *ngIf="!productItem.average_rate"> <i class="text-muted fa fa-star"></i>
+                                        <i class="text-muted fa fa-star"></i>
+                                        <i class="text-muted fa fa-star"></i>
+                                        <i class="text-muted fa fa-star"></i>
+                                        <i class="text-muted fa fa-star"></i> </a>
+                                                         
          
         </ul>
 
