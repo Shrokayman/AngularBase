@@ -42,8 +42,13 @@
                                 Price :${{productItem.price}}</h5>
                         </ng-template>
                         <br>
-                        <u class="rate-area mx-0">
-                            <a *ngIf="productavgRate == 5"> <i class="text-warning fa fa-star"></i>
+
+
+                        <!-- If Product  Not in User Order -->
+
+                        <div *ngIf="!productItem.isRated">
+                            <u class="rate-area mx-0">
+                                <a *ngIf="productavgRate == 5"> <i class="text-warning fa fa-star"></i>
                                 <i class="text-warning fa fa-star"></i>
                                 <i class="text-warning fa fa-star"></i>
                                 <i class="text-warning fa fa-star"></i>
@@ -77,23 +82,36 @@
                                                         <i class="text-muted fa fa-star"></i>
                                                         <i class="text-muted fa fa-star"></i>
                                                         <i class="text-muted fa fa-star"></i>
-                                                        <i class="text-muted fa fa-star"></i> </a>
-<!-- 
-                            <input type="radio " id="5-star " name="rating " value="5 " /><label for="5-star " title="Amazing ">5 stars</label>
-                            <input type="radio " id="4-star " name="rating " value="4 " /><label for="4-star " title="Good ">4 stars</label>
-                            <input type="radio " id="3-star " name="rating " value="3 " /><label for="3-star " title="Average ">3 stars</label>
-                            <input type="radio " id="2-star " name="rating " value="2 " /><label for="2-star " title="Not Good ">2 stars</label>
-                            <input type="radio " id="1-star " name="rating " value="1 " /><label for="1-star " title="Bad ">1 star</label> -->
-                            <!-- <i class="text-warning fa fa-star"></i>
-                            <i class="text-warning fa fa-star"></i>
-                            <i class="text-warning fa fa-star"></i>
-                            <i class="text-muted fa fa-star"></i>
-                            <i class="text-muted fa fa-star"></i> -->
-                        </u>
-
+                                                        <i class="text-muted fa fa-star"></i> </a>                       
+                         </u> 
                         <p *ngIf="productavgRate" class="list-inline-item text-dark ms-4 ">Rating : {{productavgRate}} </p>
-                        <p *ngIf="!productavgRate" class="list-inline-item text-dark ms-4 ">Rating : 0 </p> <br> <br>
+                        <p *ngIf="!productavgRate" class="list-inline-item text-dark ms-4 ">Rating : 0 </p> 
+                    </div>
 
+                        <!-- If Product in User Order -->
+
+                        <div *ngIf="productItem.isRated">
+                            <form class="needs-validation d-flex flex-row" novalidate (ngSubmit)="insertRate()" [formGroup]="addform" method="post">
+                                <div class="rate needs-validation">
+                                    <input formControlName="rate" type="radio" id="star5" [(ngModel)]="review.rate" name="rate" value="5" />
+                                    <label for="star5" title="text">5 stars</label>
+                                    <input formControlName="rate"  type="radio" id="star4" [(ngModel)]="review.rate" name="rate" value="4" />
+                                    <label for="star4" title="text">4 stars</label>
+                                    <input formControlName="rate"  type="radio" id="star3"[(ngModel)]="review.rate"  name="rate" value="3" />
+                                    <label for="star3" title="text">3 stars</label>
+                                    <input  formControlName="rate" type="radio" id="star2"  name="rate" [(ngModel)]="review.rate" value="2" />
+                                    <label for="star2" title="text">2 stars</label>
+                                    <input formControlName="rate"  type="radio" id="star1" name="rate" [(ngModel)]="review.rate" value="1" />
+                                    <label for="star1" title="text">1 star</label>
+                                    <button class="btn px-1 mx-1 h-75 btn-success btn-xsm " type="submit ">Add Rate</button>
+                                </div>
+                                <span  *ngIf="submmtied && f['rate'].errors">
+                                    
+                                    <p *ngIf="f['rate'].errors['required']" class="text-danger mx-3 fw-bold d-flex fs-5 w-100"> ! Rate is required</p>
+                                  </span>
+                            </form>
+                            <br> <br>
+                        </div>                      
                         <ul class="list-inline ">
                             <li class="list-inline-item ">
                                 <h6>Brand:</h6>

@@ -34,13 +34,38 @@
             </li>
         </ul>
         <ul class="list-unstyled d-flex justify-content-center mb-1 ">
-            <li>
-                <i class="text-warning fa fa-star "></i>
-                <i class="text-warning fa fa-star "></i>
-                <i class="text-warning fa fa-star "></i>
-                <i class="text-muted fa fa-star "></i>
-                <i class="text-muted fa fa-star "></i>
-            </li>
+            
+                <a *ngIf="productItem.average_rate == 5"> <i class="text-warning fa fa-star"></i>
+                <i class="text-warning fa fa-star"></i>
+                <i class="text-warning fa fa-star"></i>
+                <i class="text-warning fa fa-star"></i>
+                <i class="text-warning fa fa-star"></i> </a>
+                <a *ngIf="productItem.average_rate == 4"> <i class="text-warning fa fa-star"></i>
+                    <i class="text-warning fa fa-star"></i>
+                    <i class="text-warning fa fa-star"></i>
+                    <i class="text-warning fa fa-star"></i>
+                    <i class="text-muted fa fa-star"></i> </a>
+                    <a *ngIf="productItem.average_rate == 3"> <i class="text-warning fa fa-star"></i>
+                        <i class="text-warning fa fa-star"></i>
+                        <i class="text-warning fa fa-star"></i>
+                        <i class="text-muted fa fa-star"></i>
+                        <i class="text-muted fa fa-star"></i> </a>
+                        <a *ngIf="productItem.average_rate == 2"> <i class="text-warning fa fa-star"></i>
+                            <i class="text-warning fa fa-star"></i>
+                            <i class="text-muted fa fa-star"></i>
+                            <i class="text-muted fa fa-star"></i>
+                            <i class="text-muted fa fa-star"></i> </a>
+                            <a *ngIf="productItem.average_rate== 1"> <i class="text-warning fa fa-star"></i>
+                                <i class="text-muted fa fa-star"></i>
+                                <i class="text-muted fa fa-star"></i>
+                                <i class="text-muted fa fa-star"></i>
+                                <i class="text-muted fa fa-star"></i> </a>
+                                <a *ngIf="productItem.average_rate == 0"> <i class="text-muted fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i> </a>                     
+         
         </ul>
 
 
