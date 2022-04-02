@@ -21,7 +21,7 @@ export class ProductService {
     let header = new HttpHeaders({
       Authorization: localStorage.getItem('token')!
     })
-    return this.http.get(environment.apiUrl+'/products', {headers:header});
+    return this.http.get(environment.apiUrl+'/products');
    }
 
   deleteProduct(id:number){

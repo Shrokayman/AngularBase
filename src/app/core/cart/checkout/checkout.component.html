@@ -1,1 +1,26 @@
-<p>checkout works!</p>
+<app-navbar></app-navbar>
+
+<!-- Shopping Cart Section Begin -->
+<div class="container d-flex flex-column" *ngFor="let item of cart?.products">
+  <div class="d-flex">
+    <div class="card m-5" style="width: 18rem">
+      <img
+        src="{{ imageDirectoryPath }}{{ item.image }}"
+        class="card-img-top"
+        alt="..."
+      />
+    </div>
+    <div class="card-body p-5 m-5 text-center">
+      <h5 class="card-title">{{ item.name }}</h5>
+      <p class="card-text">{{ item.price | currency }}</p>
+      <p class="card-text">{{ item.description }}</p>
+    </div>
+  </div>
+</div>
+<div class="text-center row-2">
+  <button class="btn bg-secondary text-white-50 col-6 " (click)="createOrder()" routerLink="/home">Place Order</button>
+</div>
+
+<!-- Shopping Cart Section End -->
+
+<app-footer></app-footer>

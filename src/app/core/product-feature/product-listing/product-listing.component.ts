@@ -32,14 +32,14 @@ export class ProductListingComponent implements OnInit {
     // Get the response from the search
     this.productService.search.subscribe((val: any) => {
       this.searchKey = val;
-        console.log(val);
+        // console.log(val);
     })
   }
 
   getAllProducts(){
     this.productService.getProducts().subscribe(res => {
       this.allProducts = res
-      console.log(this.allProducts);
+      // console.log(this.allProducts);
     })
   }
 

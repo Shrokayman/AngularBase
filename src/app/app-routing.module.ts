@@ -1,3 +1,4 @@
+import { WishlistComponent } from './core/product-feature/wishlist/wishlist.component';
 import { AdminGuard } from './_guards/admin.guard';
 import { AddCategoryComponent } from './admin/manage-categories/add-category/add-category.component';
 import { AddBrandComponent } from './admin/manage-brands/add-brand/add-brand.component';
@@ -33,7 +34,6 @@ import { HighToLowComponent } from './core/product-feature/high-to-low/high-to-l
 import { LowToHighComponent } from './core/product-feature/low-to-high/low-to-high.component';
 import { CategoryComponent } from './core/product-feature/category/category.component';
 import { BrandComponent } from './core/product-feature/brand/brand.component';
-import { WishlistComponent } from './core/product-feature/wishlist/wishlist.component';
 
 const routes: Routes = [
   {path:'' , component:HomeComponent},
@@ -49,7 +49,7 @@ const routes: Routes = [
     canActivate: [UserGuard]
   },
   {
-    path:'cart/list' , component:CartComponent,
+    path:'cart/list/:id' , component:CartComponent,
     canActivate: [UserGuard]
   },
   {
