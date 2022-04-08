@@ -34,7 +34,7 @@ export class CartComponent implements OnInit {
       if (this.cart.products) {
         this.cart.products.forEach((item: any) => {
           let itemPrice;
-          itemPrice = item.price * item.pivot.product_quantity;
+          itemPrice = (item.price * item["pivot"].product_quantity) - (item.discount * item["pivot"].product_quantity);
           this.totalPrice += itemPrice;
           return this.totalPrice
         })
@@ -53,7 +53,7 @@ export class CartComponent implements OnInit {
     this.cart.products.forEach((product: any) => {
       if (product.id == item.id) {
         product.pivot.product_quantity += 1;
-        this.totalPrice += product.price;
+        this.totalPrice += product.price - item.discount;
       }
       product.product_quantity = product.pivot.product_quantity;
     })
@@ -82,7 +82,7 @@ export class CartComponent implements OnInit {
   deleteItem(item: any) {
     this.cart.products = this.cart.products.filter((product: any) => {
       if (product.id == item.id) {
-        this.totalPrice -= item.price * item.pivot.product_quantity;
+        this.totalPrice -= (item.price * item["pivot"].product_quantity) - (item.discount * item["pivot"].product_quantity);
         return false;
       }
       product.product_quantity = product.pivot.product_quantity;

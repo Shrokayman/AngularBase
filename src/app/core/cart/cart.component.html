@@ -5,7 +5,7 @@
 <!-- Close Header -->
 
 <ng-container *ngIf="cart?.products?.length">
-  <div class="container">
+  <div class="container p-5 mt-3 mb-lg-5">
     <div class="card-table">
       <div class="cart-product">
         <table class="table table-responsive">
@@ -34,7 +34,7 @@
               </td>
               <td style="width: 25%">{{ item.description }}</td>
               <th style="width: 12%">
-                {{ item.price | currency: "USD" }}
+                {{ item.price - item.discount | currency: "USD" }}
               </th>
               <td style="width: 20%" class="col-lg-3 row-sm-3">
                 <div class="col">
@@ -58,7 +58,7 @@
 
               <td style="width: 12%">
                 {{
-                  item.price * item["pivot"].product_quantity
+                  (item.price * item["pivot"].product_quantity) - (item.discount * item["pivot"].product_quantity)
                     | currency: "USD":true
                 }}
               </td>

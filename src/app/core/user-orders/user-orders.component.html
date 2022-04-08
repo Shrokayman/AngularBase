@@ -1,0 +1,47 @@
+<app-navbar></app-navbar>
+<div class="container p-5">
+
+
+<table class="table p-lg-5 table-striped mt-5">
+  <thead>
+    <tr>
+      <th scope="col">Date of purchase</th>
+      <th scope="col">Total Price</th>
+      <th scope="col">Status</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      class=""
+      *ngFor="
+        let order of orders | paginate: { itemsPerPage: 5, currentPage: p }
+      "
+    >
+      <td>{{ order.created_at | date }}</td>
+      <td>{{ order.total_cost + "$" }}</td>
+      <td>{{ order.status }}</td>
+
+      <td>
+        <button
+          type="submit"
+          class="btn btn-primary btn-sm ms-2"
+          routerLink="/orders/details/{{ order.id }}"
+        >
+          Order details
+        </button>
+        <!-- <button
+          type="submit"
+          class="btn btn-danger btn-sm ms-2"
+          (click)="deleteOrder(order.id); getAllOrders()"
+        >
+          Cancel
+        </button> -->
+      </td>
+    </tr>
+    <pagination-controls (pageChange)="p = $event" class="float-left">
+    </pagination-controls>
+  </tbody>
+</table>
+</div>
+<app-footer></app-footer>

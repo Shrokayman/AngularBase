@@ -1,0 +1,49 @@
+<app-navbar></app-navbar>
+<div class="container p-5 m-5">
+  <div class="card" style="width: 18rem;" *ngFor="let order of orders">
+    <div class="card-body">
+      <p href="#" class="card-text">Adderss: {{ order.order.shipping_address }}</p>
+      <p href="#" class="card-text">Date of purchase: {{ order.order.created_at | date }}</p>
+      <p href="#" class="card-text">Order Status: {{ order.order.status }}</p>
+    </div>
+  </div>
+  <figure class="text-center mt-4">
+    <blockquote class="blockquote">
+      <h2 class="float-start my-3">Order Detail</h2>
+    </blockquote>
+  </figure>
+  <table class="table p-lg-5 table-striped mt-5">
+    <thead>
+      <tr>
+        <th scope="col">Image</th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Product Quantity</th>
+        <th scope="col">Discount</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="" *ngFor="let order of orders[0]?.products">
+      <!-- <tr class="" *ngFor="let order of orders"> -->
+      <td>
+          <img
+            src="{{imageDirectoryPath}}{{ order.image }}"
+            class="rounded float-start"
+          />
+        </td>
+        <td>{{ order.name }}</td>
+        <td>{{ order.pivot.product_quantity }}</td>
+        <td >{{ order.discount }}</td>
+        <td>{{ order.price }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="container" *ngFor="let order of orders">
+    <div class="row-cols-6">
+      <div class="btn bg-secondary text-white-50 float-end"><span class="float-start">TOTAL PRICE</span> <span class="float-end"> {{ order.order.total_cost }} </span></div>
+    </div>
+  </div>
+</div>
+
+
+<app-footer></app-footer>

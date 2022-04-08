@@ -5,7 +5,7 @@ export class Order{
   total_price?: number;
 }
 
-export enum OrderStatus { pending = 'pending', shipped = 'shipped' };
+export enum OrderStatus { pending = 'pending', shipped = 'shipped', delivered = 'delivered' };
 
 export interface orderInterface {
   id?: number,

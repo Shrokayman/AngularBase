@@ -133,6 +133,8 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <li><a class="dropdown-item" [routerLink]="['/profile',userData.user_id]">Profile</a></li>
                       <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" [routerLink]="['/orders',userData.user_id]">My Orders</a></li>
+                      <li><hr class="dropdown-divider"></li>
                       <li><a id="logout" (click)="logout()" class="dropdown-item" >Logout</a></li>
                     </ul>
                   </li>
