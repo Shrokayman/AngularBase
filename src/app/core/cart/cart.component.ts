@@ -66,7 +66,7 @@ export class CartComponent implements OnInit {
     this.cart.products = this.cart.products.filter((product: any) => {
       if (product.id == item.id) {
         product.pivot.product_quantity -= 1;
-        this.totalPrice -= product.price;
+        this.totalPrice -= (item.price - item.discount);
       }
       if (!product.pivot.product_quantity) {
         return false;
@@ -82,7 +82,7 @@ export class CartComponent implements OnInit {
   deleteItem(item: any) {
     this.cart.products = this.cart.products.filter((product: any) => {
       if (product.id == item.id) {
-        this.totalPrice -= (item.price * item["pivot"].product_quantity) - (item.discount * item["pivot"].product_quantity);
+        this.totalPrice -= (item.price - item.discount);
         return false;
       }
       product.product_quantity = product.pivot.product_quantity;

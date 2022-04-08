@@ -103,7 +103,7 @@ export class ProductDetailsComponent implements OnInit {
       if (this.productavgRate > 5) {
         this.productavgRate = Math.floor(res / 2);
       }
-      console.log(this.productavgRate);
+      // console.log(this.productavgRate);
     });
   }
   insertRate() {
