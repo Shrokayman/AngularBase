@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-lg-5 mt-5">
                 <div class="card mb-3 mt-0" style="height: 39rem;">
-                    <img class="card-img img-fluid" style="height: 39rem;" src="{{imageDirectoryPath}}{{productItem.image}}" alt=" Card image cap " id="product-detail ">
+                    <img class="card-img img-fluid" style="height: 39rem;" src="{{imageDirectoryPath}}{{productItem?.image}}" alt=" Card image cap " id="product-detail ">
                 </div>
                 <!-- <div class="row ">
 
@@ -22,31 +22,31 @@
                 <div class="card ">
                     <div class="card-body ">
                         <div class="d-flex flex-row justify-content-between">
-                            <h1 style="font-weight:bold" class="h2">{{productItem.name}}</h1><br>
+                            <h1 style="font-weight:bold" class="h2">{{productItem?.name}}</h1><br>
                             <!-- unlike -->
 
-                            <a *ngIf="!productItem.isWished" (click)="addtoWishlist(productItem.id)" class="btn btn-success text-white"><i class="bi bi-heart" ></i></a>
-                            <a *ngIf="productItem.isWished" class="btn btn-success text-white"><i class="bi bi-heart-fill" ></i></a>
+                            <a *ngIf="!productItem?.isWished" (click)="addtoWishlist(productItem.id)" class="btn btn-success text-white"><i class="bi bi-heart" ></i></a>
+                            <a *ngIf="productItem?.isWished" class="btn btn-success text-white"><i class="bi bi-heart-fill" ></i></a>
 
                             <!-- <a *ngIf="!addedToWishlist" (click)="addtoWishlist(productItem.id)" class="btn btn-success text-white"><i class="bi bi-heart" ></i></a> -->
                             <!-- like -->
                             <!-- <a *ngIf="addedToWishlist" (click)="removeFromWishlist(productItem.id)" class="btn btn-danger text-white"><i class="bi bi-heart-fill" ></i></a> -->
                         </div>
-                        <div *ngIf="productItem.discount; else elseBlock">
+                        <div *ngIf="productItem?.discount; else elseBlock">
 
-                            <h5 class=" mb-1 text-black mt-2 w-50"><del> Price :${{productItem.price}}</del></h5>
+                            <h5 class=" mb-1 text-black mt-2 w-50"><del> Price :${{productItem?.price}}</del></h5>
                             <h5 class="mb-0 text-success ">Price: ${{productItem.price - productItem.discount}}</h5>
                         </div>
                         <ng-template #elseBlock>
                             <h5 class=" mb-1 text-success mt-3 w-50">
-                                Price :${{productItem.price}}</h5>
+                                Price :${{productItem?.price}}</h5>
                         </ng-template>
                         <br>
 
 
                         <!-- If Product  Not in User Order -->
 
-                        <div *ngIf="!productItem.isRated">
+                        <div *ngIf="!productItem?.isRated">
                             <u class="rate-area mx-0">
                                 <a *ngIf="productavgRate == 5"> <i class="text-warning fa fa-star"></i>
                                 <i class="text-warning fa fa-star"></i>
@@ -90,7 +90,7 @@
 
                         <!-- If Product in User Order -->
 
-                        <div *ngIf="productItem.isRated">
+                        <div *ngIf="productItem?.isRated">
                             <form class="needs-validation d-flex flex-row" novalidate (ngSubmit)="insertRate()" [formGroup]="addform" method="post">
                                 <div class="rate needs-validation">
                                     <input formControlName="rate" type="radio" id="star5" [(ngModel)]="review.rate" name="rate" value="5" />
@@ -118,13 +118,13 @@
                             </li>
                             <li class="list-inline-item ">
                                 <!-- <p class="text-success "><strong *ngFor="let brand of allBrands"> {{brand.name}} </strong> </p> -->
-                                <p class="text-success "><strong>{{productItem.brand.name}}</strong> </p>
+                                <p class="text-success "><strong>{{productItem?.brand.name}}</strong> </p>
 
                             </li>
                         </ul>
 
                         <h6>Description:</h6>
-                        <p> {{productItem.description}} </p>
+                        <p> {{productItem?.description}} </p>
                         <ul class="list-inline ">
                             <li class="list-inline-item ">
                                 <h6>Avaliable Color :</h6>

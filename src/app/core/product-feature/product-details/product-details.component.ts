@@ -20,29 +20,29 @@ import { Product } from 'src/app/_models/product.model';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
-  addform:FormGroup;
-  review=new Review;
-  submmtied:boolean = false;
+  addform: FormGroup;
+  review = new Review;
+  submmtied: boolean = false;
   allProducts: any;
-  constructor(private categoryService:CategoryService,private brandService:BrandService,private activatedRoute:ActivatedRoute,private productService:ProductService,private wishlistService:WishlistService,private reviewService:ReviewService,private formBuilder:FormBuilder, private router : Router, private cartService: CartService) {
-    this.addform =this.formBuilder.group({
-      rate: new FormControl(null,[Validators.required])
+  constructor(private categoryService: CategoryService, private brandService: BrandService, private activatedRoute: ActivatedRoute, private productService: ProductService, private wishlistService: WishlistService, private reviewService: ReviewService, private formBuilder: FormBuilder, private router: Router, private cartService: CartService) {
+    this.addform = this.formBuilder.group({
+      rate: new FormControl(null, [Validators.required])
     })
 
   }
-  get f(){return this.addform.controls}
+  get f() { return this.addform.controls }
 
   Rate: any;
   rate: any;
   productavgRate: any;
-  productiswished:any;
-  imageDirectoryPath : any ='http://127.0.0.1:8000/storage/products/';
+  productiswished: any;
+  imageDirectoryPath: any = 'http://127.0.0.1:8000/storage/products/';
   id: any;
-  relatedProducts:any =[];
-  token :any = localStorage.getItem('token');
-  userDataFromToken:any;
-  addedToWishlist:boolean=false;
-  data:any;
+  relatedProducts: any = [];
+  token: any = localStorage.getItem('token');
+  userDataFromToken: any;
+  addedToWishlist: boolean = false;
+  data: any;
 
   productList: Product[] = [];
 
@@ -50,7 +50,7 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(params => {
-      this.id =params.get('id');
+      this.id = params.get('id');
     });
     this.getProductById(this.id);
     this.getRelatedProducts()
@@ -63,57 +63,62 @@ export class ProductDetailsComponent implements OnInit {
       (err) => { },
       () => { }
     );
-    }
-  getProductById(id:number){
+  }
+  getProductById(id: number) {
 
-    this.productService.getProductById(id).subscribe(res=> {
-    this.productItem = res;
-    console.log(this.productItem)
-    if(this.productItem.isBought){
-      this.productItem.isRated=!this.productItem.isRated;
-    }
+    this.productService.getProductById(id).subscribe(res => {
+      this.productItem = res;
+      console.log(this.productItem)
 
-  })
-}
+      if (this.productItem.isBought) {
+
+        this.productItem.isRated = !this.productItem.isRated;
+      }
+
+
+    })
+  }
   getRelatedProducts() {
-this.productService.showRelated(this.id).subscribe(res=> {
-  this.relatedProducts = res;
-});  }
-addtoWishlist(id:number){
-  this.userDataFromToken = jwt_decode(this.token);
-  this.productItem.isWished=!this.productItem.isWished;
+    this.productService.showRelated(this.id).subscribe(res => {
+      this.relatedProducts = res;
+    });
+  }
+  addtoWishlist(id: number) {
+    this.userDataFromToken = jwt_decode(this.token);
+    this.productItem.isWished = !this.productItem.isWished;
 
-  this.wishlistService.addData(id,this.userDataFromToken.user_id).subscribe(()=>{
+    this.wishlistService.addData(id, this.userDataFromToken.user_id).subscribe(() => {
 
-  });
+    });
 
-}
+  }
 
-addToCart() {
-  this.cartService.addToCart(this.productItem);
-}
+  addToCart() {
+    this.cartService.addToCart(this.productItem);
+  }
 
-getAvgRate(id:number) {
-  this.productService.getAvgRateProductById(id).subscribe((res: any)=> {
-    this.productavgRate = Math.floor(res);
-    if(this.productavgRate > 5){
-      this.productavgRate = Math.floor(res/2);
-    }
-    console.log(this.productavgRate);
-  });  }
-  insertRate(){
-    this.submmtied=true
-    if(this.addform.invalid){
+  getAvgRate(id: number) {
+    this.productService.getAvgRateProductById(id).subscribe((res: any) => {
+      this.productavgRate = Math.floor(res);
+      if (this.productavgRate > 5) {
+        this.productavgRate = Math.floor(res / 2);
+      }
+      console.log(this.productavgRate);
+    });
+  }
+  insertRate() {
+    this.submmtied = true
+    if (this.addform.invalid) {
       return;
-    }else{
-      this.Rate=this.addform.value.rate;
+    } else {
+      this.Rate = this.addform.value.rate;
       console.log(this.review.rate)
       console.log(this.Rate)
       this.userDataFromToken = jwt_decode(this.token);
       console.log(this.id)
       console.log(this.userDataFromToken.user_id)
       console.log(this.addform.value.rate);
-      this.reviewService.addRate(this.id,this.userDataFromToken.user_id,this.review.rate).subscribe((res)=>{
+      this.reviewService.addRate(this.id, this.userDataFromToken.user_id, this.review.rate).subscribe((res) => {
         console.log(res)
       })
       alert("thanks For Rating")
@@ -121,5 +126,5 @@ getAvgRate(id:number) {
 
     }
 
-}
+  }
 }
