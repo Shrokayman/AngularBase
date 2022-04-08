@@ -2,7 +2,7 @@
 <app-navbar></app-navbar>
 
 <!-- Shopping Cart Section Begin -->
-<div class="container d-flex flex-column" *ngIf="allProducts.products.length>0">
+<div class="container d-flex flex-column" *ngIf="allProducts?.products.length>0">
   <div class="d-flex" *ngFor="let product of allProducts.products | paginate: { itemsPerPage:5, currentPage: p }" >
     <div  class="card m-5" style="width: 18rem">
       <img
@@ -13,7 +13,7 @@
     </div>
     <div class="card-body p-5 m-5 text-center">
       <h5 class="card-title">{{product.name}}</h5>
-      <p class="card-text">{{product.price}}</p>
+      <p class="card-text">{{product.price - product.discount}}</p>
       <p class="card-text">{{product.description}}</p>
     </div>
     <div class="p-5 m-5">
@@ -26,7 +26,7 @@
 
 <!-- Empty WishList -->
 
-<div class="container text-center mt-5" *ngIf="allProducts.products.length==0">
+<div class="container text-center mt-5" *ngIf="allProducts?.products.length==0">
   <img src="../../../../assets/img/download (1).png" alt="" class="emptyWishImg">
   <p class="fs-1 textWish fw-normal">NO ITEMS IN YOUR WISHLIST</p>
   <p class="fs-3 wishParag">Save Your Favourite Items Here</p>

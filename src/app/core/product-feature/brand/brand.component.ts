@@ -24,6 +24,8 @@ export class BrandComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.paramMap.subscribe(params => {
       this.id = params.get('id');
+      console.log(this.id);
+
       this.getBrandProduct();
       this.getAllCategories();
       this.getAllBrands();
