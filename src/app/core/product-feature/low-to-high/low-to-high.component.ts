@@ -25,7 +25,7 @@ export class LowToHighComponent implements OnInit {
 
   getAllProducts(){
     this.productService.getProducts().subscribe(res => {
-      this.allProducts = res
+      this.allProducts = res;
       this.allProducts.sort((a :any, b :any) => {return (a.price - a.discount) - (b.price - b.discount)});
     })
   }
